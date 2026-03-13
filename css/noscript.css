@@ -1,0 +1,24 @@
+/* #app-container {
+  height: initial;
+  border: none;
+}  */
+
+/* #app-container::before {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+} */
+
+main {
+  --main-loader-display: none;
+}
+
+
+@media screen and (min-width: 64em) and (min-height: 48em) {
+  #footer-main .connect {
+    bottom: unset;
+    top: 40svh;
+  }
+}
