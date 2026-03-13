@@ -1,0 +1,173 @@
+/*
+ *  File:   loader.js
+ *
+ *  Description:   Creates page loader element.  Removes the loader when the page has loaded.
+ */
+
+'use strict';
+
+const DEBUG = true;
+const CLASS_JS_ENABLED = "js-enabled";
+const LOADER_ELEMENT = "loader";
+const LOADER_ELEMENT_REMOVAL_ANIMATION = "loader-exit";
+const BODY_CLASS_USE_LOADER = "use-loader";
+const BODY_CLASS_LOADED = "loaded";
+const PAGE_LOADER_TIMEOUT_MIN = 3000;
+const PAGE_LOADER_TIMEOUT_MAX = 12000;
+const VIRNA_NURIS_LOGO_INLINE_SVG = `<svg viewBox="0 0 1061 188" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M69.4 168L17 24H26L73.8 155.8L121.8 24H130.8L78.4 168H69.4ZM125.82 168V24H134.22V168H125.82ZM142.25 168V24H195.25C196.65 24 198.083 24.0667 199.55 24.2C201.017 24.2667 202.65 24.4667 204.45 24.8C211.383 25.8667 217.383 28.4 222.45 32.4C227.583 36.3333 231.517 41.3333 234.25 47.4C237.05 53.4 238.45 60 238.45 67.2C238.45 77.4667 235.65 86.4667 230.05 94.2C224.45 101.933 216.85 106.867 207.25 109L205.65 110.4H150.65V168H142.25ZM232.45 168L204.05 109.4L211.25 104L242.45 168H232.45ZM150.65 102H195.25C196.383 102 197.717 101.933 199.25 101.8C200.85 101.667 202.45 101.467 204.05 101.2C209.583 100.133 214.217 97.9333 217.95 94.6C221.75 91.2667 224.617 87.2333 226.55 82.5C228.483 77.7 229.45 72.6 229.45 67.2C229.45 61.8 228.483 56.7333 226.55 52C224.617 47.2 221.75 43.1333 217.95 39.8C214.217 36.4667 209.583 34.2667 204.05 33.2C202.45 32.8667 200.85 32.6667 199.25 32.6C197.717 32.4667 196.383 32.4 195.25 32.4H150.65V102ZM242.516 168V24H250.916L338.516 153V24H346.916V168H338.516L250.916 38.8V168H242.516ZM342.938 168L395.338 24H404.338L456.738 168H447.738L396.738 27.8H402.738L351.938 168H342.938ZM362.938 130.6V122.6H436.538V130.6H362.938ZM516.252 171C508.185 171 500.818 169.867 494.152 167.6C487.552 165.333 481.985 161.8 477.452 157C474.052 153.4 471.485 149.267 469.752 144.6C468.018 139.933 467.052 135.067 466.852 130C466.785 125.267 467.452 120.467 468.852 115.6C470.318 110.733 472.652 106.4 475.852 102.6C478.185 99.6667 480.852 97.2667 483.852 95.4C486.918 93.5333 490.052 92 493.252 90.8C487.585 85.0667 483.218 79.9 480.152 75.3C477.152 70.6333 475.652 64.8 475.652 57.8C475.652 51 477.285 44.7333 480.552 39C483.818 33.2 488.385 28.8 494.252 25.8C497.652 24.0667 501.152 22.8333 504.752 22.1C508.418 21.3667 512.052 21 515.652 21C520.452 21 525.252 21.6 530.052 22.8C534.852 24 538.985 25.8667 542.452 28.4C544.852 30 547.018 31.9667 548.952 34.3C550.885 36.5667 552.452 39 553.652 41.6L545.852 45.2C544.118 41.2 541.318 37.8667 537.452 35.2C534.585 33.2 531.318 31.7333 527.652 30.8C523.985 29.8667 520.252 29.4 516.452 29.4C509.852 29.4 503.785 30.7333 498.252 33.4C493.785 35.6667 490.385 38.9 488.052 43.1C485.785 47.2333 484.652 52 484.652 57.4C484.652 62 485.352 65.8333 486.752 68.9C488.152 71.9 490.385 75.2667 493.452 79C495.052 80.8 496.785 82.5333 498.652 84.2C500.518 85.8 502.385 87.4667 504.252 89.2L556.052 137.4C556.452 135.2 556.718 133.167 556.852 131.3C556.985 129.367 557.052 127.4 557.052 125.4L556.852 102H565.852V121.4C565.852 127.8 565.585 132.667 565.052 136C564.585 139.333 563.985 142.067 563.252 144.2L582.252 161.8L576.452 168L559.252 151.8C557.785 154.467 555.618 157.033 552.752 159.5C549.885 161.9 547.052 163.867 544.252 165.4C540.185 167.6 535.718 169.067 530.852 169.8C526.052 170.6 521.185 171 516.252 171ZM515.852 162.6C520.785 162.6 525.218 162.3 529.152 161.7C533.085 161.033 536.785 159.667 540.252 157.6C544.452 155 547.418 152.667 549.152 150.6C550.885 148.533 552.185 146.8 553.052 145.4L500.452 97.4C496.985 98.4 493.685 99.8 490.552 101.6C487.485 103.4 484.852 105.6 482.652 108.2C480.252 111.067 478.485 114.4 477.352 118.2C476.285 121.933 475.785 125.8 475.852 129.8C475.985 133.8 476.652 137.633 477.852 141.3C479.118 144.9 481.052 148.067 483.652 150.8C487.252 154.867 491.952 157.867 497.752 159.8C503.618 161.667 509.652 162.6 515.852 162.6ZM594.82 168V24H603.22L690.82 153V24H699.22V168H690.82L603.22 38.8V168H594.82ZM760.242 171C749.576 171 740.109 168.767 731.842 164.3C723.576 159.833 717.076 153.567 712.342 145.5C707.609 137.367 705.242 127.867 705.242 117V24H713.642V114.2C713.642 123.067 715.142 130.633 718.142 136.9C721.142 143.1 725.009 148.133 729.742 152C734.476 155.8 739.542 158.6 744.942 160.4C750.342 162.133 755.442 163 760.242 163C765.042 163 770.142 162.133 775.542 160.4C780.942 158.6 786.009 155.8 790.742 152C795.476 148.133 799.342 143.1 802.342 136.9C805.342 130.633 806.842 123.067 806.842 114.2V24H815.242V117C815.242 127.8 812.876 137.267 808.142 145.4C803.409 153.467 796.909 159.767 788.642 164.3C780.376 168.767 770.909 171 760.242 171ZM821.328 168V24H874.328C875.728 24 877.161 24.0667 878.628 24.2C880.095 24.2667 881.728 24.4667 883.528 24.8C890.461 25.8667 896.461 28.4 901.528 32.4C906.661 36.3333 910.595 41.3333 913.328 47.4C916.128 53.4 917.528 60 917.528 67.2C917.528 77.4667 914.728 86.4667 909.128 94.2C903.528 101.933 895.928 106.867 886.328 109L884.728 110.4H829.728V168H821.328ZM911.528 168L883.128 109.4L890.328 104L921.528 168H911.528ZM829.728 102H874.328C875.461 102 876.795 101.933 878.328 101.8C879.928 101.667 881.528 101.467 883.128 101.2C888.661 100.133 893.295 97.9333 897.028 94.6C900.828 91.2667 903.695 87.2333 905.628 82.5C907.561 77.7 908.528 72.6 908.528 67.2C908.528 61.8 907.561 56.7333 905.628 52C903.695 47.2 900.828 43.1333 897.028 39.8C893.295 36.4667 888.661 34.2667 883.128 33.2C881.528 32.8667 879.928 32.6667 878.328 32.6C876.795 32.4667 875.461 32.4 874.328 32.4H829.728V102ZM923.594 168V24H931.994V168H923.594ZM987.823 171C978.09 171 969.323 169.433 961.523 166.3C953.79 163.1 947.357 158.6 942.223 152.8C937.157 147 933.757 140.133 932.023 132.2L940.423 130.6C943.023 140.467 948.557 148.267 957.023 154C965.49 159.733 975.757 162.6 987.823 162.6C996.223 162.6 1003.56 161.267 1009.82 158.6C1016.09 155.933 1020.96 152.2 1024.42 147.4C1027.89 142.533 1029.62 136.867 1029.62 130.4C1029.62 125.533 1028.72 121.467 1026.92 118.2C1025.12 114.933 1022.82 112.3 1020.02 110.3C1017.29 108.233 1014.42 106.6 1011.42 105.4C1008.42 104.2 1005.76 103.267 1003.42 102.6L967.423 91.8C962.223 90.2667 957.723 88.4 953.923 86.2C950.19 84 947.123 81.5 944.723 78.7C942.323 75.9 940.523 72.8333 939.323 69.5C938.19 66.1667 937.623 62.6 937.623 58.8C937.623 51.4667 939.59 44.9667 943.523 39.3C947.523 33.5667 953.057 29.1 960.123 25.9C967.19 22.6333 975.357 21 984.623 21C994.023 21 1002.46 22.7333 1009.92 26.2C1017.39 29.6667 1023.49 34.5667 1028.22 40.9C1033.02 47.1667 1036.02 54.5333 1037.22 63L1028.82 64.6C1027.89 57.6 1025.42 51.4667 1021.42 46.2C1017.42 40.8667 1012.26 36.7333 1005.92 33.8C999.59 30.8667 992.49 29.4 984.623 29.4C977.09 29.4 970.457 30.7 964.723 33.3C959.057 35.9 954.623 39.4 951.423 43.8C948.223 48.2 946.623 53.1333 946.623 58.6C946.623 64.3333 948.157 68.9333 951.223 72.4C954.357 75.8 958.157 78.4667 962.623 80.4C967.09 82.2667 971.357 83.8 975.423 85L1005.22 94C1007.76 94.7333 1010.86 95.8333 1014.52 97.3C1018.19 98.7 1021.79 100.733 1025.32 103.4C1028.92 106.067 1031.89 109.6 1034.22 114C1036.62 118.333 1037.82 123.8 1037.82 130.4C1037.82 136.6 1036.66 142.2 1034.32 147.2C1031.99 152.2 1028.62 156.467 1024.22 160C1019.82 163.533 1014.56 166.233 1008.42 168.1C1002.29 170.033 995.423 171 987.823 171Z" fill="black"/>
+      </svg>`;
+
+var pageLoadStartTime = 0;
+var pageLoadEndTime = 0;
+
+document.documentElement.classList.add(CLASS_JS_ENABLED);
+
+// When the DOM is loaded,
+window.addEventListener('DOMContentLoaded', function () {
+  try {
+    if(DEBUG) console.log("Debugging loader...");
+
+    // Create the loader element.
+    createLoader();
+
+    // Wait for the page to fully load, or handle page load errors.
+    waitForFullContentLoad().then(() => {
+      if(DEBUG) console.log("Page contents successfully loaded.");   
+    })
+    .catch(e => {
+      console.error("An error occurred while waiting for the page load: " + e.stack);
+    })
+    .finally(() => {
+      // End the page load time monitor
+      pageLoadEndTime = Date.now();
+      var pageLoadTotalTime = pageLoadEndTime - pageLoadStartTime;
+      if(DEBUG) console.log("Page load function execution time: " + pageLoadTotalTime +" ms");
+
+      // Wait until the loader displays for a minimum time period, minus the total page load time
+      setTimeout (() => {
+        // Reval the page contents
+        revealPage();
+      }, Math.max(0, PAGE_LOADER_TIMEOUT_MIN - pageLoadTotalTime));
+    });
+  }
+  catch(e) {
+    console.error("An error occurred in the page loader: " + e.message);
+    revealPage();
+  }
+});
+
+
+
+/**
+ * Reveal page.
+ */
+function revealPage () {
+  // Reveal the page body and trigger loader removal (if applicable).
+  if(DEBUG) console.log("revealPage: Reveal body and trigger loader removal animation...");
+  document.body.classList.remove(BODY_CLASS_USE_LOADER);
+  document.body.classList.add(BODY_CLASS_LOADED);
+}
+
+
+
+
+/**
+ * Create, add, and remove page loader.
+ */
+function createLoader () {
+  var loader;
+
+  // Loader animation handler function
+  const loaderAnimationHandler = (e) => {
+    // Handle loader removal animation.
+    if (e.animationName === LOADER_ELEMENT_REMOVAL_ANIMATION) {
+      // When the animation completes, remove the loader from the DOM.
+      if(DEBUG) console.log("loaderAnimationHandler: Loader removal animation ended.  Remove loader and its animationend event handler...");
+      loader.removeEventListener("animationend", loaderAnimationHandler);
+      document.body.removeChild(loader);
+    }
+  };
+
+  try {
+    if(DEBUG) console.log("createLoader:  Adding page loader...");
+
+    // Create the loader.
+    loader = document.createElement("div");
+    loader.id = LOADER_ELEMENT;
+    loader.classList.add("loader");
+    
+    // Create the loader background pieces and add to the loader.
+    let loaderBackgroundContainer = document.createElement("div");
+    loaderBackgroundContainer.classList.add("loader_background");
+    let numBackgroundBlocks = 5;
+    for(let i = 1; i <= numBackgroundBlocks; i++) {
+      let loaderBackgroundBG = document.createElement("div");
+      loaderBackgroundBG.classList.add("loader_background_bg" + i);
+      loaderBackgroundContainer.appendChild(loaderBackgroundBG);
+    }
+    loader.appendChild(loaderBackgroundContainer);
+
+    // Create the loader content and add to the loader.
+    let loaderContentContainer = document.createElement("div");
+    loaderContentContainer.classList.add("loader_content");
+      // Create the loader image decoration and add to the content container.
+      let loaderLogoContainer = document.createElement("div");
+      loaderLogoContainer.classList.add("loader_logo");
+      loaderLogoContainer.innerHTML = VIRNA_NURIS_LOGO_INLINE_SVG;
+      loaderContentContainer.appendChild(loaderLogoContainer);
+
+      // Create loader message node and add to the content container.
+      let loaderMsgContainer = document.createElement("div");
+      loaderMsgContainer.classList.add("loader_message");
+      let loaderMsg = document.body.getAttribute("data-loading-msg").trim().substring(0, 150);
+      if(loaderMsg) loaderMsgContainer.innerText = loaderMsg;
+      loaderContentContainer.appendChild(loaderMsgContainer);
+    loader.appendChild(loaderContentContainer);
+
+    // Add the loader to the page body.
+    document.body.prepend(loader);
+
+    // Add loader "animationend" event listener.
+    loader.addEventListener("animationend", loaderAnimationHandler);
+
+    // Start the page load time monitor
+    pageLoadStartTime = Date.now();
+  }
+  catch (e) {
+    if(DEBUG) console.error("createLoader: An error occurred while creating page loader: " + e.stack + ".");
+
+    // Remove failed loader and its event listener.
+    if(loader) { 
+      if(DEBUG) console.warn("createLoader: Removing failed loader and its event listener...");
+      loader.removeEventListener("animationend", loaderAnimationHandler);
+      loader.remove();
+    }
+
+    throw new Error("Unable to create loader. Error: " + e.stack);
+  }
+}
+
+
+
+
+/**
+ * Wait until page loads or page load timeout is exceeded.
+ */
+function waitForFullContentLoad () {
+  const pageLoaded = new Promise((resolve, _) => {
+    // Verify all content on the page has loaded and resolve promise
+    window.addEventListener ('load', event => {
+      resolve(true);
+    });
+  });
+
+  const timeoutExceeded = new Promise((_, reject) => {
+    // If all content on the page has not loaded after timeout, reject promise
+    setTimeout (() => {
+      reject(new Error("All content has not loaded, but timeout has been exceeded."));
+    }, PAGE_LOADER_TIMEOUT_MAX);
+  });
+
+  return Promise.race([pageLoaded, timeoutExceeded]);
+}

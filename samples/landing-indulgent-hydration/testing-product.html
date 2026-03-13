@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Testing - Product - Virna &amp; Nuris Landing Page - N.A. Wedderburn Web Developer</title>
+  <link rel="icon" type="image/x-icon" href="/assets/images/logos/virna-nuris-favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    section {
+      margin: min(4em, 5vw) 0;
+    }
+  </style>
+</head>
+<body style="margin: 1vw;">
+  <h1>Component Testing - Product</h1>
+  <section>
+    <h2>Product 50% width, print formatted</h2>
+    <div style="width: 50%;">
+      <figure class="product">
+        <img class="product_image" style="object-position: center;" src="/assets/images/raster/large/pexels-alesiakozik-7795874.jpg" 
+          srcset="/assets/images/raster/small/pexels-alesiakozik-7795874.webp 360w, /assets/images/raster/medium/pexels-alesiakozik-7795874.webp 580w, /assets/images/raster/large/pexels-alesiakozik-7795874.webp 920w, /assets/images/raster/xlarge/pexels-alesiakozik-7795874.webp 1920w"
+          sizes="50vw"
+          alt="Meadow Nut Essential Oil" title="Meadow Nut Essential Oil">
+        <figcaption class="product_details">
+          <div class="product_details_name">Meadow Nut Essential Healing & Wellness Oil</div>
+          <div class="product_details_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, nihil earum laborum aliquam delectus, mollitia debitis aut, aperiam deleniti officiis in.</div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+  <section>
+    <h2>Product 25% width, print unformatted</h2>
+    <div style="width: 25%;">
+      <figure class="product print-unformatted">
+        <img class="product_image" style="object-position: center;" src="/assets/images/raster/large/pexels-alesiakozik-7795874.jpg" 
+          srcset="/assets/images/raster/small/pexels-alesiakozik-7795874.webp 360w, /assets/images/raster/medium/pexels-alesiakozik-7795874.webp 580w, /assets/images/raster/large/pexels-alesiakozik-7795874.webp 920w, /assets/images/raster/xlarge/pexels-alesiakozik-7795874.webp 1920w"
+          sizes="25vw"
+          alt="Meadow Nut Essential Oil" title="Meadow Nut Essential Oil">
+        <figcaption class="product_details">
+          <div class="product_details_name">Meadow Nut Essential Healing & Wellness Oil</div>
+          <div class="product_details_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, nihil earum laborum aliquam delectus, mollitia debitis aut, aperiam deleniti officiis in.</div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+  <section>
+    <h2>List of Products, print formatted</h2>
+    <ul class="product-list scrollable" style="list-style-type: none; display:flex; flex-direction:row; flex-wrap: nowrap; gap: 10px; flex: 0 0 auto;">
+      <li class="product-list_item" style="width: 320px; flex-shrink: 0;">
+        <figure class="product">
+          <img class="product_image" src="/assets/images/raster/large/pexels-polina-kovaleva-8100778.jpg" 
+            srcset="/assets/images/raster/small/pexels-polina-kovaleva-8100778.webp 360w, /assets/images/raster/medium/pexels-polina-kovaleva-8100778.webp 580w, /assets/images/raster/large/pexels-polina-kovaleva-8100778.webp 920w, /assets/images/raster/xlarge/pexels-polina-kovaleva-8100778.webp 1920w"
+            sizes="(min-height: 40em) calc((min(30svh, 60vw)) / 2), calc((min(min(75vw, 90svh), 20em) / 2) - min(1.5625rem, 3vw))"
+            alt="Meadow Nut Essential Oil" title="Meadow Nut Essential Oil">
+          <figcaption class="product_details">
+            <div class="product_details_name">Meadow Nut Essential Oil</div>
+            <div class="product_details_description scrollable">Numerous ladyship so raillery humoured goodness received an.</div>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="product-list_item" style="width: 320px; flex-shrink: 0;">
+        <figure class="product">
+          <img class="product_image" src="/assets/images/raster/large/pexels-polina-kovaleva-5927774.jpg" 
+            srcset="/assets/images/raster/small/pexels-polina-kovaleva-5927774.webp 360w, /assets/images/raster/medium/pexels-polina-kovaleva-5927774.webp 580w, /assets/images/raster/large/pexels-polina-kovaleva-5927774.webp 920w, /assets/images/raster/xlarge/pexels-polina-kovaleva-5927774.webp 1920w"
+            sizes="(min-height: 40em) calc((min(30svh, 60vw)) / 2), calc((min(min(75vw, 90svh), 20em) / 2) - min(1.5625rem, 3vw))"
+            alt="Summer Fruit Scrub" title="Summer Fruit Scrub">
+          <figcaption class="product_details">
+            <div class="product_details_name">Summer Fruit Scrub</div>
+            <div class="product_details_description scrollable">Offending or extremity therefore so difficult he on provision. Tended depart turned not are.</div>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="product-list_item" style="width: 320px; flex-shrink: 0;">
+        <figure class="product">
+          <img class="product_image" src="/assets/images/raster/large/pexels-freestocks-3940337.jpg" 
+            srcset="/assets/images/raster/small/pexels-freestocks-3940337.webp 360w, /assets/images/raster/medium/pexels-freestocks-3940337.webp 580w, /assets/images/raster/large/pexels-freestocks-3940337.webp 920w, /assets/images/raster/xlarge/pexels-freestocks-3940337.webp 1920w"
+            sizes="(min-height: 40em) calc((min(30svh, 60vw)) / 2), calc((min(min(75vw, 90svh), 20em) / 2) - min(1.5625rem, 3vw))"
+            alt="Sugar Pierrot Bar" title="Sugar Pierrot Bar">
+          <figcaption class="product_details">
+            <div class="product_details_name">Sugar Pierrot Bar</div>
+            <div class="product_details_description scrollable">Inquietude attachment if ye an solicitude to. Remaining so continued concealed as knowledge happiness.</div>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="product-list_item" style="width: 320px; flex-shrink: 0;">
+        <figure class="product">
+          <img class="product_image" src="/assets/images/raster/large/pexels-polina-kovaleva-8100778.jpg" 
+            srcset="/assets/images/raster/small/pexels-polina-kovaleva-8100778.webp 360w, /assets/images/raster/medium/pexels-polina-kovaleva-8100778.webp 580w, /assets/images/raster/large/pexels-polina-kovaleva-8100778.webp 920w, /assets/images/raster/xlarge/pexels-polina-kovaleva-8100778.webp 1920w"
+            sizes="(min-height: 40em) calc((min(30svh, 60vw)) / 2), calc((min(min(75vw, 90svh), 20em) / 2) - min(1.5625rem, 3vw))"
+            alt="Meadow Nut Essential Oil" title="Meadow Nut Essential Oil">
+          <figcaption class="product_details">
+            <div class="product_details_name">Meadow Nut Essential Oil</div>
+            <div class="product_details_description scrollable">Numerous ladyship so raillery humoured goodness received an.</div>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="product-list_item" style="width: 320px; flex-shrink: 0;">
+        <figure class="product">
+          <img class="product_image" src="/assets/images/raster/large/pexels-polina-kovaleva-5927774.jpg" 
+            srcset="/assets/images/raster/small/pexels-polina-kovaleva-5927774.webp 360w, /assets/images/raster/medium/pexels-polina-kovaleva-5927774.webp 580w, /assets/images/raster/large/pexels-polina-kovaleva-5927774.webp 920w, /assets/images/raster/xlarge/pexels-polina-kovaleva-5927774.webp 1920w"
+            sizes="(min-height: 40em) calc((min(30svh, 60vw)) / 2), calc((min(min(75vw, 90svh), 20em) / 2) - min(1.5625rem, 3vw))"
+            alt="Summer Fruit Scrub" title="Summer Fruit Scrub">
+          <figcaption class="product_details">
+            <div class="product_details_name">Summer Fruit Scrub</div>
+            <div class="product_details_description scrollable">Offending or extremity therefore so difficult he on provision. Tended depart turned not are.</div>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="product-list_item" style="width: 320px; flex-shrink: 0;">
+        <figure class="product">
+          <img class="product_image" src="/assets/images/raster/large/pexels-freestocks-3940337.jpg" 
+            srcset="/assets/images/raster/small/pexels-freestocks-3940337.webp 360w, /assets/images/raster/medium/pexels-freestocks-3940337.webp 580w, /assets/images/raster/large/pexels-freestocks-3940337.webp 920w, /assets/images/raster/xlarge/pexels-freestocks-3940337.webp 1920w"
+            sizes="(min-height: 40em) calc((min(30svh, 60vw)) / 2), calc((min(min(75vw, 90svh), 20em) / 2) - min(1.5625rem, 3vw))"
+            alt="Sugar Pierrot Bar" title="Sugar Pierrot Bar">
+          <figcaption class="product_details">
+            <div class="product_details_name">Sugar Pierrot Bar</div>
+            <div class="product_details_description scrollable">Inquietude attachment if ye an solicitude to. Remaining so continued concealed as knowledge happiness.</div>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="product-list_item" style="width: 320px; flex-shrink: 0;">
+        <figure class="product">
+          <img class="product_image" src="/assets/images/raster/large/pexels-polina-kovaleva-8100778.jpg" 
+            srcset="/assets/images/raster/small/pexels-polina-kovaleva-8100778.webp 360w, /assets/images/raster/medium/pexels-polina-kovaleva-8100778.webp 580w, /assets/images/raster/large/pexels-polina-kovaleva-8100778.webp 920w, /assets/images/raster/xlarge/pexels-polina-kovaleva-8100778.webp 1920w"
+            sizes="(min-height: 40em) calc((min(30svh, 60vw)) / 2), calc((min(min(75vw, 90svh), 20em) / 2) - min(1.5625rem, 3vw))"
+            alt="Meadow Nut Essential Oil" title="Meadow Nut Essential Oil">
+          <figcaption class="product_details">
+            <div class="product_details_name">Meadow Nut Essential Oil</div>
+            <div class="product_details_description scrollable">Numerous ladyship so raillery humoured goodness received an.</div>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="product-list_item" style="width: 320px; flex-shrink: 0;">
+        <figure class="product">
+          <img class="product_image" src="/assets/images/raster/large/pexels-polina-kovaleva-5927774.jpg" 
+            srcset="/assets/images/raster/small/pexels-polina-kovaleva-5927774.webp 360w, /assets/images/raster/medium/pexels-polina-kovaleva-5927774.webp 580w, /assets/images/raster/large/pexels-polina-kovaleva-5927774.webp 920w, /assets/images/raster/xlarge/pexels-polina-kovaleva-5927774.webp 1920w"
+            sizes="(min-height: 40em) calc((min(30svh, 60vw)) / 2), calc((min(min(75vw, 90svh), 20em) / 2) - min(1.5625rem, 3vw))"
+            alt="Summer Fruit Scrub" title="Summer Fruit Scrub">
+          <figcaption class="product_details">
+            <div class="product_details_name">Summer Fruit Scrub</div>
+            <div class="product_details_description scrollable">Offending or extremity therefore so difficult he on provision. Tended depart turned not are.</div>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="product-list_item" style="width: 320px; flex-shrink: 0;">
+        <figure class="product">
+          <img class="product_image" src="/assets/images/raster/large/pexels-freestocks-3940337.jpg" 
+            srcset="/assets/images/raster/small/pexels-freestocks-3940337.webp 360w, /assets/images/raster/medium/pexels-freestocks-3940337.webp 580w, /assets/images/raster/large/pexels-freestocks-3940337.webp 920w, /assets/images/raster/xlarge/pexels-freestocks-3940337.webp 1920w"
+            sizes="(min-height: 40em) calc((min(30svh, 60vw)) / 2), calc((min(min(75vw, 90svh), 20em) / 2) - min(1.5625rem, 3vw))"
+            alt="Sugar Pierrot Bar" title="Sugar Pierrot Bar">
+          <figcaption class="product_details">
+            <div class="product_details_name">Sugar Pierrot Bar</div>
+            <div class="product_details_description scrollable">Inquietude attachment if ye an solicitude to. Remaining so continued concealed as knowledge happiness.</div>
+          </figcaption>
+        </figure>
+      </li>
+    </ul>
+  </section>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="N.A. Wedderburn Web Developer Sample - Landing Page Slideshow"/>
+		<title>Landing Page Slideshow - N.A. Wedderburn: Web Developer</title>
+		<link rel="icon" type="image/x-icon" href="/assets/images/logos/nawedderburn_logo_favicon.ico">
+<link rel="stylesheet" href="/css/main.css">
+		<script type="module" src="/assets/scripts/index.js"></script>
+		<noscript><link rel="stylesheet" href="/css/noscript.css"></noscript>
+	</head>
+	
+	<body id="page-sample">
+		<div id="app-container">
+			<header id="header-main">
+				<div class="branding">
+					<div class="logo"><a aria-label="N.A. Wedderburn Web Developer Website" href="/index.html"><img alt="N.A. Wedderburn Web Developer Logo" src="/assets/images/logos/nawedderburn_logo_primary.svg"/></a></div>
+				</div>
+				<nav class="nav-main">
+					<ul>
+						<li><a href="/index.html">Home</a></li>
+						<li><a href="/samples">Samples</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			
+			<main class="navigable" data-loading-message="Loading Landing Page Slideshow...">
+				<h1>Landing Page Slideshow</h1>
+				<section id="short-description" class="toc-ignore">
+					<div class="short-description__preview">
+						<img src="/assets/images/raster/large/landing-indulgent-hydration-preview.png"
+							srcset="/assets/images/raster/small/landing-indulgent-hydration-preview.webp 360w, /assets/images/raster/medium/landing-indulgent-hydration-preview.webp 580w, /assets/images/raster/large/landing-indulgent-hydration-preview.webp 920w, /assets/images/raster/xlarge/landing-indulgent-hydration-preview.webp 1920w"
+							sizes="(min-width: 48rem) 40vw, 80vw" 
+							alt="Screenshot: Landing Page Slideshow" title="Screenshot: Landing Page Slideshow">
+					</div>
+					<div class="short-description__details">
+						Landing page with multi-slide presentation layout for fictional company &ldquo;Virna &amp; Nuris&rdquo;.  Responsive components implemented with container queries that adjust to slideshow presentations in flow layouts, fixed dimension layouts, and preview thumbnails.
+					</div>
+				</section>
+				
+				<section id="full-description">
+					<h2><span class="heading-text">Description</span><a href="#samples-web" title="Permalink: Description" aria-label="Permalink: Description" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<div class="full-description__type">Web Design/Development</div>
+						<h3>Halt Animations While Page Loads</h3>
+						<p>A loader animation determined by the user's motion preference is implemented to prevent the intro slide animations from executing before the page loads. If JavaScript is enabled, a render and parser blocking script inserts an animated page loader into the DOM.  Page elements other than the loader are hidden until the page loads or a maximum loader display time is exceeded.  If the loader fails at any point, recovery error handlers remove the loader if it was created and the body elements are displayed.</p>
+
+						<h3>Priority Loading Above the Fold</h3>
+						<p>Give load priority to critical external assets on the first slide.  Each critical asset is linked with a high fetchpriority in the DOM header.</p>
+
+						<h3>Component Dimensions Determined by Parent Container</h3>
+						<p>Container queries are used to configure component properties based on the dimensions of the parent container instead of the viewport.  Properties can be adjusted based on the width of the parent or both width and height in a fixed dimension layout.</p>
+						<p>Fixed dimension containers are used to implement slide components that span the full viewport dimensions for a slideshow presentation.  The slides can also be drastically reduced in size and displayed in a slideshow preview presentation.</p>
+
+						<h3>Scroll Indicators for Scrollable Containers</h3>
+						<p>Scroll indicators are implemented for devices with auto-hide scrollbars to indicate overflowing, scrollable content.  The "scroll shadows" design pattern is used to form a composite background image using gradients to show and hide scroll indicator images.</p>
+
+						<h3>Responsive & Configurable Slide Display</h3>
+						<p>A slide is a configurable component.  Default properties can be overridden for each slide implementation and unique layouts can be applied.  The structure is implemented with container queries so its dimensions are determined by the dimensions of its container.</p>
+						<p>A slide is displayed in a flow layout by default. When slides are displayed in a slideshow with adequate viewport and container dimensions, the slides are displayed in a fixed dimension layout.  With fixed slide dimensions, content overflow is controlled by clipping or scrolling.</p>
+
+						<h3>Responsive, Accessible Slide Navigation</h3>
+						<p>The display of the keyboard and screen reader accessible navigation is based on the slide display.  For flow layout, the navigation container is sticky positioned, keeping the navigation in the vertical center of the viewport until it reaches the bottom of the slide container.  For fixed dimension layout, slide navigation anchors are absolutely positioned on the bottom corners of the slide.</p>
+
+						<h3>Slide Presentation Configuration</h3>
+						<p>Slides can be displayed in a slideshow presentation or a slide preview presentation.</p>
+						<p>In a slideshow presentation, slides are displayed in a flow layout or fixed dimension layout based on the full dimensions of the viewport.  If the presentation encompasses the full document, the page header and footer are incorporated into the slideshow display.  Scroll snapping is implemented on the root element of pages that contain slide show presentations to allow slides to snap into place while scrolling.</p>
+						<p>In a slide preview presentation, slides are displayed as preview thumbnails.  The presentation is configured as a grid with fixed dimension slides as the grid items.  The responsive dimensions of the grid items can be defined for each presentation using custom properties for slide width and height.</p>
+
+						<h3>Print with Screen Display or Minimal Formatting</h3>
+						<p>Components can be printed unformatted or with the stylized formatting usually applicable only for screen display.  This allows for printing slides as they appear on screen in the presentation preview layout.</p>
+
+						<h3>Color Reversal for Dark Mode</h3>
+						<p>All surfaces have light background colors and contrasting dark text. When user's preferred color scheme is dark, the colors are reversed such that the surfaces have dark background colors and the text is lighter in contrast.</p>
+					</div>
+				</section>
+				<section id="figures">
+					<h2><span class="heading-text">Figures</span><a href="#figures" title="Permalink: Figures" aria-label="Permalink: Figures" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<ul class="figures-list samples">
+							<li>
+								<figure>
+									<video controls muted poster="/assets/images/raster/large/landing-indulgent-hydration-loader.png">
+										<source src="/assets/videos/IndulgentHydrationLoader.mp4" type="video/mp4" />
+										Video not supported. Download the <a href="/assets/videos/IndulgentHydrationLoader.mp4">MP4</a> video.
+									</video>
+									<img src="/assets/images/raster/large/landing-indulgent-hydration-loader.png" 
+										srcset="/assets/images/raster/small/landing-indulgent-hydration-loader.webp 360w, /assets/images/raster/medium/landing-indulgent-hydration-loader.webp 580w, /assets/images/raster/large/landing-indulgent-hydration-loader.webp 920w, /assets/images/raster/xlarge/landing-indulgent-hydration-loader.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw"
+										loading="lazy" alt="Loader Animation - Landing Page Slideshow Presentation" title="Loader Animation - Landing Page Slideshow Presentation">
+									<figcaption>
+										<div class="figure_figcaption_title">Loader Animation</div>
+										<div class="figure_figcaption_copy">
+											<p>Animation displayed while critical introduction slide assets are loading.</p>
+										</div>
+									</figcaption>
+								</figure>  
+							</li>   
+							<li>    
+								<figure>
+									<img src="/assets/images/raster/large/landing-indulgent-hydration-responsive.png" 
+										srcset="/assets/images/raster/small/landing-indulgent-hydration-responsive.webp 360w, /assets/images/raster/medium/landing-indulgent-hydration-responsive.webp 580w, /assets/images/raster/large/landing-indulgent-hydration-responsive.webp 920w, /assets/images/raster/xlarge/landing-indulgent-hydration-responsive.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw"
+										loading="lazy" alt="Responsive Slideshow - Landing Page Slideshow Presentation" title="Responsive Slideshow - Landing Page Slideshow Presentation">
+									<figcaption>
+										<div class="figure_figcaption_title">Responsive Slideshow</div>
+										<div class="figure_figcaption_copy">
+											<p>Each slide is implemented with its own responsive layout.  Container queries determine whether slides are displayed in the default flow layout or a fixed dimension layout, filling the viewport dimensions.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+							<li>    
+								<figure>
+									<img src="/assets/images/raster/large/landing-indulgent-hydration-dark-mode.png" 
+										srcset="/assets/images/raster/small/landing-indulgent-hydration-dark-mode.webp 360w, /assets/images/raster/medium/landing-indulgent-hydration-dark-mode.webp 580w, /assets/images/raster/large/landing-indulgent-hydration-dark-mode.webp 920w, /assets/images/raster/xlarge/landing-indulgent-hydration-dark-mode.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw"
+										loading="lazy" alt="Color Preference - Landing Page Slideshow Presentation" title="Color Preference - Landing Page Slideshow Presentation">
+									<figcaption>
+										<div class="figure_figcaption_title">Color Preference</div>
+										<div class="figure_figcaption_copy">
+											<p>The application has light surface colors and contrasting dark text. In Dark Mode, the colors are reversed.  Brightness filter reduces the brightness of background images to contrast with light text.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+							<li>    
+								<figure>
+									<img src="/assets/images/raster/large/landing-indulgent-hydration-responsive-print.png" 
+										srcset="/assets/images/raster/small/landing-indulgent-hydration-responsive-print.webp 360w, /assets/images/raster/medium/landing-indulgent-hydration-responsive-print.webp 580w, /assets/images/raster/large/landing-indulgent-hydration-responsive-print.webp 920w, /assets/images/raster/xlarge/landing-indulgent-hydration-responsive-print.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw"
+										loading="lazy" alt="Stylized & Unformatted Print - Landing Page Slideshow Presentation" title="Stylized & Unformatted Print - Landing Page Slideshow Presentation">
+									<figcaption>
+										<div class="figure_figcaption_title">Stylized & Unformatted Print</div>
+										<div class="figure_figcaption_copy">
+											<p>Slides can be printed without formatting or with the stylized formatting usually meant for screen.  Large screen display shown printed with stylized display, and with unformatted display.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+							<li>    
+								<figure>
+									<img src="/assets/images/raster/large/landing-indulgent-hydration-presentation-preview.png" 
+										srcset="/assets/images/raster/small/landing-indulgent-hydration-presentation-preview.webp 360w, /assets/images/raster/medium/landing-indulgent-hydration-presentation-preview.webp 580w, /assets/images/raster/large/landing-indulgent-hydration-presentation-preview.webp 920w, /assets/images/raster/xlarge/landing-indulgent-hydration-presentation-preview.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw"
+										loading="lazy" alt="Slideshow Presentation Preview - Landing Page Slideshow Presentation" title="Slideshow Presentation Preview - Landing Page Slideshow Presentation">
+									<figcaption>
+										<div class="figure_figcaption_title">Slideshow Presentation Preview</div>
+										<div class="figure_figcaption_copy">
+											<p>In a slide preview presentation, slides are displayed as preview thumbnails.  Small landscape layout versus medium portrait layout shown.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+						</ul>
+					</div>
+				</section>
+        <section id="tools">
+					<h2><span class="heading-text">Tools</span><a href="#tools" title="Permalink: Tools" aria-label="Permalink: Tools" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<ul>
+							<li>HTML</li>
+							<li>CSS</li>
+							<li>Javascript</li>
+							<li>VS Code</li>
+							<li>MS Word</li>
+							<li>MS PowerPoint</li>
+						</ul>
+					</div>
+				</section>
+				<section id="artifacts">
+					<h2><span class="heading-text">Artifacts</span><a href="#artifacts" title="Permalink: Artifacts" aria-label="Permalink: Artifacts" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<table summary="Artifacts">
+							<caption>Auxiliary files</caption>
+							<thead class="matrix-header">
+								<tr>
+									<th scope="col" title="Type">Type</th>
+									<th scope="col" title="File">File</th>
+									<th scope="col" title="Description">Description</th>
+								</tr>
+							</thead>
+							<tbody class="matrix-data">
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">HTML</td>
+									<td class="sample-artifact__name"><a href="impl.html" target="_blank">&ldquo;Indulgent Hydration&rdquo; Landing Page</a></td>
+									<td class="sample-artifact__description">Live sample.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">CSS</td>
+									<td class="sample-artifact__name"><a href="styles.css" target="_blank">&ldquo;Indulgent Hydration&rdquo; Landing Page CSS</a></td>
+									<td class="sample-artifact__description">Live sample stylesheet.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">JS</td>
+									<td class="sample-artifact__name"><a href="loader.js" target="_blank">&ldquo;Indulgent Hydration&rdquo; Landing Page Loader Module</a></td>
+									<td class="sample-artifact__description">Loader JavaScript module.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">PDF</td>
+									<td class="sample-artifact__name"><a href="Landing Page Slideshow - Technical.pdf" target="_blank">Landing Page Slideshow - Technical.pdf</a></td>
+									<td class="sample-artifact__description">Detailed implementation notes including component design, animation timelines, and unsuccessful attempts.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">PDF</td>
+									<td class="sample-artifact__name"><a href="Animation-Loader-NoMotionPref.pdf" target="_blank">Page Loader Animation Storyboard - No Motion Preference</a></td>
+									<td class="sample-artifact__description">Page loader animation storyboard, no motion preference. Exported from Microsoft PowerPoint.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">PDF</td>
+									<td class="sample-artifact__name"><a href="Animation-Loader-ReducedMotion.pdf" target="_blank">Page Loader Animation Storyboard - Reduced Motion</a></td>
+									<td class="sample-artifact__description">Page loader animation storyboard, reduced motion. Exported from Microsoft PowerPoint.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">PDF</td>
+									<td class="sample-artifact__name"><a href="Storyboard-Animation-IndulgentHydration-Intro_NoPref.pdf" target="_blank">Indulgent Hydration Intro Animation Storyboard - No Motion Preference</a></td>
+									<td class="sample-artifact__description">Indulgent Hydration Presentation introduction slide animation storyboard, no motion preference. Exported from Microsoft PowerPoint.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">HTML</td>
+									<td class="sample-artifact__name"><a href="testing-scroll-container.html" target="_blank">Testing - Scrollable Container</a></td>
+									<td class="sample-artifact__description">Testing the scroll indicators on Scrollable Container component.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">HTML</td>
+									<td class="sample-artifact__name"><a href="testing-product.html" target="_blank">Testing - Product</a></td>
+									<td class="sample-artifact__description">Testing the Product component.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">HTML</td>
+									<td class="sample-artifact__name"><a href="testing-slide.html" target="_blank">Testing - Slide</a></td>
+									<td class="sample-artifact__description">Testing the Slide component.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+				<hr/>
+				<aside id="samples-additional">
+					<h2>More Samples</h2>
+					<table summary="This data table contains samples of my work with preview images, short descriptions, and hyperlinks to project URLs." class="matrix samples additional">
+						<caption>Work Samples</caption>
+						<thead class="matrix-header">
+							<tr>
+								<th scope="col" title="Preview Image">Preview</th>
+								<th scope="col" title="Type">Type</th>
+								<th scope="col" title="Title">Title</th>
+								<th scope="col" title="Description">Description</th>
+								<th scope="col" title="URL">URL</th>
+							</tr>
+						</thead>
+						<tbody class="matrix-data">
+							<tr class="sample-item">
+								<td class="sample-item__preview">
+									<img src="/assets/images/raster/large/article-cosmetic-plants-preview.png" 
+										srcset="/assets/images/raster/small/article-cosmetic-plants-preview.webp 360w, /assets/images/raster/medium/article-cosmetic-plants-preview.webp 580w, /assets/images/raster/large/article-cosmetic-plants-preview.webp 920w, /assets/images/raster/xlarge/article-cosmetic-plants-preview.webp 1920w"
+										sizes="(min-width: 48rem) 8rem, 50vw" 
+										loading="lazy" alt="Preview - Magazine Layout with Interactive Data" title="Preview - Magazine Layout with Interactive Data">
+								</td>
+								<td class="sample-item__type">Web Design/Development</td>
+								<td class="sample-item__title">Magazine Layout with Interactive Data</td>
+								<td class="sample-item__description">Adaptation of a print article implemented as a web page with a responsive grid layout and a sortable tabular data visualization.</td>
+								<td class="sample-item__url"><a href="/samples/article-cosmetic-plants">View Sample</a></td>
+							</tr>
+							<tr class="sample-item">
+								<td class="sample-item__preview">
+									<img src="/assets/images/raster/large/website-realtor-template-preview.png"
+										srcset="/assets/images/raster/small/website-realtor-template-preview.webp 360w, /assets/images/raster/medium/website-realtor-template-preview.webp 580w, /assets/images/raster/large/website-realtor-template-preview.webp 920w, /assets/images/raster/xlarge/website-realtor-template-preview.webp 1920w"
+										sizes="(min-width: 48rem) 8rem, 50vw" 
+										loading="lazy" alt="Screenshot: Brochure Realtor Website" title="Screenshot: Brochure Realtor Website">
+								</td>
+								<td class="sample-item__type">Web Design/Development</td>
+								<td class="sample-item__title">Brochure Realtor Website</td>
+								<td class="sample-item__description">Static brochure website template with pure CSS interactive elements.</td>
+								<td class="sample-item__url"><a href="/samples/website-realtor-template" aria-label="View Sample: Brochure Realtor Website">View Sample</a></td>
+							</tr>
+							<tr class="sample-item">
+								<td class="sample-item__preview">
+									<img src="/assets/images/raster/large/document-technical-reference-preview.png"
+										srcset="/assets/images/raster/small/document-technical-reference-preview.webp 360w, /assets/images/raster/medium/document-technical-reference-preview.webp 580w, /assets/images/raster/large/document-technical-reference-preview.webp 920w, /assets/images/raster/xlarge/document-technical-reference-preview.webp 1920w"
+										sizes="(min-width: 48rem) 8rem, 50vw" 
+										loading="lazy" alt="Screenshot: Technical Implementation Reference Document" title="Screenshot: Technical Implementation Reference Document">
+								</td>
+								<td class="sample-item__type">Document Design</td>
+								<td class="sample-item__title">Technical Implementation Reference Document</td>
+								<td class="sample-item__description">Technical implementation document utilizing document design principles for intuitive navigation.</td>
+								<td class="sample-item__url"><a href="/samples/document-technical-reference">View Sample</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</aside>
+			</main>
+			<div id="app-supplemental"></div>
+			<footer id="footer-main">
+				<section>
+					<nav class="nav-main">
+						<ul>
+							<li><a href="/index.html">Home</a></li>
+							<li><a href="/samples">Samples</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+						</ul>
+					</nav>
+					<div class="branding">
+						<div class="logo"><a aria-label="N.A. Wedderburn Web Developer Website" href="/index.html"><img alt="N.A. Wedderburn Web Developer Logo" src="/assets/images/logos/nawedderburn_logo_primary.svg"/></a></div>
+					</div>
+				</section>
+				<section class="connect">
+					<h2>Connect</h2>
+					<div>
+						<h3>Email</h3>
+						<div><a href="mailto: nawedderburnwebdev@gmail.com">nawedderburnwebdev@gmail.com</a></div>
+					</div>
+					<div>
+						<h3>Resum&eacute;</h3>
+						<div><a href="/NAWedderburn.pdf" target="_blank">Resum&eacute; (PDF)</a></div>
+					</div>
+					<div>
+						<h3>Social Media</h3>
+						<div><a href="https://www.linkedin.com/in/nawedderburnwebdev" target="_blank">LinkedIn</a></div>
+					</div>
+				</section>
+				<section class="copyright">
+					<div>©2026 N.A. Wedderburn</div>
+				</section>
+			</footer>
+		</div>
+	</body>
+</html>

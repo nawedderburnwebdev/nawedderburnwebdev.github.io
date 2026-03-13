@@ -1,0 +1,2559 @@
+/* DOCUMENT INFORMATION
+	- Document: Virna & Nuris Website Styles - Landing Page
+	- Version:  1.0
+	- Client:   N/A
+	- Author:   N.A. Wedderburn   <nawedderburnwebdev@gmail.com>
+*/
+
+/*  ==========================================================================
+    Web Fonts
+    ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+
+/*  ==========================================================================
+    Global Custom Properties
+    ========================================================================== */
+:root {
+  /*  Rendered color scheme 
+      ========================================================================== */
+  color-scheme: light;
+
+
+  /*  Fonts 
+      ========================================================================== */
+  --text-font-stack: "Montserrat", "Arial", sans-serif;
+  --headers-font-stack: "Didact Gothic", "Verdana", sans-serif;
+
+
+  /*  Colors (Hue/Saturation/Lightness format)
+      ========================================================================== */
+  
+  /* Lowest percentage for a color's "Lightness" property */
+  --color-lightness-lowest-percentage: 90%;
+
+  /* Color - Primary Variations */
+  --color-primary-hue: 348;
+  --color-primary-saturation: 35%;
+  --color-primary-lightness: 53%;
+  --color-primary-factor: calc((var(--color-lightness-lowest-percentage) - var(--color-primary-lightness)) / 4);
+  --color-primary-highest-contrast: var(--color-primary-hue) var(--color-primary-saturation) var(--color-primary-lightness);
+  --color-primary-high-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + var(--color-primary-factor));
+  --color-primary-medium-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 2));
+  --color-primary-low-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 3));
+  --color-primary-lowest-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 4));
+
+  /* Color - Secondary Variations */
+  --color-secondary-hue: 56;
+  --color-secondary-saturation: 28%;
+  --color-secondary-lightness: 21%;
+  --color-secondary-factor: calc((var(--color-lightness-lowest-percentage) - var(--color-secondary-lightness)) / 4);
+  --color-secondary-highest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) var(--color-secondary-lightness);
+  --color-secondary-high-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + var(--color-secondary-factor));
+  --color-secondary-medium-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 2));
+  --color-secondary-low-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 3));
+  --color-secondary-lowest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 4));
+
+   /* Color - Tertiary Variations */
+  --color-tertiary-hue: 0;
+  --color-tertiary-saturation: 0%;
+  --color-tertiary-lightness: 15%;
+  --color-tertiary-factor: calc(100% - var(--color-tertiary-lightness)) / 4;
+  --color-tertiary-highest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) var(--color-tertiary-lightness);
+  --color-tertiary-high-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + var(--color-tertiary-factor));
+  --color-tertiary-medium-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 2));
+  --color-tertiary-low-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 3));
+  --color-tertiary-lowest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 4));
+
+  /* Color - Anchor Main - Text */
+  --color-anchor-main-text: var(--color-primary-hue) 50% 30%;
+
+  /* Color - Highlight */
+  --color-highlight-hue: 60;
+  --color-highlight-saturation: 100%;
+  --color-highlight-lightness: 83%;
+  --color-highlight: var(--color-highlight-hue) var(--color-highlight-saturation) var(--color-highlight-lightness);
+
+
+  /*  Graphics
+      ========================================================================== */
+  
+  /* Graphics - Images */
+  --image-logo: url('/assets/images/logos/virnanuris_logo.svg');
+  --image-mask-wave: url("/assets/images/raster/xlarge/wave3.png");
+
+  /* Graphics - Icons */
+  --icon-email: url('/assets/images/icons/icon-envelope-svgrepo-com.svg');
+  --icon-phone: url('/assets/images/icons/icon-phone-call-svgrepo-com.svg');
+  --icon-social-instagram: url('/assets/images/icons/instagram logo_icon.svg');
+  --icon-social-linkedin: url('/assets/images/icons/linkedin logo_icon.svg');
+  --icon-idea: url('/assets/images/icons/icon-idea-svgrepo-com.svg');
+  --icon-right-arrow: url('/assets/images/icons/right-arrow-svgrepo-com.svg');
+
+  /* Graphics - Background image brightness filter */
+  --background-image-brightness-filter: brightness(100%);
+
+  /* Graphics - Color inversion filter */
+  --graphic-color-invert-filter: invert(0);
+
+
+  /*  Sizing
+      ========================================================================== */
+  
+  /* Sizing - Base */
+  --base-size: min(1rem, 1vw);
+
+  /* Sizing - Icons */
+  --icon-width: 1em;
+  --icon-height: 1em;
+  --icon-gap: .25em;
+
+   /* Sizing - Page */
+  --page-margin: calc(var(--base-size) * 4);
+  --page-title-font-size: min(8rem, 12vmin);
+
+  /* Sizing - Touch Target */
+  --touch-target-min-size: 24px;
+
+
+  /*  Shadows
+      ========================================================================== */
+
+  /* Color for shadows */
+  --shadow-color: 0 0% 10%;
+
+  /* Color intensity for shadows */
+  --shadow-intensity: 0;
+
+  /**
+    * Drop shadow - box (basic shadow for containers)
+    *
+    * 1. Separate the box shadow properties so each property can be used in the 
+    * calculation of the box shadow height.  The shadow height is used to
+    * determine the positioning of elements.
+    *
+    * 2. Pixel unit required for zero value properties to be used in the 
+    * calculations.
+    *
+    * 3. Using rem to maintain consistent size that is not based on the container
+    * font's size.
+    */
+
+  /* 1 - shadow 1 properties */
+  --drop-shadow-box-offset-x-1: 0px; /* 2 */
+  --drop-shadow-box-offset-y-1: .25cqmin; /* 3 */
+  --drop-shadow-box-blur-1: .5cqmin; /* 3 */
+  --drop-shadow-box-spread-1: 0px; /* 2 */
+
+  /* 1  - shadow 2 properties */
+  --drop-shadow-box-offset-x-2: 0px; /* 2 */
+  --drop-shadow-box-offset-y-2: .5cqmin; /* 3 */
+  --drop-shadow-box-blur-2: 1.5cqmin; /* 3 */
+  --drop-shadow-box-spread-2: .5cqmin; /* 3 */
+
+  /* 1  - shadow height calculation */
+  --drop-shadow-box-height: calc(
+    var(--drop-shadow-box-offset-y-1) +
+    var(--drop-shadow-box-blur-1) +
+    var(--drop-shadow-box-spread-1) +
+    var(--drop-shadow-box-offset-y-2) +
+    var(--drop-shadow-box-blur-2) +
+    var(--drop-shadow-box-spread-2)
+  );
+
+  --drop-shadow-box: 
+    hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .3)) var(--drop-shadow-box-offset-x-1) var(--drop-shadow-box-offset-y-1) var(--drop-shadow-box-blur-1) var(--drop-shadow-box-spread-1), 
+    hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .15)) var(--drop-shadow-box-offset-x-2) var(--drop-shadow-box-offset-y-2) var(--drop-shadow-box-blur-2) var(--drop-shadow-box-spread-2);
+
+
+  /* Drop shadow - Text */
+  --drop-shadow-filter-text: hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .75)) .04em .04em .04em;
+
+  
+  /*  Toggle
+      ========================================================================== */
+  --ON: initial;
+  --OFF: ;
+
+
+  /*  URLs
+      ========================================================================== */
+  --url-home-page: "vvvvvv.virnaandnuris.none";
+} 
+
+
+
+
+/*  ==========================================================================
+    Global Custom Properties - Dark Color Scheme
+    ========================================================================== */
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    /*  Rendered color scheme (dark)
+        ========================================================================== */
+    color-scheme: dark;
+
+
+    /*  Colors (Hue/Saturation/Lightness format)  (dark)
+        ========================================================================== */
+    
+    /* Color - Primary Variations (dark) */
+    --color-primary-lowest-contrast: var(--color-primary-hue) var(--color-primary-saturation) var(--color-primary-lightness);
+    --color-primary-low-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + var(--color-primary-factor));
+    --color-primary-high-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 3));
+    --color-primary-highest-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 4));
+
+    /* Color - Secondary Variations (dark) */
+    --color-secondary-lowest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) var(--color-secondary-lightness);
+    --color-secondary-low-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + var(--color-secondary-factor));
+    --color-secondary-high-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 3));
+    --color-secondary-highest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 4));
+
+    /* Color - Tertiary Variations (dark) */
+    --color-tertiary-lowest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) var(--color-tertiary-lightness);
+    --color-tertiary-low-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + var(--color-tertiary-factor));
+    --color-tertiary-high-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 3));
+    --color-tertiary-highest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 4));
+
+    /* Color - Anchor Main - Text (dark) */
+    --color-anchor-main-text: var(--color-secondary-hue) 100% 85%;
+
+    /* Color - Highlight - Reduced lightness property (dark) */
+    --color-highlight-lightness: 2%;
+
+
+    /*  Graphics (dark)
+      ========================================================================== */
+  
+    /* Graphics (dark) - Background image brightness filter */
+    --background-image-brightness-filter: brightness(50%);
+
+    /* Graphics (dark) - Color inversion filter */
+    --graphic-color-invert-filter: invert(1);
+
+
+    /*  Shadows (dark)
+        ========================================================================== */
+
+    /* Color intensity for shadows */
+    --shadow-intensity: .1;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Special Functionality
+    ========================================================================== */
+
+/* Visually hidden AKA screen reader only */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  clip-path: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+
+
+
+/*  ==========================================================================
+    Animations
+    ========================================================================== */
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+@keyframes fade-in-left {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+@keyframes fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
+@keyframes slide-out-right {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
+
+@keyframes slide-out-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+
+
+
+/*  ==========================================================================
+    Root
+    ========================================================================== */
+html {
+  --stylized-display: var(--ON);
+
+  box-sizing: border-box;
+}
+
+@media print {
+  .print-unformatted,
+  .print-unformatted * {
+    --stylized-display: var(--OFF);
+  }
+}
+
+@page {
+  margin: 0;
+}
+
+
+/*  Root - descendants
+    ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    overflow-wrap: break-word;
+}
+
+
+
+
+/*  ==========================================================================
+    Body
+    ========================================================================== */
+body {
+  --body-background-color: 0 0% 100%; /* white */
+  --body-text-color: 0 0% 0%; /* black */
+  --body-font-size: 1rem;
+
+  position: relative;
+
+  background-color: hsl(var(--body-background-color));
+
+  font-family: var(--text-font-stack);
+  font-size: var(--body-font-size);
+  color: hsl(var(--body-text-color));
+}
+
+@media screen {
+  body {
+    --body-background-color:  var(--color-tertiary-lowest-contrast);
+    --body-text-color: var(--color-tertiary-highest-contrast);
+
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media print {
+  body {
+    --body-font-size: 12pt;
+
+    margin: .5cm;
+    padding: 0;
+
+    background: none;
+
+    font-family: sans-serif;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Headings
+    ========================================================================== */
+hgroup, h1, h2, h3, h4, h5 { 
+  font-family: var(--headers-font-stack);
+}
+
+@media print {
+  .print-unformatted :is(hgroup, h1, h2, h3, h4, h5),
+  :is(hgroup, h1, h2, h3, h4, h5).print-unformatted {
+    color: var(--body-text-color) !important;
+  }
+}
+
+
+/*  Headings - h1
+    ========================================================================== */
+h1 {
+  font-size: var(--page-title-font-size);
+  text-transform: none;
+  
+
+  padding: 0;
+  margin: 0;
+}
+
+@media screen {
+  h1 {
+    line-height: .9em;
+    color: hsl(var(--color-tertiary-high-contrast));
+  }
+}
+
+@media print {
+  h1.print-unformatted,
+  .print-unformatted h1 {
+    font-size: 36pt !important;
+  }
+}
+
+
+/*  Headings - h2
+    ========================================================================== */
+h2 {
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+@media screen {
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media print {
+  h2.print-unformatted,
+  .print-unformatted h2 {
+    font-size: 28pt !important;
+  }
+}
+
+
+
+/*  ==========================================================================
+    Paragraphs
+    ========================================================================== */
+@media screen {
+  p {
+    line-height: 1.7em;
+    text-rendering: optimizeLegibility;
+  }
+
+  p:first-child {
+    margin-top: min(1em, 1cqi);
+  }
+
+  p:last-child {
+    margin-bottom: min(1em, 1cqi);
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Anchors
+    ========================================================================== */
+a {
+  text-decoration: underline;
+  text-underline-offset: .25em;
+  font-weight: 600;
+
+  &:link {
+    color: hsl(var(--color-anchor-main-text));
+  }
+
+  &:visited {
+    color: currentColor;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: hsl(var(--color-anchor-main-text));
+    text-decoration: none;
+  }
+}
+
+@media screen {
+  /* Minimum touch target size. NB: Only applies to non-inline elements. */
+  a {
+    max-width: 100%;
+    min-width: var(--touch-target-min-size);
+    min-height: var(--touch-target-min-size);
+  }
+}
+
+@media print {
+  .print-unformatted a,
+  a.print-unformatted {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      color: hsl(var(--body-text-color));
+      text-underline-offset: auto;
+    }
+  }
+
+  /* Display href attribute next to anchor text. */
+  a::after {
+    content: " [" attr(href) "] ";
+  }
+}
+
+
+/*  Anchor with image
+    ========================================================================== */
+/* Align anchor height with descendant image height instead of line height. */
+a:has(img) {
+  display: inline-grid;
+  grid-auto-rows: min-content;
+  grid-auto-columns: minmax(0, 1fr); /* Allow column width to be narrower than its content to allow for 'overflow-wrap: break-word.' */
+}
+
+
+
+
+/*  ==========================================================================
+    Images
+    ========================================================================== */
+img {
+  max-width: 100%;
+}
+
+
+/*  Images: Icon
+    ========================================================================== */
+img.icon {
+  width: var(--icon-width);
+  height: var(--icon-height);
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Scrollable
+    ========================================================================== */
+.scrollable {
+  --scroll-indicator-cover-color: hsl(var(--body-background-color));
+  --scroll-indicator-color: hsl(var(--color-tertiary-medium-contrast));
+
+  --scroll-indicator-size: 1em;
+  --scroll-indicator-length: 50%;
+  --scroll-indicator-position: 50%;
+  --scroll-indicator-offset1: calc(-1 * (var(--scroll-indicator-size) / 2));
+  --scroll-indicator-offset2: calc(100% + (var(--scroll-indicator-size) / 2));
+  --scroll-indicator-start: calc((100% - var(--scroll-indicator-length)) / 2);
+  --scroll-indicator-end: calc(var(--scroll-indicator-start) + var(--scroll-indicator-length));
+
+  --scroll-indicator-cover-size: calc(3 * var(--scroll-indicator-size));
+  --scroll-indicator-cover-length: 200%;
+
+  overflow: auto;
+}
+
+@media screen {
+  .scrollable {
+    background-image:
+      /* Top and bottom indicator covers */
+      linear-gradient(180deg, var(--scroll-indicator-cover-color) 20%, transparent),
+      linear-gradient(180deg, transparent, var(--scroll-indicator-cover-color) 80%),
+      /* Left and right indicator covers */
+      linear-gradient(90deg, var(--scroll-indicator-cover-color) 20%, transparent),
+      linear-gradient(90deg, transparent, var(--scroll-indicator-cover-color) 80%),
+      /* Top indicator line */
+      linear-gradient(180deg, var(--scroll-indicator-color), var(--scroll-indicator-color)),
+      /* Top indicator line end caps */
+      radial-gradient(circle, var(--scroll-indicator-color) calc(var(--scroll-indicator-size) / 2), transparent 0),
+      radial-gradient(circle, var(--scroll-indicator-color) calc(var(--scroll-indicator-size) / 2), transparent 0),
+      /* Bottom indicator line */
+      linear-gradient(180deg, var(--scroll-indicator-color), var(--scroll-indicator-color)),
+      /* Bottom indicator line end caps */
+      radial-gradient(circle, var(--scroll-indicator-color) calc(var(--scroll-indicator-size) / 2), transparent 0),
+      radial-gradient(circle, var(--scroll-indicator-color) calc(var(--scroll-indicator-size) / 2), transparent 0),
+      /* Left indicator line */
+      linear-gradient(180deg, var(--scroll-indicator-color), var(--scroll-indicator-color)),
+      /* Left indicator line end caps */
+      radial-gradient(circle, var(--scroll-indicator-color) calc(var(--scroll-indicator-size) / 2), transparent 0),
+      radial-gradient(circle, var(--scroll-indicator-color) calc(var(--scroll-indicator-size) / 2), transparent 0),
+      /* Right indicator line */
+      linear-gradient(180deg, var(--scroll-indicator-color), var(--scroll-indicator-color)),
+      /* Right indicator line end caps */
+      radial-gradient(circle, var(--scroll-indicator-color) calc(var(--scroll-indicator-size) / 2), transparent 0),
+      radial-gradient(circle, var(--scroll-indicator-color) calc(var(--scroll-indicator-size) / 2), transparent 0);
+    background-position:
+      /* Top and bottom indicator covers */
+      0 0,
+      0 100%,
+      /* Left and right indicator covers */
+      0 0,
+      100% 0,
+      /* Top indicator line */
+      var(--scroll-indicator-position) var(--scroll-indicator-offset1),
+      /* Top indicator line end caps */
+      var(--scroll-indicator-start) var(--scroll-indicator-offset1),
+      var(--scroll-indicator-end) var(--scroll-indicator-offset1),
+      /* Bottom indicator line */
+      var(--scroll-indicator-position) var(--scroll-indicator-offset2),
+      /* Bottom indicator line end caps */
+      var(--scroll-indicator-start) var(--scroll-indicator-offset2),
+      var(--scroll-indicator-end) var(--scroll-indicator-offset2),
+      /* Left indicator line */
+      var(--scroll-indicator-offset1) var(--scroll-indicator-position),
+      /* Left indicator line end caps */
+      var(--scroll-indicator-offset1) var(--scroll-indicator-start),
+      var(--scroll-indicator-offset1) var(--scroll-indicator-end),
+      /* Right indicator line */
+      var(--scroll-indicator-offset2) var(--scroll-indicator-position),
+      /* Right indicator line end caps */
+      var(--scroll-indicator-offset2) var(--scroll-indicator-start),
+      var(--scroll-indicator-offset2) var(--scroll-indicator-end);
+    background-size:
+      /* Top and bottom indicator covers */
+      var(--scroll-indicator-cover-length) var(--scroll-indicator-cover-size), 
+      var(--scroll-indicator-cover-length) var(--scroll-indicator-cover-size),
+      /* Left and right indicator covers */
+      var(--scroll-indicator-cover-size) var(--scroll-indicator-cover-length), 
+      var(--scroll-indicator-cover-size) var(--scroll-indicator-cover-length),
+      /* Top indicator line */
+      var(--scroll-indicator-length) var(--scroll-indicator-size), 
+      /* Top indicator line end caps */
+      var(--scroll-indicator-size) var(--scroll-indicator-size),
+      var(--scroll-indicator-size) var(--scroll-indicator-size),
+      /* Bottom indicator line */
+      var(--scroll-indicator-length) var(--scroll-indicator-size),
+      /* Bottom indicator line end caps */
+      var(--scroll-indicator-size) var(--scroll-indicator-size),
+      var(--scroll-indicator-size) var(--scroll-indicator-size),
+      /* Left indicator line */
+      var(--scroll-indicator-size) var(--scroll-indicator-length),
+      /* Left indicator line end caps */
+      var(--scroll-indicator-size) var(--scroll-indicator-size),
+      var(--scroll-indicator-size) var(--scroll-indicator-size),
+      /* Right indicator line */ 
+      var(--scroll-indicator-size) var(--scroll-indicator-length),
+      /* Right indicator line end caps */
+      var(--scroll-indicator-size) var(--scroll-indicator-size),
+      var(--scroll-indicator-size) var(--scroll-indicator-size); 
+    background-attachment: local, local, local, local, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll;
+    background-repeat: no-repeat;
+  }
+}
+
+
+/*  Scrollable - Direct Child elements
+    ========================================================================== */
+/**
+  * Allow background gradients to blend with the container contents   
+  * so the background appears to be on top of the contents. 
+  */
+@media screen {
+  .scrollable > * {
+    mix-blend-mode: darken;
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .scrollable > * {
+    mix-blend-mode: lighten;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Loader
+    ========================================================================== */
+body {
+  --loader-logo-width: min(75vw, 75svh);
+  --loader-logo-height: min(13vw, 13svh);
+  --loader-decor-size: calc(1.5 * var(--loader-logo-height));
+  --loader-decor-animation-duration: 1000ms;
+  --loader-exit-animation-duration: 1000ms;
+
+  --loader-background-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --loader-background-bg1-animation-duration: 1300ms;
+  --loader-background-bg1-animation-delay: 1600ms;
+
+  --loader-background-bg2-animation-duration: 1000ms;
+  --loader-background-bg2-animation-delay: 1500ms;
+
+  --loader-background-bg3-animation-duration: 500ms;
+  --loader-background-bg3-animation-delay: 1600ms;
+
+  --loader-background-bg4-animation-duration: 1200ms;
+  --loader-background-bg4-animation-delay: 1000ms;
+
+  --loader-background-bg5-animation-duration: 1000ms;
+  --loader-background-bg5-animation-delay: 1600ms;
+
+  --loader-background-bg-fade-animation-delay: 100ms
+}
+
+@media screen {
+  .loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    width: 100%;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+
+    animation: fade-in 1000ms ease-in-out forwards;
+  }
+}
+
+@media print {
+  .loader {
+    display: none;
+  }
+}
+
+
+/*  Body if page was NOT loaded with loader animation
+    ========================================================== */
+@media screen {
+  body {
+    --duration-page-loader-removal: 500ms;
+  }
+}
+
+
+/*  Body if page was loaded with loader animation
+    ========================================================== */
+@media screen {
+  body.loaded {
+    --duration-page-loader-removal: calc(var(--loader-exit-animation-duration) + var(--loader-background-bg1-animation-duration));
+  }
+}
+
+
+/*  Non-loader elements if JavaScript is enabled and body is using a loader
+    ========================================================================== */
+@media screen {
+  .js-enabled body.use-loader *:not(.loader):not(.loader *),
+  .js-enabled body.use-loader *:not(.loader):not(.loader *)::before,
+  .js-enabled body.use-loader *:not(.loader):not(.loader *)::after{
+    animation-play-state: paused !important;
+    display: none;
+  }
+}
+
+
+/*  Loader if body is loaded
+    ========================================================== */
+@media screen {
+  body.loaded .loader {
+    animation: loader-exit var(--loader-exit-animation-duration) ease-out var(--duration-page-loader-removal) forwards;
+  }
+}
+
+@keyframes loader-exit {
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
+
+/*  Loader - Background
+    ========================================================== */
+@media screen {
+  .loader .loader_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .loader .loader_background_bg1,
+  .loader .loader_background_bg2,
+  .loader .loader_background_bg3,
+  .loader .loader_background_bg4,
+  .loader .loader_background_bg5 {
+    background-color: hsl(var(--body-background-color));
+  }
+
+  .loader .loader_background_bg1 {
+    height: 44%;
+  }
+
+  .loader .loader_background_bg2 {
+    height: 25%;
+  }
+
+  .loader .loader_background_bg3 {
+    height: 10%;
+  }
+
+  .loader .loader_background_bg4 {
+    height: 1%;
+  }
+
+  .loader .loader_background_bg5 {
+    height: 20%;
+  }
+}
+
+
+/*  Body loaded - Loader - Background
+    ========================================================== */
+@media screen {
+  body.loaded .loader .loader_background_bg1,
+  body.loaded .loader .loader_background_bg2,
+  body.loaded .loader .loader_background_bg3,
+  body.loaded .loader .loader_background_bg4,
+  body.loaded .loader .loader_background_bg5 {
+    animation: fade-out var(--duration-page-loader-removal) ease-in-out 500ms forwards;
+  }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  body.loaded .loader .loader_background_bg1 {
+    animation: 
+      slide-out-right var(--loader-background-bg1-animation-duration) var(--loader-background-easing) var(--loader-background-bg1-animation-delay) forwards;
+  }
+
+  body.loaded .loader .loader_background_bg2 {
+    animation: 
+      slide-out-left var(--loader-background-bg2-animation-duration) var(--loader-background-easing) var(--loader-background-bg2-animation-delay) forwards, 
+      fade-out var(--loader-background-bg2-animation-duration) var(--loader-background-easing) calc(var(--loader-background-bg2-animation-delay) + var(--loader-background-bg-fade-animation-delay)) forwards;
+  }
+
+  body.loaded .loader .loader_background_bg3 {
+    animation: 
+      slide-out-right var(--loader-background-bg3-animation-duration) var(--loader-background-easing) var(--loader-background-bg3-animation-delay) forwards, 
+      fade-out var(--loader-background-bg3-animation-duration) var(--loader-background-easing) calc(var(--loader-background-bg3-animation-delay) + var(--loader-background-bg-fade-animation-delay)) forwards;
+  }
+
+  body.loaded .loader .loader_background_bg4 {
+    animation: 
+      slide-out-right var(--loader-background-bg4-animation-duration) var(--loader-background-easing) var(--loader-background-bg4-animation-delay) forwards, 
+      fade-out var(--loader-background-bg4-animation-duration) var(--loader-background-easing) calc(var(--loader-background-bg4-animation-delay) + var(--loader-background-bg-fade-animation-delay)) forwards;
+  }
+
+  body.loaded .loader .loader_background_bg5 {
+    animation: 
+      slide-out-left var(--loader-background-bg5-animation-duration) var(--loader-background-easing) var(--loader-background-bg5-animation-delay) forwards, 
+      fade-out var(--loader-background-bg5-animation-duration) var(--loader-background-easing) calc(var(--loader-background-bg5-animation-delay) + var(--loader-background-bg-fade-animation-delay)) forwards;
+  }
+}
+
+/*  Loader - Content
+    ========================================================== */
+@media screen {
+  .loader .loader_content {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.25em, -0.286em + 1.429vw, 1em);
+
+    width: 100%;
+    height: 100%;
+  }
+  
+  body.loaded .loader .loader_content {
+    animation: fade-out 1000ms ease-out forwards;
+  }
+} 
+
+/*  Loader - Content - Decor with no motion preference
+    See .loader_message for reduced motion.
+    ========================================================== */
+@media screen and (prefers-reduced-motion: no-preference) {
+  .loader .loader_content:before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+
+    width: var(--loader-decor-size);
+    height: var(--loader-decor-size);
+
+    aspect-ratio: 1;
+    border-radius: 50%;
+
+    background-color: hsl(var(--body-background-color) / .5);
+    backdrop-filter: blur(5px);
+    box-shadow: var(--drop-shadow-box);
+    
+    animation: 
+      loader-decor-bounce-up-down var(--loader-decor-animation-duration) cubic-bezier(0,600,1,600) infinite -.25s,
+      loader-decor-bounce-left-right var(--loader-decor-animation-duration) linear infinite alternate;
+  }
+}
+
+/*  Loader - Content - Decor - Animations
+    ========================================================== */
+@keyframes loader-decor-bounce-up-down {
+  0%,2% {
+    bottom: 0%;
+  }
+  98%,to {
+    bottom:.1%;
+  }
+}
+
+@keyframes loader-decor-bounce-left-right {
+  0%,8% {
+    left: 0%;
+  }
+  92%,to {
+    left: calc(100% - var(--loader-decor-size));
+  }
+}
+
+
+/*  Loader - Logo
+    ========================================================== */
+.loader .loader_logo {
+  position: relative;
+}
+
+@media screen {
+  .loader .loader_logo {
+    width: var(--loader-logo-width);
+    height: var(--loader-logo-height);
+  }
+}
+
+
+/*  Loader - Logo - SVG
+    ========================================================== */
+@media screen {
+  .loader .loader_logo svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+/*  Loader - Logo - SVG - Path
+    ========================================================== */
+@media screen {
+  .loader .loader_logo svg path {
+    fill: currentColor;
+  }
+}
+
+
+/*  Loader - Message
+    ========================================================== */
+@media screen {
+  .loader .loader_message {
+    position: relative;
+
+    font-size: clamp(16px, 0.286em + 1.905vw, 2em);
+    text-transform: uppercase;
+    text-align: center;
+
+    margin: 0;
+    padding: 0 1em;
+  }
+}
+
+
+/*  Loader - Message - Decor with reduced motion preference
+    See .loader_content:before for no motion preference.
+    ========================================================== */
+@media screen and (prefers-reduced-motion: reduce) {
+  .loader .loader_message::after {
+    content: "...";
+    font-family: monospace;
+    clip-path: inset(0 2ch 0 0);
+    animation: loader-message-show-ellipsis calc(var(--loader-decor-animation-duration) * 1.5) steps(3) infinite;
+  }
+}
+
+
+/*  Loader - Message - Decor - Animations
+    ========================================================== */
+@keyframes loader-message-show-ellipsis {
+  to{clip-path: inset(0 -1ch 0 0)}
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Branding
+    ========================================================================== */
+.branding {
+  line-height: 0;
+}
+
+
+/*  Branding - Logo
+    ========================================================================== */
+.branding .logo {
+  display: inline-block;
+  position: relative;
+
+  width: min(20em, 50vw);
+  height: min(3.5em, 9vw);
+
+  font-size: 3.5em;
+}
+
+
+/*  Branding - Logo - Image replacement
+    ========================================================================== */
+@supports (mask-position: center) {
+  .branding .logo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-color: currentColor;
+    mask-image: var(--image-logo), linear-gradient(transparent, transparent);
+    mask-size: 100%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+  }
+}
+
+
+/*  Branding - Logo - Image
+    ========================================================================== */
+.branding .logo img {
+  width: 100%;
+  height: 100%;
+}
+
+@supports (mask-position: center) {
+  .branding .logo img {
+    /* Image replaced by Logo - Image replacement */
+    opacity: 0;
+  }
+}
+
+
+/*  Branding - Anchors
+    ========================================================================== */
+@media screen {
+  .branding a:link,
+  .branding a:visited,
+  .branding a:hover,
+  .branding a:active,
+  .branding a:focus {
+    color: currentColor;
+  }
+  
+}
+
+@media print {
+  /* OVERRIDE - Do not display href values after anchor text */
+  .branding a::after {
+    content: "";
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Product
+    ========================================================================== */
+.product {
+  --product-image-block-border: 5cqi;
+  --product-image-inline-border: calc((var(--product-image-block-border) * 1.5));
+
+  container-name: product;
+  container-type: inline-size;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: auto;
+  gap: 0;
+  grid-template-areas: 
+    "product-name"
+    "product-image"
+    "product-description";
+
+  position: relative;
+  z-index: 0;
+
+  margin: 0;
+  padding: 0;
+
+  text-align: left; 
+
+  break-inside: avoid;
+}
+
+@media print {
+  .print-unformatted .product,
+  .product.print-unformatted {
+    grid-template-areas:
+      "product-image" 
+      "product-name"
+      "product-description";
+  }
+}
+
+/*  Product - Background decor
+    ========================================================================== */
+.product::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  
+  width: var(--stylized-display, 100cqi);
+  height: var(--stylized-display, 100cqi);
+
+  border-radius: 50%;
+
+  background-image: linear-gradient(
+    to bottom left,
+    hsl(var(--color-secondary-lowest-contrast)) 10%, 
+    hsl(var(--color-secondary-high-contrast)) 95%);
+  box-shadow: hsl(var(--shadow-color) / calc(var(--shadow-intensity) + 1)) 0px 3cqi 2.75cqi -2.75cqi;
+}
+
+
+/*  Product - Image
+    ========================================================================== */
+.product .product_image {
+  grid-area: product-image;
+
+  width: var(--stylized-display, 100%);
+  height: var(--stylized-display, 50cqi);
+
+  margin: 0;
+  padding: 0;
+  border-radius: var(--stylized-display, 50% 50% 50% 50% / 100% 0% 100% 0%);
+
+  border-top: var(--stylized-display, var(--product-image-block-border)) solid hsl(var(--body-background-color));
+  border-left: var(--stylized-display, var(--product-image-inline-border)) solid hsl(var(--body-background-color));
+
+  object-fit: cover;
+  object-position: bottom;
+}
+
+@media print {
+  .print-unformatted .product .product_image,
+  .product.print-unformatted .product_image {
+    width: 10cm;
+    height: unset;
+    aspect-ratio: 1;
+  }
+}
+
+
+/*   Product - Details
+    ========================================================================== */
+.product .product_details {
+  /* Replace the element's box with its child elements. */
+  display: contents;
+}
+
+
+/*  Product - Details - Name
+    ========================================================================== */
+.product .product_details_name {
+  grid-area: product-name;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto;
+  gap: 0;
+  align-items: center;
+
+  width: var(--stylized-display, 50cqi);
+  height: var(--stylized-display, 50cqi);
+
+  margin: 0;
+  margin: var(--stylized-display).75em 0;
+  padding: var(--stylized-display, 1em);
+  border-radius: var(--stylized-display, 50%);
+  border: var(--stylized-display, calc(var(--product-image-block-border) / 3) solid hsl(var(--body-background-color)));
+
+  color: var(--stylized-display, hsl(var(--color-secondary-highest-contrast)));
+  font-size: var(--stylized-display, 6.25cqi);
+  font-weight: var(--stylized-display)600;
+  text-transform: var(--stylized-display)uppercase;
+
+  background-image: var(--stylized-display, linear-gradient(
+    to bottom right,
+    hsl(var(--color-primary-lowest-contrast) / 1) 10%, 
+    hsl(var(--color-primary-medium-contrast) / 1) 95%));
+}
+
+
+/*  Product - Details - Description
+    ========================================================================== */
+.product .product_details_description {
+  grid-area: product-description;
+
+  margin: var(--stylized-display, var(--product-image-inline-border)) 0 0 0;
+  padding: 0 var(--stylized-display, var(--product-image-inline-border));
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Slide
+    ========================================================================== */
+.slide {
+  container-name: slide;
+  container-type: inline-size;
+
+  --slide-margin: var(--presentation-margin, 2cqi);
+  --slide-padding: var(--presentation-padding, 2cqi);
+  --slide-width: calc(100cqi - 2 * (var(--slide-margin)));
+  --slide-internal-width: calc(var(--slide-width) - 2 * (var(--slide-padding)));
+  --slide-height: calc(100cqb - 2 * (var(--slide-margin)));
+  --slide-internal-height: calc(var(--slide-height) - 2 * (var(--slide-padding)));
+  
+  --slide-background-color: hsl(28, 17%, 85%);
+  --slide-background-image: url('/assets/images/raster/large/pexels-gabby-k-6621308.jpg');
+  --slide-background-image-webp: url('/assets/images/raster/large/pexels-gabby-k-6621308.webp');
+  --slide-background-position: 50% 50%;
+  --slide-background-brightness: var(--background-image-brightness-filter);
+  --slide-header-background-height: 25cqi;
+  
+  --slide-nav-padding-top: calc(1.5 * var(--slide-header-background-height));
+  --slide-nav-item-size: min(4.8rem, 10cqi);
+  --slide-nav-item-margin: calc(-.75 * var(--slide-padding));
+  --slide-nav-item-indicator-color: hsl(var(--body-text-color) / .75);
+}
+
+
+/*  Slide Casing
+    ========================================================================== */
+.slide_casing {
+  position: relative;
+  z-index: 0;
+
+  margin: var(--stylized-display, var(--slide-margin));
+  padding: 0;
+
+  box-shadow: var(--stylized-display, var(--drop-shadow-box));
+
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    height: calc(100% - (2 * var(--slide-padding)));
+    padding: var(--slide-padding);
+
+    box-shadow: none;
+
+    transition: height 750ms ease-in-out;
+  }
+
+  /* Large width */
+  @container slide (min-width: 1024px) {
+    --slide-background-image: url('/assets/images/raster/xlarge/pexels-gabby-k-6621308.jpg');
+    --slide-background-image-webp: url('/assets/images/raster/xlarge/pexels-gabby-k-6621308.webp');
+  }
+
+  /* Fixed dimension layout, height less than minimum legible height */
+  @container slide (max-height: 39.98em) {
+    --touch-target-min-size: 3cqi; /* touch target minimum size based on container size */
+
+    font-size: 2cqi;
+  }
+}
+
+
+/*  Slide Casing - Background decor
+    ========================================================================== */
+.slide_casing::before {
+  content: '';
+  display: block;
+  width: var(--stylized-display, 100%);
+  height: var(--stylized-display, var(--slide-header-background-height));
+
+  position: relative;
+  z-index: -3;
+
+  background-color: var(--slide-background-color);
+  background-image: var(--slide-background-image);
+  background-image: image-set(
+    var(--slide-background-image-webp) type("image/webp"),
+    var(--slide-background-image) type("image/jpeg")
+  );
+  background-position: var(--slide-background-position);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  mask-image: linear-gradient(#000, #000), var(--image-mask-wave);
+  mask-size: 100% 60%, 100% 50%;
+  mask-repeat: no-repeat;
+  mask-position: top, bottom;
+
+  filter: var(--slide-background-brightness);
+  
+
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    position: var(--stylized-display, absolute);
+    top: var(--stylized-display, 0);
+    left: var(--stylized-display, 0);
+
+    width: var(--stylized-display, 100%);
+    height: var(--stylized-display, 100%);
+
+    border-top-left-radius: var(--stylized-display, calc(var(--slide-padding) * 2));
+    border-bottom-left-radius: var(--stylized-display, calc(var(--slide-padding) / 2));
+
+    mask-image: none;
+  }
+}
+
+
+/*  Slide Casing - Logo
+    ========================================================================== */
+.slide_casing::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+
+  width: var(--stylized-display, calc(6 * var(--slide-padding)));
+  height: var(--stylized-display, var(--slide-padding));
+
+  background-image: var(--image-logo);
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: var(--graphic-color-invert-filter);
+  
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    top: unset;
+    bottom: 0;
+  }
+}
+
+@supports (mask-position: center) {
+  .slide_casing::after {
+    background-image: none;
+    filter: none;
+    
+    background-color: hsl(var(--body-text-color));
+    mask-image: var(--image-logo), linear-gradient(transparent, transparent);
+    mask-size: 100%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+  }
+}
+
+
+/*  Slide - Contents
+    ========================================================================== */
+.slide .slide_contents {
+  position: relative;
+
+  width: 100%;
+
+  padding: var(--stylized-display, var(--slide-padding));
+  padding-top: var(--stylized-display, 0);
+}
+
+@media screen {
+  .slide .slide_contents {
+    /* Reduce bottom margin to cancel out large .slide_nav padding. */
+    margin-bottom: calc(-1 * var(--slide-nav-padding-top));
+
+    /* Fixed dimension layout */
+    @container slide (min-width: 100px) and (min-height: 100px) {
+      /* OVERRIDE - .slide_nav padding does not have large padding in Slideshow layout */
+      margin-bottom: 0;  
+      padding: 0;
+    }
+  }
+}
+
+
+/*  Slide - Contents - Heading Main
+    ========================================================================== */
+.slide .slide_contents_heading-main {
+  font-size: clamp(1.5em, 1.25em + 3.333cqi, 4.25em);
+  font-weight: 400;
+  color: hsl(var(--color-tertiary-high-contrast));
+  text-transform: capitalize;
+  letter-spacing: -.0625em;
+  
+  margin: 0 0 var(--slide-padding) 0;
+  padding: 0;
+  
+  /* Fixed dimension layout, height less than minimum legible height */
+  @container slide (max-height: 39.98em) {
+    font-size: 5cqi;
+  }
+}
+
+@media print {
+  .print-unformatted .slide .slide_contents_heading-main,
+  .slide.print-unformatted .slide_contents_heading-main{
+    font-size: revert;
+  }
+}
+
+
+/*  Slide - Contents - Heading Main H1
+    ========================================================================== */
+.slide h1.slide_contents_heading-main {
+  font-size: min(8em, 8cqmax);
+  
+  /* Fixed dimension layout, height less than minimum legible height */
+  @container slide (max-height: 39.98em) {
+    font-size: 8cqi;
+  }
+}
+
+
+/*  Slide - Navigation
+    ========================================================================== */
+.slide_nav {
+  position: sticky;
+  bottom: 50%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  padding-top: var(--slide-nav-padding-top);
+
+  pointer-events: none;
+
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    position: unset;
+    display: block;
+    padding-top: 0;
+  }
+}
+
+@media print {
+.slide_nav {
+    display: none;
+  }
+}
+
+
+/*  Slide - Navigation with next slide item
+    ========================================================================== */
+.slide_nav:has(.slide_nav_item.next) {
+  flex-direction: row-reverse;
+}
+
+
+/*  Slide - Navigation - Item
+    ========================================================================== */
+.slide_nav_item {
+  position: relative;
+  z-index: 1;
+
+  background-color: hsl(var(--body-background-color) / .5);
+
+  width: var(--slide-nav-item-size);
+  height: var(--slide-nav-item-size);
+  
+  margin: 0 var(--slide-nav-item-margin);
+
+  box-shadow: var(--drop-shadow-box);
+  border-radius: 50%;
+
+  pointer-events: all;  /* restore pointer events removed from parent */
+
+  transition: background-color 200ms ease-out;
+
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    position: absolute;
+    bottom: var(--slide-padding);
+
+    margin: 0;
+  }
+}
+
+
+/*  Slide - Navigation - Item with focused anchor
+    ========================================================================== */
+.slide_nav_item:has(a:hover),
+.slide_nav_item:has(a:active),
+.slide_nav_item:has(a:focus) {
+  background-color: hsl(var(--body-background-color) / 1);
+  transition: background-color 200ms ease-in;
+}
+
+
+/*  Slide - Navigation - Item Previous
+    ========================================================================== */
+.slide_nav_item.previous {
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    left: var(--slide-nav-item-margin);
+  }
+}
+
+
+/*  Slide - Navigation - Item Next
+    ========================================================================== */
+.slide_nav_item.next {
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    right: var(--slide-nav-item-margin);
+  }
+}
+
+
+/*  Slide - Navigation - Item - Anchor
+    ========================================================================== */
+.slide_nav_item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    color: transparent;
+    font-size: 1px;
+  }
+}
+
+
+/*  Slide - Navigation - Item - Direction indicator
+    ========================================================================== */
+.slide_nav_item_indicator::before {
+  content: '>';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  color: var(--slide-nav-item-indicator-color);
+  font-size: var(--slide-nav-item-size);
+  font-weight: normal;
+  font-family: monospace;
+  text-align: center;
+  line-height: var(--slide-nav-item-size);
+
+  pointer-events: none;
+}
+
+@supports (mask-position: center) {
+  .slide_nav_item_indicator::before {
+    content: '';
+    background-color: var(--slide-nav-item-indicator-color);
+    mask-image: var(--icon-right-arrow), linear-gradient(transparent, transparent);
+    mask-size: 50%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+  }
+}
+
+
+/*  Slide - Navigation - Item - Direction indicator - Previous
+    ========================================================================== */
+.slide_nav_item.previous .slide_nav_item_indicator::before {
+  transform: scaleX(-1);  /* flip horizontal */
+}
+
+
+
+
+
+
+/*  ==========================================================================
+    Layout - Footer Main
+    ========================================================================== */
+#footer-main {
+  width: 100%;
+  text-align: center;
+}
+
+@media print {
+  #footer-main {
+    margin-top: 1em;
+  }
+}
+
+
+/*  Footer Main - Anchors
+    ========================================================================== */
+#footer-main a:link,
+#footer-main a:visited,
+#footer-main a:hover,
+#footer-main a:active,
+#footer-main a:focus {
+  color: currentColor;
+  font-size: 1em;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+
+/*  Footer Main - Copyright - Anchors
+    ========================================================================== */
+@media print {
+  /* OVERRIDE - Do not display href values after anchor text */
+  #footer-main .copyright a::after {
+    content: "";
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Layout - Slideshow Presentation
+    ========================================================================== */
+
+/* Slideshow Presentation Root
+    ========================================================================== */
+@media screen and (min-width: 20em) and (min-height: 40em) {
+  html:has(.slideshow.presentation) {
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+  }
+}
+
+
+/*  Slideshow Presentation - Slide
+    ========================================================================== */
+@media screen and (min-width: 20em) and (min-height: 40em) {
+  .slideshow.presentation .slide {
+    container-type: size;
+    height: 100dvh;
+    scroll-snap-align: start;
+    scroll-padding-top: var(--slide-margin); /* for reduced margin between slides. */
+
+    &:not(:first-child) {
+      /**
+        * Reduce the amount of vertical space between slides to 1 slide 
+        * margin height.  But, allow the overflow of previous slide decor into 
+        * the slide margins to be visible by pulling up the slide using
+        * negative margins.
+        */
+      margin-top: calc(-1 * var(--slide-margin));
+    }
+  }
+}
+
+@media print {
+  .slideshow.presentation .slide {
+    container-type: var(--stylized-display, size);
+
+    /* Reduce content height to prevent page fragmentation that causes page breaks or margin bleed. */
+    height: var(--stylized-display, 95vh);  
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Layout - Slide Preview Presentation
+    ========================================================================== */
+.slide-preview.presentation {
+  --slide-preview-width: 200px;
+  --slide-preview-width-max: 100%;
+  --slide-preview-height: 200px;
+  --slide-preview-height-max: 100dvh;
+
+  display: grid;
+  grid-auto-rows: min(var(--slide-preview-height), var(--slide-preview-height-max));
+  grid-template-columns: repeat(auto-fill, min(var(--slide-preview-width), var(--slide-preview-width-max)));
+  gap: min(2em, 2vw);
+}
+
+@media print {
+  .slide-preview.presentation.print-unformatted {
+    display: revert;
+  }
+}
+
+/*  Slide Preview Presentation - Slide
+    ========================================================================== */
+.slide-preview.presentation .slide {
+  container-type: var(--stylized-display, size);
+  width: var(--stylized-display, 100%);
+  height: var(--stylized-display, 100%);
+  box-shadow: var(--stylized-display, var(--drop-shadow-box));
+}
+
+@media print {
+  .slide-preview.presentation .slide {
+    border: var(--stylized-display, 1px solid currentColor);
+    box-shadow: none;
+  }
+}
+
+
+/*  Slide Preview Presentation - Slide - Navigation
+    ========================================================================== */
+.slide-preview.presentation .slide_nav {
+  display: none;
+}
+
+
+
+
+/*  ==========================================================================
+    Layout - Full Document Presentation
+    ========================================================================== */
+body.presentation {
+  --main-header-logo-width: min(15rem, 20cqi);
+  --main-header-logo-height: min(3rem, 4cqi);
+
+  --presentation-margin: calc(var(--base-size) * 2);
+  --presentation-padding: var(--presentation-margin);
+}
+
+@media print {
+  body.presentation.print-unformatted {
+    --main-header-logo-width: 3cm;
+    --main-header-logo-height: .5cm;
+
+    --presentation-margin: .5cm;
+  }
+}
+
+
+/*  Full Document Presentation - Header Main
+    ========================================================================== */
+body.presentation #header-main {
+  position: var(--stylized-display, absolute);
+  top: var(--stylized-display, calc(1.25 * var(--presentation-margin)));
+  right: var(--stylized-display, calc(1.5 * var(--presentation-margin)));
+  z-index: var(--stylized-display, 1);
+}
+
+
+/*  Full Document Presentation - Header Main - Branding - Logo
+    ========================================================================== */
+body.presentation #header-main .branding .logo {
+  width: var(--main-header-logo-width);
+  height: var(--main-header-logo-height);
+}
+
+
+/*  Full Document Presentation - Footer Main
+    ========================================================================== */
+body.presentation #footer-main {
+  font-size: min(1rem, var(--presentation-margin));  
+  max-height: var(--presentation-margin);
+  overflow: hidden;
+
+  position: absolute;
+  bottom: calc((var(--presentation-margin) - 1em) / 2);
+  left: 0;
+}
+
+/* Flow Layout */
+@media screen and (max-width: 19.98em), (max-height: 39.98em) {
+  body.presentation #footer-main {
+    font-size: 1em;
+    
+    max-height: unset;
+    overflow: unset;
+
+    bottom: unset;
+    left: unset;
+  }
+}
+
+@media print {
+  body.presentation #footer-main {
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+
+/*  Full Document Presentation - Slide 1 - Logo
+    ========================================================================== */
+body.presentation .slide:first-child .slide_casing:after {
+  /* Remove logo since it is displayed in the Header Main */
+  background-color: transparent;
+  background-image: none;
+  mask-image: none;
+}
+
+
+
+
+/*  ==========================================================================
+    Layout - Presentation Indulgent Hydration
+    ========================================================================== */
+.presentation.indulgent-hydration {
+  --color-header-main: var(--color-anchor-main-text);
+}
+
+
+/*  Full Document Presentation: Indulgent Hydration - Branding - Logo -
+    Image replacement
+    ========================================================================== */
+body.presentation.indulgent-hydration #header-main .branding {
+  color: hsl(var(--color-header-main));
+}
+
+
+/*  Presentation Indulgent Hydration -  Slide - Contents - Copy - 
+    ========================================================================== */
+.presentation.indulgent-hydration .slide_contents_copy {
+  padding: var(--stylized-display, calc(var(--slide-padding) / 2));
+}
+
+
+/*  Presentation Indulgent Hydration -  Slide - Contents - Copy - 
+    First element
+    ========================================================================== */
+.presentation.indulgent-hydration .slide_contents_copy >:first-child {
+  margin-top: 0;
+}
+
+
+/*  Presentation Indulgent Hydration - Slide - Contents - Copy -
+    Last element
+    ========================================================================== */
+.presentation.indulgent-hydration .slide_contents_copy >:last-child {
+  margin-bottom: 0;
+}
+
+
+
+
+/*  ==========================================================================
+    Layout - Presentation Indulgent Hydration - Intro Slide
+    ========================================================================== */
+.presentation.indulgent-hydration #intro.slide {
+  --duration-title-intro: 1000ms;
+}
+
+
+/*  ==========================================================================
+    Presentation Indulgent Hydration - Intro Slide - Casing
+    ========================================================================== */
+.presentation.indulgent-hydration #intro.slide .slide_casing {
+  --slide-background-color: hsl(201, 16%, 83%);
+  --slide-background-image: url('/assets/images/raster/large/pexels-gabby-k-6621353-e.jpg');
+  --slide-background-image-webp: url('/assets/images/raster/large/pexels-gabby-k-6621353-e.webp');
+  --slide-background-position: 80% 50%;
+  --slide-contents-copy-max-height: calc(var(--slide-internal-height) / 2);
+  
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  @container slide (min-width: 1024px) {
+    --slide-background-image: url('/assets/images/raster/xlarge/pexels-gabby-k-6621353-e.jpg');
+    --slide-background-image-webp: url('/assets/images/raster/xlarge/pexels-gabby-k-6621353-e.webp');
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Intro Slide - Contents
+    ========================================================================== */
+.presentation.indulgent-hydration #intro.slide .slide_contents {
+  position: relative;
+}
+
+
+/*  Presentation Indulgent Hydration - Intro Slide - Contents - Decor
+    ========================================================================== */
+.presentation.indulgent-hydration #intro.slide .slide_contents::after {
+
+  /**
+    * Fixed dimension layout, height less than minimum legible height and
+    * landscape orientation OR width and height have "large"/"medium" dimensions   
+    * based on font size. 
+    */
+  @container slide ((max-height: 39.98em) and (orientation: landscape)) or ((min-width: 80em) and (min-height: 40em)) {
+    content: '';
+    position: absolute;
+    bottom: calc(-2 * var(--slide-padding));
+    left: calc(-2 * var(--slide-padding));
+    z-index: -2;
+
+    width: 35cqi;
+    height: 35cqi;
+
+    border: 1px solid hsl(var(--color-secondary-lowest-contrast) / .5);
+    border-radius: 50%;
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Intro Slide - Contents - Main Heading
+    ========================================================================== */
+.presentation.indulgent-hydration #intro.slide .slide_contents_heading-main {
+  color: var(--stylized-display, hsl(var(--color-header-main)));
+  white-space: var(--stylized-display, pre-line);
+  padding-bottom: var(--stylized-display, .25em);
+
+  position: relative;
+
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    max-height: calc(var(--slide-internal-height) - var(--slide-contents-copy-max-height));
+    overflow: auto;
+
+    z-index: 1; 
+  }
+}
+
+
+/*  Full Document Presentation: Indulgent Hydration - 
+    Intro Slide - Contents - Main Heading
+    ========================================================================== */
+body.presentation.indulgent-hydration #intro.slide .slide_contents_heading-main {
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    max-height: calc(var(--slide-internal-height) - (var(--main-header-logo-height) + var(--slide-contents-copy-max-height)));
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Intro Slide - Contents - Main Heading -
+    Fragments
+    ========================================================================== */
+.presentation.indulgent-hydration #intro.slide .slide_contents_heading-main span:nth-child(1),
+.presentation.indulgent-hydration #intro.slide .slide_contents_heading-main span:nth-child(2) {
+  display: inline-grid;
+  grid-auto-columns: minmax(0, 1fr); 
+}
+  
+
+.presentation.indulgent-hydration #intro.slide .slide_contents_heading-main span:nth-child(2) {
+  /**
+    * Fixed dimension layout, height less than minimum legible height and 
+    * landscape orientation OR width and height have "large"/"medium" dimensions   
+    * based on font size. 
+    */
+  @container slide ((max-height: 40em) and (orientation: landscape)) or ((min-width: 80em) and (min-height: 40em)) {
+    padding-left: 2ch;
+  }
+}
+
+
+/*  Full Document Presentation with no motion preference: Indulgent Hydration - 
+    Intro Slide - Contents - Main Heading - Fragments
+    ========================================================================== */
+@media screen and (prefers-reduced-motion: no-preference) {
+  body.presentation.indulgent-hydration .slide_contents_heading-main span:nth-child(1) {
+    animation: ih-heading-fragment-1 var(--duration-title-intro) linear calc(var(--duration-page-loader-removal) - (var(--duration-title-intro) * .25)) backwards;
+  }
+
+  body.presentation.indulgent-hydration .slide_contents_heading-main span:nth-child(2) {
+    animation: fade-in-left var(--duration-title-intro) linear calc(var(--duration-page-loader-removal) - (var(--duration-title-intro) * .05)) backwards;
+  }
+}
+
+@keyframes ih-heading-fragment-1 {
+  0% {
+    transform: scale(2) translate3d(-50%, 0, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translate3d(0);
+    opacity: 1;
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Intro Slide - Contents - Overview
+    ========================================================================== */
+.presentation.indulgent-hydration #intro.slide .slide_contents_overview {
+  width: 100%;
+  
+  /**
+    * Fixed dimension layout, height less than minimum legible height and 
+    * landscape orientation OR width and height have "large"/"medium" dimensions   
+    * based on font size. 
+    */
+  @container slide ((max-height: 39.98em) and (orientation: landscape)) or ((min-width: 80em) and (min-height: 40em)) {
+    width: 60%;
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Intro Slide - Contents - Overview -
+    Background
+    ========================================================================== */
+.presentation.indulgent-hydration #intro.slide .slide_contents_overview::before {
+  /**
+    * Fixed dimension layout, height less than minimum legible height OR 
+    * width and height have "small"/"medium" dimensions based on font size. 
+    */
+  @container slide (max-height: 39.98em) or ((min-width: 20em) and (min-height: 40em)) {
+    content: '';
+    position: absolute;
+    bottom: calc(-1 * var(--slide-padding));
+    left: calc(-1 * var(--slide-padding));
+    z-index: -2;
+    width: calc(100% + 2 * var(--slide-padding));
+    height: 75%;
+    
+    background-image: linear-gradient(to bottom,transparent, hsl(var(--body-background-color) / .9) 30%, hsl(var(--body-background-color) / .95) 100%);
+    
+    mask-image: linear-gradient(#000, #000), var(--image-mask-wave);
+    mask-size: 100% 60%, 100% 50%;
+    mask-repeat: no-repeat;
+    mask-position: top, bottom;
+
+    mix-blend-mode: soft-light;
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Intro Slide - Contents - Overview -
+    Heading
+    ========================================================================== */
+.presentation.indulgent-hydration #intro.slide .slide_contents_overview h2 {
+  display: none;
+}
+
+
+/*  Presentation Indulgent Hydration - Intro Slide - Contents - Copy
+    ========================================================================== */
+@media screen and (prefers-reduced-motion: no-preference) {
+  body.presentation.indulgent-hydration #intro.slide .slide_contents_copy {
+    --easing: cubic-bezier(0.66, 0, 0, 1.452);
+
+    animation: ih-intro-contents var(--duration-title-intro) var(--easing) calc(var(--duration-page-loader-removal) + (var(--duration-title-intro) * .5)) backwards;
+  }
+}
+
+@supports (animation-timing-function: linear(0, 1)) {
+  body.presentation.indulgent-hydration #intro.slide .slide_contents_copy {
+    --easing: linear(0, 0.266 11.2%, 0.54 25.3%, 0.808 41.4%, 0.963 53.6%, 1 57.7%, 0.962 64.4%, 0.951 71.1%, 0.958 77%, 0.994 91.3%, 1);
+  }
+}
+
+@keyframes ih-intro-contents {
+  0% {
+    transform: scale(1%);
+    opacity: 0;
+    background-color: hsl(var(--color-tertiary-highest-contrast));
+  }
+  35% {
+    transform: scale(100%, 1%);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(100%);
+  }
+}
+
+
+.presentation.indulgent-hydration #intro.slide .slide_contents_copy {
+  position: relative;
+
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    /* Overflow functionality is requires adding the "scrollable" classes to the element. */
+    max-width: calc(100% - var(--slide-nav-item-size));
+    max-height: var(--slide-contents-copy-max-height);
+  }
+
+  /**
+    * Fixed dimension layout, height less than minimum legible height OR 
+    * width and height have "small"/"medium" dimensions based on font size. 
+    */
+  @container slide (max-height: 39.98em) or ((min-width: 20em) and (min-height: 40em)) {
+    --scroll-indicator-cover-color: hsl(var(--body-background-color));
+
+    background-color: hsl(var(--body-background-color) / .85);
+    backdrop-filter: blur(.65cqi);
+    border-width: min(.5em, 1cqi);
+    border-style: solid;
+    border-color: hsl(var(--body-background-color));
+    border-radius: min(.5em, 1cqi);
+    box-shadow: var(--drop-shadow-box);
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Layout - Presentation Indulgent Hydration - New Arrivals Slide
+    ========================================================================== */
+.presentation.indulgent-hydration #new-arrivals.slide .slide_casing {
+  --product-size: min(min(75cqi, 90cqb), 20em);
+  --product-list-gap: calc(var(--product-size) / 8);
+
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    --slide-background-color: hsl(var(--body-background-color));
+    --slide-background-image: url('/assets/images/blank.gif');
+    --slide-background-image-webp: url('/assets/images/blank.gif');
+    --slide-background-brightness: brightness(100%);
+
+    --product-size: min(calc(var(--slide-internal-height) / 3), var(--slide-internal-width));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media print {
+  .presentation.indulgent-hydration.print-unformatted #new-arrivals.slide .slide_casing {
+    --product-size: 6cm;
+    --product-list-gap: .5cm;
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - New Arrivals Slide - Contents
+    ========================================================================== */
+.presentation.indulgent-hydration #new-arrivals.slide .slide_contents {
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    column-gap: 0;
+    row-gap: 5cqb;
+
+    height: 100%;
+
+    text-align: center;
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - New Arrivals Slide - Contents - 
+    Main Heading
+    ========================================================================== */
+.presentation.indulgent-hydration #new-arrivals.slide .slide_contents_heading-main {
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    min-height: 1.5em;
+    flex: 0 1 auto;
+    overflow: auto;
+
+    margin: 0;
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - New Arrivals Slide - Contents -
+    Product List
+    ========================================================================== */
+.presentation.indulgent-hydration #new-arrivals.slide ul.product-list {
+  list-style-type: none;
+
+  margin: 0;
+  padding: 0;
+
+  display:flex; 
+  flex-direction:row; 
+  flex-wrap: wrap;
+  gap: var(--product-list-gap);
+  justify-content: center; 
+
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    /* Overflow functionality is requires adding the "scrollable" classes to the element. */
+    --scrollable-background-color: hsl(var(--body-background-color));
+    
+    flex-wrap: nowrap;
+    justify-content: left;
+    column-gap:  0;  /* separate items with margin instead of gap */
+
+    flex: 0 0 auto;
+    
+
+    /*  Center the list if there isn't enough content to create horizontal
+        scroll by adding elements to the left and right of the list that take up 
+        extra space its parent container.
+    */
+    &::before , 
+    &::after {
+      content: "";
+      flex-grow: 1;
+    }
+  }
+}
+
+@media print {
+  .presentation.indulgent-hydration.print-unformatted #new-arrivals.slide ul.product-list {
+    justify-content: left; 
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - New Arrivals Slide - Contents -
+    Product List - Item
+    ========================================================================== */
+.presentation.indulgent-hydration #new-arrivals.slide .product-list_item:not(:last-of-type) {
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    margin-right: var(--product-list-gap);  /* separate items with margin instead of gap */
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - New Arrivals Slide - Contents -
+    Product List - Item - Product
+    ========================================================================== */
+.presentation.indulgent-hydration #new-arrivals.slide .product {
+  width: var(--product-size);
+}
+
+
+/*  Presentation Indulgent Hydration - New Arrivals Slide - Contents -
+    Product List - Item - Product - Details - Description
+    ========================================================================== */
+.presentation.indulgent-hydration #new-arrivals.slide .product_details_description {
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    --scroll-indicator-cover-color: var(--slide-background-color);
+
+    /* Overflow functionality is requires adding the "scrollable" classes to the element. */
+    max-height: 75cqi; /* % width of the parent container (.product) */
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Layout - Presentation Indulgent Hydration - Collection Info Slide
+    ========================================================================== */
+@media print {
+  .presentation.indulgent-hydration #collection-info.slide {
+    break-inside: avoid; /* avoid separating floated child elements */
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Collection Info Slide - Casing
+    ========================================================================== */
+.presentation.indulgent-hydration #collection-info.slide .slide_casing {
+    --slide-background-color: hsl(199, 66%, 94%);
+    --slide-background-image: url('/assets/images/raster/large/pexels-gabby-k-6621465.jpg');
+    --slide-background-image-webp: url('/assets/images/raster/large/pexels-gabby-k-6621465.webp');
+    --slide-background-position: 50% 75%;
+
+    --collection-info-grid-gap: var(--slide-padding);
+    
+
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @container slide (min-width: 1024px) {
+    --slide-background-image: url('/assets/images/raster/xlarge/pexels-gabby-k-6621465.jpg');
+    --slide-background-image-webp: url('/assets/images/raster/xlarge/pexels-gabby-k-6621465.webp');
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Collection Info Slide - Contents
+    ========================================================================== */
+.presentation.indulgent-hydration #collection-info.slide .slide_contents {
+  display: var(--stylized-display, flex);
+  flex-direction: column;
+  justify-content: center;
+  row-gap: var(--collection-info-grid-gap);
+
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    height: 100%;
+  }
+
+  /**
+    * Fixed dimension layout, height less than minimum legible height OR    
+    * width and height have "medium" dimensions based on font size. 
+    */
+  @container slide (max-height: 39.98em) or ((min-width: 40em) and (min-height: 40em)) {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: var(--collection-info-grid-gap);
+    
+    height: 100%;
+  }
+}
+
+@media print {
+  .presentation.indulgent-hydration.print-unformatted #collection-info.slide .slide_contents {
+    overflow: hidden !important;  /* clearfix for floated child elements */
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Collection Info Slide - Contents -
+    Heading Main
+    ========================================================================== */
+.presentation.indulgent-hydration #collection-info.slide .slide_contents_heading-main {
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    margin: 0;
+    padding: 0;
+
+    min-height: 1.5em;
+    overflow: auto;
+
+    flex: 0 2 auto;
+  }
+
+  /**
+    * Fixed dimension layout, height less than minimum legible height OR    
+    * width and height have "medium" dimensions based on font size. 
+    */
+  @container slide (max-height: 39.98em) or ((min-width: 40em) and (min-height: 40em)) {
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 3;
+
+    align-self: end;
+
+    /* For 5 row grid where the content spans 2 rows, 2/5 the internal slide height minus 1 grid gap */
+    max-height: calc((var(--slide-internal-height) * .4) - var(--collection-info-grid-gap));
+  }
+}
+
+/*  Presentation Indulgent Hydration - Collection Info Slide - Contents -
+    Decor
+    ========================================================================== */
+.presentation.indulgent-hydration #collection-info.slide .slide_contents_decor {
+  height: 100vmin;
+
+  border: var(--stylized-display, min(.5em, 1cqi) solid hsl(var(--body-background-color)));
+  box-shadow: var(--stylized-display, var(--drop-shadow-box));
+
+  /**
+    * Fixed dimension layout, height less than minimum legible height OR    
+    * width and height have "small"/"medium" dimensions based on font size. 
+    */
+  @container slide (max-height: 39.98em) or ((min-width: 20em) and (min-height: 40em)) {
+    --collection-info-decor-height: 30cqb;
+
+    box-shadow: none;
+
+    flex: 0 1 var(--collection-info-decor-height);
+    min-height: calc(var(--collection-info-decor-height) * .75);
+  }
+
+  /**
+    * Fixed dimension layout, height less than minimum legible height OR    
+    * width and height have "medium" dimensions based on font size. 
+    */
+  @container slide (max-height: 39.98em) or ((min-width: 40em) and (min-height: 40em)) {
+    grid-row: 1 / span 4;
+    grid-column: 4 / span 3;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media print {
+  .presentation.indulgent-hydration.print-unformatted #collection-info.slide .slide_contents_decor {
+    width: 10cm;
+    height: 8cm;
+
+    margin: 0 .5cm .5cm 0;
+
+    float: left;
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Collection Info Slide - Contents -
+    Decor - Image
+    ========================================================================== */
+.presentation.indulgent-hydration #collection-info.slide .slide_contents_decor img {
+  width: 100%;
+  height: 100%;
+  object-position: 95% 50%;
+  object-fit: cover;
+}
+
+
+/*  Presentation Indulgent Hydration - Collection Info Slide - Contents -
+    Copy
+    ========================================================================== */
+.presentation.indulgent-hydration #collection-info.slide .slide_contents_copy {
+  /**
+    * Fixed dimension layout, height less than minimum legible height OR    
+    * width and height have "small"/"medium" dimensions based on font size. 
+    */
+  @container slide (max-height: 39.98em) or ((min-width: 20em) and (min-height: 40em)) {
+    background-color: hsl(var(--body-background-color) / .85);
+    backdrop-filter: blur(.65cqi);
+    border: min(.5em, 1cqi) solid  hsl(var(--body-background-color));
+    border-radius: min(.5em, 1cqi);
+    box-shadow: var(--drop-shadow-box);
+
+    min-height: 5em;
+    overflow: auto;
+
+    flex: 0 1 auto;
+
+    max-height: 30cqb;
+  }
+
+  /**
+    * Fixed dimension layout, height less than minimum legible height OR    
+    * width and height have "medium" dimensions based on font size. 
+    */
+  @container slide (max-height: 39.98em) or ((min-width: 40em) and (min-height: 40em)) {
+    grid-row: 3 / span 2;
+    grid-column: 2 / span 3;
+    align-self: center;
+    min-height: auto; /* override */
+    /* For 5 row grid where the content spans 2 rows, 2/5 the internal slide height minus 1 grid gap */
+    max-height: calc((var(--slide-internal-height) * .4) - var(--collection-info-grid-gap));
+  }
+
+  /**
+    * Fixed dimension layout, height less than minimum legible height OR    
+    * width and height have "large"/"medium" dimensions based on font size. 
+    */
+  @container slide (max-height: 39.98em) or ((min-width: 48em) and (min-height: 40em)) {
+    column-count: 3;
+    column-width: 20em;
+    column-gap: var(--slide-padding);
+  }
+}
+
+@media print {
+  .presentation.indulgent-hydration.print-unformatted #collection-info.slide .slide_contents_copy {
+    display: inline; /* allow contents to wrap around floated decor image */
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Collection Info Slide - Contents -
+    Call to action
+    ========================================================================== */
+.presentation.indulgent-hydration #collection-info.slide .call-to-action {
+  text-align: center;
+  font-size: larger;
+
+  /* Fixed dimension layout */
+  @container slide (min-width: 100px) and (min-height: 100px) {
+    flex: 0 0 auto;
+  }
+
+  /**
+    * Fixed dimension layout, height less than minimum legible height OR    
+    * width and height have "medium" dimensions based on font size. 
+    */
+  @container slide (max-height: 39.98em) or ((min-width: 40em) and (min-height: 40em)) {
+    grid-row: 5 / span 1;
+    grid-column: 2 / span 5;
+
+    text-align: left;
+  }
+}
+
+@media print {
+  .presentation.indulgent-hydration.print-unformatted #collection-info.slide .call-to-action {
+    margin-top: 1em;
+  }
+}
+
+
+/*  Presentation Indulgent Hydration - Collection Info Slide - Contents -
+    Call to action - Anchor
+    ========================================================================== */
+.presentation.indulgent-hydration #collection-info.slide .call-to-action a {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: var(--stylized-display, hsl(var(--body-background-color) / .8));
+
+    display: var(--stylized-display, inline-block); /* allow for minimum touch target size */
+    border: var(--stylized-display, min(.125em, 2cqi) solid currentColor);
+    padding: var(--stylized-display, min(.75em, 1.25cqi) min(1.25em, 2cqi));
+    border-radius: var(--stylized-display, min(2em, 10cqi));
+
+    text-align: center;
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+    text-underline-offset: auto;
+  }
+}
+
+@media print {
+  .presentation.indulgent-hydration.print-unformatted #collection-info.slide .call-to-action a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      /*OVERRIDE anchor appearance.*/
+      text-decoration: none;
+    }
+  }
+
+  .presentation.indulgent-hydration #collection-info.slide .call-to-action a::after {
+    /*OVERRIDE href appearance so no URL is displayed when printing same as screen .*/
+    content: "";
+  }
+
+  .presentation.indulgent-hydration.print-unformatted #collection-info.slide .call-to-action a::after {
+    /*OVERRIDE href appearance so long campaign URLs are not displayed.*/
+    content: var(--url-home-page);
+
+    /* Display href below anchor. */
+    display: block;
+  }
+}
