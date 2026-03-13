@@ -1,0 +1,3023 @@
+/* DOCUMENT INFORMATION
+	- Document: Virna & Nuris Website Styles - Article
+	- Version:  1.0
+	- Client:   N/A
+	- Author:   N.A. Wedderburn   <nawedderburnwebdev@gmail.com>
+*/
+
+/*  ==========================================================================
+    Web Fonts
+    ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+
+/*  ==========================================================================
+    Global Custom Properties
+    ========================================================================== */
+:root {
+  /*  Rendered color scheme 
+      ========================================================================== */
+  color-scheme: light;
+
+
+
+
+  /*  Custom Properties - Fonts 
+      ========================================================================== */
+  --text-font-stack: "Montserrat", "Arial", sans-serif;
+  --headers-font-stack: "Didact Gothic", "Verdana", sans-serif;
+
+
+
+
+  /*  Custom Properties - Colors (Hue/Saturation/Lightness format)
+      ========================================================================== */
+  
+  /* Lowest percentage for a color's "Lightness" property */
+  --color-lightness-lowest-percentage: 90%;
+
+  /* Color - Primary Variations */
+  --color-primary-hue: 348;
+  --color-primary-saturation: 35%;
+  --color-primary-lightness: 53%;
+  --color-primary-factor: calc((var(--color-lightness-lowest-percentage) - var(--color-primary-lightness)) / 4);
+  --color-primary-highest-contrast: var(--color-primary-hue) var(--color-primary-saturation) var(--color-primary-lightness);
+  --color-primary-high-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + var(--color-primary-factor));
+  --color-primary-medium-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 2));
+  --color-primary-low-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 3));
+  --color-primary-lowest-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 4));
+
+  /* Color - Secondary Variations */
+  --color-secondary-hue: 56;
+  --color-secondary-saturation: 28%;
+  --color-secondary-lightness: 21%;
+  --color-secondary-factor: calc((var(--color-lightness-lowest-percentage) - var(--color-secondary-lightness)) / 4);
+  --color-secondary-highest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) var(--color-secondary-lightness);
+  --color-secondary-high-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + var(--color-secondary-factor));
+  --color-secondary-medium-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 2));
+  --color-secondary-low-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 3));
+  --color-secondary-lowest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 4));
+
+  /* Color - Tertiary Variations */
+  --color-tertiary-hue: 0;
+  --color-tertiary-saturation: 0%;
+  --color-tertiary-lightness: 20%;
+  --color-tertiary-factor: calc(100% - var(--color-tertiary-lightness)) / 4;
+  --color-tertiary-highest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) var(--color-tertiary-lightness);
+  --color-tertiary-high-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + var(--color-tertiary-factor));
+  --color-tertiary-medium-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 2));
+  --color-tertiary-low-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 3));
+  --color-tertiary-lowest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 4));
+
+  /* Color - Anchor Main - Text */
+  --color-anchor-main-text: var(--color-primary-hue) 50% 30%;
+
+  /* Color - Highlight */
+  --color-highlight-hue: 60;
+  --color-highlight-saturation: 100%;
+  --color-highlight-lightness: 83%;
+  --color-highlight: var(--color-highlight-hue) var(--color-highlight-saturation) var(--color-highlight-lightness);
+
+
+
+
+  /*  Custom Properties - Shadows
+      ========================================================================== */
+
+  /* Color for shadows */
+  --shadow-color: 0 0% 10%;
+
+  /* Color intensity for shadows */
+  --shadow-intensity: 0;
+
+  /**
+    * Drop shadow - box (basic shadow for containers)
+    *
+    * 1. Separate the box shadow properties so each property can be used in the 
+    * calculation of the box shadow height.  The shadow height is used to
+    * determine the positioning of elements.
+    *
+    * 2. Pixel unit required for zero value properties to be used in the 
+    * calculations.
+    *
+    * 3. Using rem to maintain consistent size that is not based on the container
+    * font's size.
+    */
+
+  /* 1 - shadow 1 properties */
+  --drop-shadow-box-offset-x-1: 0px; /* 2 */
+  --drop-shadow-box-offset-y-1: min(.0625rem, .25vw); /* 3 */
+  --drop-shadow-box-blur-1: min(.125rem, .5vw); /* 3 */
+  --drop-shadow-box-spread-1: 0px; /* 2 */
+
+  /* 1 - shadow 2 properties */
+  --drop-shadow-box-offset-x-2: 0px; /* 2 */
+  --drop-shadow-box-offset-y-2: min(.125rem, .5vw); /* 3 */
+  --drop-shadow-box-blur-2: min(.375rem, 1.5vw); /* 3 */
+  --drop-shadow-box-spread-2: min(.125rem, .5vw); /* 3 */
+
+  /* 1 - shadow height calculation */
+  --drop-shadow-box-height: calc(
+    var(--drop-shadow-box-offset-y-1) +
+    var(--drop-shadow-box-blur-1) +
+    var(--drop-shadow-box-spread-1) +
+    var(--drop-shadow-box-offset-y-2) +
+    var(--drop-shadow-box-blur-2) +
+    var(--drop-shadow-box-spread-2)
+  );
+
+  --drop-shadow-box: 
+    hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .3)) var(--drop-shadow-box-offset-x-1) var(--drop-shadow-box-offset-y-1) var(--drop-shadow-box-blur-1) var(--drop-shadow-box-spread-1), 
+    hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .15)) var(--drop-shadow-box-offset-x-2) var(--drop-shadow-box-offset-y-2) var(--drop-shadow-box-blur-2) var(--drop-shadow-box-spread-2);
+  
+  
+  /* Drop shadow filter for text */
+  --drop-shadow-filter-text: hsl(var(--shadow-color)) min(.125em, 1vw) min(.125em, 1vw) min(.125em, 1vw);
+
+
+  /* Drop shadow filter for page title */
+  --drop-shadow-filter-page-title: hsl(var(--shadow-color)) min(.0625em, 1vw) min(.0625em, 1vw) min(.0625em, 1vw);
+
+
+
+
+  /*  Custom Properties - Graphics
+      ========================================================================== */
+
+  /* Graphics - Images */
+  --image-logo: url('/assets/images/logos/virnanuris_logo.svg');
+
+  /* Graphics - Icons */
+  --icon-email: url('/assets/images/icons/icon-envelope-svgrepo-com.svg');
+  --icon-phone: url('/assets/images/icons/icon-phone-call-svgrepo-com.svg');
+  --icon-social-instagram: url('/assets/images/icons/instagram logo_icon.svg');
+  --icon-social-linkedin: url('/assets/images/icons/linkedin logo_icon.svg');
+  --icon-idea: url('/assets/images/icons/icon-idea-svgrepo-com.svg');
+
+
+
+
+  /*  Custom Properties - Sizing
+      ========================================================================== */
+
+  /* Sizing - Base */
+  --base-size: min(1rem, 2vw);
+
+  /* Sizing - Icons */
+  --icon-width: 1em;
+  --icon-height: 1em;
+  --icon-gap: .25em;
+
+  /* Sizing - Page */
+  --page-margin-size: calc(var(--base-size) * 4);
+
+  /* Sizing - Touch Target */
+  --touch-target-min-size: 24px;
+
+
+  
+
+  /*  Custom Properties - Transitions
+      ========================================================================== */
+  
+  /* Ease Out - Gradual progression to 58%, ease out 58% - 100% */
+  --transition-timing-fcn-ease-out-01: cubic-bezier(0.00,0.00,0.58,1.00);
+
+  /* Ease Out - Quick progression to 16%, ease out 16-100% */
+  --transition-timing-fcn-ease-out-02: cubic-bezier(0.16,0.32,0.01,1.07);
+} 
+
+
+
+
+/*  ==========================================================================
+    Global Custom Properties - Dark Color Scheme
+    ========================================================================== */
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    /*  Rendered color scheme 
+        ========================================================================== */
+    color-scheme: dark;
+
+
+
+
+    /*  Custom Properties - Colors (Hue/Saturation/Lightness format)
+        ========================================================================== */
+
+    /* Color - Primary Variations */
+    --color-primary-lowest-contrast: var(--color-primary-hue) var(--color-primary-saturation) var(--color-primary-lightness);
+    --color-primary-low-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + var(--color-primary-factor));
+    --color-primary-high-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 3));
+    --color-primary-highest-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 4));
+
+    /* Color - Secondary Variations */
+    --color-secondary-lowest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) var(--color-secondary-lightness);
+    --color-secondary-low-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + var(--color-secondary-factor));
+    --color-secondary-high-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 3));
+    --color-secondary-highest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 4));
+
+    /* Color - Tertiary Variations */
+    --color-tertiary-lowest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) var(--color-tertiary-lightness);
+    --color-tertiary-low-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + var(--color-tertiary-factor));
+    --color-tertiary-high-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 3));
+    --color-tertiary-highest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 4));
+
+    /* Color - Anchor Main - Text */
+    --color-anchor-main-text: var(--color-secondary-hue) 100% 85%;
+
+    /* Color - Highlight */
+    --color-highlight-lightness: 2%;
+
+
+
+
+    /*  Custom Properties - Shadows
+        ========================================================================== */
+
+    /* Color intensity for shadows */
+    --shadow-intensity: .1;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Global Custom Properties - Reduced Motion
+    ========================================================================== */
+@media screen and (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-timing-fcn-ease-out-02: var(--transition-timing-fcn-ease-out-01);
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Special Functionality
+    ========================================================================== */
+
+/* Visually hidden AKA screen reader only */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  clip-path: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+
+
+
+/*  ==========================================================================
+    Root
+    ========================================================================== */
+html {
+  box-sizing: border-box;
+}
+
+
+/*  Root - descendants
+    ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    overflow-wrap: break-word;
+}
+
+
+
+
+/*  ==========================================================================
+    Body
+    ========================================================================== */
+body {
+  --body-background-color: 0 0% 100%; /* white */
+  --body-text-color: 0 0% 0%; /* black */
+  --body-font-size: 1rem;
+
+  background-color: hsl(var(--body-background-color));
+
+  font-family: var(--text-font-stack);
+  font-size: var(--body-font-size);
+  color: hsl(var(--body-text-color));
+}
+
+@media screen {
+  body {
+    --body-background-color:  var(--color-tertiary-lowest-contrast);
+    --body-text-color: var(--color-tertiary-highest-contrast);
+
+    /**
+      * Allow for "sticky" footer to bottom of pages with little content.
+      * Top margin of footer-main set to auto to push to the bottom of its
+      * container.
+      */
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media print {
+  body {
+    --body-font-size: 12pt;
+
+    margin: .5cm;
+    padding: 0;
+
+    background: none;
+
+    font-family: sans-serif;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Body: Article
+    ========================================================================== */
+body.article {
+  --article-title-font-size: min(8rem, 15vw);
+  --color-article-header-main-text: var(--color-secondary-hue) 28% 90%;
+  --color-article-header-main-background: var(--color-tertiary-hue) 0% 20%;
+
+  --background-color-article-body: hsl(var(--color-secondary-high-contrast));
+  --background-image-article-body: url('/assets/images/blank.gif');
+  --background-image-article-body-webp: url('/assets/images/blank.webp');
+
+  position: relative;
+}
+
+
+/*  Body: Article - Background
+    ========================================================================== */
+@media screen {
+  body.article::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100svh;
+    background-color: var(--background-color-article-body);
+
+    background-image: linear-gradient(
+      180deg,
+        hsl(var(--body-background-color) / 0) 50%,
+        hsl(var(--body-background-color) / 1) 100%
+      ),var(--background-image-article-body);
+    background-image: linear-gradient(
+      180deg,
+        hsl(var(--body-background-color) / 0) 50%,
+        hsl(var(--body-background-color) / 1) 100%
+      ), image-set(var(--background-image-article-body-webp) type("image/webp"), var(--background-image-article-body));
+    background-size: cover;
+    background-position: 50% 85%;
+    background-repeat: no-repeat;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Body: Article - Wellness
+    ========================================================================== */
+@media screen {
+  body.article.wellness {
+    --background-color-article-body: hsl(41, 18%, 50%);
+    --background-image-article-body: url('/assets/images/raster/large/pexels-alesiakozik-7797229-e.jpg');
+    --background-image-article-body-webp: url('/assets/images/raster/large/pexels-alesiakozik-7797229-e.webp');
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body.article.wellness {
+    --background-image-article-body: url('/assets/images/raster/xlarge/pexels-alesiakozik-7797229-e.jpg');
+    --background-image-article-body-webp: url('/assets/images/raster/xlarge/pexels-alesiakozik-7797229-e.webp');
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Headings
+    ========================================================================== */
+hgroup, h1, h2, h3, h4, h5 { 
+  font-family: var(--headers-font-stack);
+}
+
+
+/*  Article Headings - h1
+    ========================================================================== */
+.article h1 {
+  font-size: var(--article-title-font-size);
+  text-transform: none;
+  line-height: .9em;
+
+  padding: 0;
+  margin: 0;
+}
+
+@media screen {
+  .article h1 {
+    color: hsl(var(--color-article-header-main-text));
+    -webkit-filter: drop-shadow(var(--drop-shadow-filter-page-title));
+    -moz-filter: drop-shadow(var(--drop-shadow-filter-page-title));
+    -ms-filter: drop-shadow(var(--drop-shadow-filter-page-title));
+    filter: drop-shadow(var(--drop-shadow-filter-page-title));
+  }
+}
+
+@media print {
+  .article h1 {
+    font-size: 36pt;
+  }
+}
+
+
+/*  Headings - h2
+    ========================================================================== */
+h2 {
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+@media screen {
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Paragraphs
+    ========================================================================== */
+@media screen {
+  p {
+    line-height: 1.7em;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Anchors
+    ========================================================================== */
+a {
+  text-decoration: underline;
+  text-underline-offset: .25em;
+  font-weight: 600;
+
+  &:link {
+    color: hsl(var(--color-anchor-main-text));
+  }
+
+  &:visited {
+    color: currentColor;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: hsl(var(--color-anchor-main-text));
+    text-decoration: none;
+  }
+}
+
+@media screen {
+  /* Minimum touch target size. NB: Only applies to non-inline elements. */
+  a {
+    min-width: var(--touch-target-min-size);
+    min-height: var(--touch-target-min-size);
+  }
+}
+
+@media print {
+  a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      color: hsl(var(--body-text-color));
+      text-underline-offset: auto;
+    }
+  }
+
+  /* Display href attribute next to anchor text. */
+  a::after {
+    content: " [" attr(href) "] ";
+  }
+}
+
+
+/*  Anchor with image
+    ========================================================================== */
+/* Align anchor height with descendant image height instead of line height. */
+a:has(img) {
+  display: inline-grid;
+  grid-auto-rows: min-content;
+  grid-auto-columns: minmax(0, 1fr); /* Allow column width to be narrower than its content to allow for 'overflow-wrap: break-word.' */
+}
+
+
+
+
+/*  ==========================================================================
+    Images
+    ========================================================================== */
+img {
+  max-width: 100%;
+}
+
+
+/*  Images: Icon
+    ========================================================================== */
+img.icon {
+  width: var(--icon-width);
+  height: var(--icon-height);
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Navigation Breadcrumb
+    ========================================================================== */
+.nav-breadcrumb {
+  --nav-breadcrumb-color: currentColor;
+  --nav-breadcrumb-decor-size: .5em;
+  --nav-breadcrumb-decor-rotation: 45deg;
+  --nav-breadcrumb-decor-skew: 10deg;
+}
+
+@media print {
+  .nav-breadcrumb {
+    display: none;
+  }
+}
+
+
+/*  Navigation Breadcrumb - List
+    ========================================================================== */
+.nav-breadcrumb__list {
+  list-style-type: none;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 1em;
+  row-gap: .5em;
+}
+
+
+/*  Navigation Breadcrumb - List - Item - Anchor
+    ========================================================================== */
+.nav-breadcrumb__list__item a {
+  font-size: .9em;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--nav-breadcrumb-color);
+  }
+}
+
+@media screen {
+  .nav-breadcrumb__list__item a {
+    display: inline-grid;
+    grid-template-columns: minmax(0, 1fr) calc(var(--nav-breadcrumb-decor-size) * 1.5);
+    align-items: center;
+    gap: calc(var(--nav-breadcrumb-decor-size) * 1.5);
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+
+/*  Navigation Breadcrumb - List Item - Anchor - Decoration
+    ========================================================================== */
+@media screen {
+  .nav-breadcrumb__list__item a::after {
+    content: "";
+    display: inline-block;  /* Allow for specified dimensions. */
+
+    /*  Box with top and right borders, rotated to form arrow shape, 
+        skewed to maintain smooth transition animation */
+    width: var(--nav-breadcrumb-decor-size);
+    height: var(--nav-breadcrumb-decor-size);
+    border-color: var(--nav-breadcrumb-color);
+    border-style: solid;
+    border-width: .0625em .0625em 0 0;
+    -webkit-transform: rotateZ(var(--nav-breadcrumb-decor-rotation)) skew(var(--nav-breadcrumb-decor-skew), var(--nav-breadcrumb-decor-skew));
+    -moz-transform: rotateZ(var(--nav-breadcrumb-decor-rotation)) skew(var(--nav-breadcrumb-decor-skew), var(--nav-breadcrumb-decor-skew));
+    -ms-transform: rotateZ(var(--nav-breadcrumb-decor-rotation)) skew(var(--nav-breadcrumb-decor-skew), var(--nav-breadcrumb-decor-skew));
+    transform: rotateZ(var(--nav-breadcrumb-decor-rotation)) skew(var(--nav-breadcrumb-decor-skew), var(--nav-breadcrumb-decor-skew));
+  }
+
+  /*  Hide last item decoration */
+  .nav-breadcrumb__list__item:last-child a::after {
+    visibility: hidden;
+  }
+
+  /*  Decoration transform */
+  .nav-breadcrumb__list__item a:hover::after,
+  .nav-breadcrumb__list__item a:active::after,
+  .nav-breadcrumb__list__item a:focus::after {
+    /* Skew arrow shape. */
+    -webkit-transform: rotateZ(var(--nav-breadcrumb-decor-rotation)) skew(calc(var(--nav-breadcrumb-decor-skew) * -1), calc(var(--nav-breadcrumb-decor-skew) * -1));
+    -moz-transform: rotateZ(var(--nav-breadcrumb-decor-rotation)) skew(calc(var(--nav-breadcrumb-decor-skew) * -1), calc(var(--nav-breadcrumb-decor-skew) * -1));
+    -ms-transform: rotateZ(var(--nav-breadcrumb-decor-rotation)) skew(calc(var(--nav-breadcrumb-decor-skew) * -1), calc(var(--nav-breadcrumb-decor-skew) * -1));
+    transform: rotateZ(var(--nav-breadcrumb-decor-rotation)) skew(calc(var(--nav-breadcrumb-decor-skew) * -1), calc(var(--nav-breadcrumb-decor-skew) * -1));
+  }
+
+  /*  Decoration transition */
+  .nav-breadcrumb__list__item a::after,
+  .nav-breadcrumb__list__item a:hover::after,
+  .nav-breadcrumb__list__item a:active::after,
+  .nav-breadcrumb__list__item a:focus::after {
+    transition: transform 200ms ease-out;
+  }  
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Branding
+    ========================================================================== */
+.branding {
+  line-height: 0;
+}
+
+
+/*  Branding - Logo
+    ========================================================================== */
+.branding .logo {
+  display: inline-block;
+  position: relative;
+
+  width: min(20em, 50vw);
+  height: min(3.5em, 9vw);
+}
+
+
+/*  Branding - Logo - Image replacement
+    ========================================================================== */
+@supports (mask-position: center) {
+  @media screen {
+    .branding .logo::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      
+      background-color: currentColor;
+      mask-image: var(--image-logo), linear-gradient(transparent, transparent);
+      mask-size: 100%;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+  }
+}
+
+
+/*  Branding - Logo - Image
+    ========================================================================== */
+.branding .logo img {
+  width: 100%;
+  height: 100%;
+}
+
+@supports (mask-position: center) {
+  @media screen {
+    .branding .logo img {
+      /* Image replaced by Logo - Image replacement */
+      display: none;
+    }
+  }
+}
+
+/*  Branding - Anchors
+    ========================================================================== */
+@media screen {
+  .branding a:link,
+  .branding a:visited,
+  .branding a:hover,
+  .branding a:active,
+  .branding a:focus {
+    color: currentColor;
+  }
+}
+
+@media print {
+  /* OVERRIDE - Do not display href values after anchor text */
+  .branding a::after {
+    content: "";
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Communication Medium
+    ========================================================================== */
+
+/*  Communication Medium - Decor icon
+    ========================================================================== */
+.communication-medium::before {
+  --icon: unknown;
+
+  margin-right: var(--icon-gap);
+}
+
+@supports (mask-position: center) {
+  @media screen {
+    .communication-medium::before {
+      
+      /* include nbsp to allow icon to go to the next line to avoid horizontal overflow */
+      content: "\00a0"; 
+      
+      padding-right: var(--icon-width);
+      
+      background-color: currentColor;
+      mask-image: var(--icon), linear-gradient(transparent, transparent);
+      mask-size: var(--icon-width);
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+  }
+}
+
+
+@media print {
+  /**
+    * Display image instead of mask-image so the icon will be displayed if user
+    * does not print background images.
+    */
+  .communication-medium::before {
+    content: var(--icon);
+
+    display: inline-block;
+    width: var(--icon-width);
+    height: var(--icon-height);
+  }
+}
+
+
+/*  Communication Medium: Email Address - Decor icon
+    ========================================================================== */
+.communication-medium.email-address::before {
+  --icon: var(--icon-email);
+}
+
+
+/*  Communication Medium: Email Address (focused anchor) - Decor icon
+    ========================================================================== */
+/* a:hover .communication-medium.email-address::before,
+a:active .communication-medium.email-address::before,
+a:focus .communication-medium.email-address::before {
+  animation: email-send 800ms ease-out;
+} */
+
+
+/*  Communication Medium: Email Address - Decor icon animation
+    ========================================================================== */
+@keyframes email-send {
+  0%,
+  100% {
+    mask-position: center center;
+  }
+  50% {
+    mask-position: top right;
+  }
+  65% {
+    mask-position: top right;
+    mask-size: 0;
+  }
+  85% {
+    mask-position: center center;
+    mask-size: 0;
+  }
+}
+
+
+/*  Communication Medium: Phone Number - Decor icon
+    ========================================================================== */
+.communication-medium.phone-number::before {
+  --icon: var(--icon-phone);
+
+}
+
+
+/*  Communication Medium: Phone Number (focused anchor) - Decor icon
+    ========================================================================== */
+/* a:hover .communication-medium.phone-number::before,
+a:active .communication-medium.phone-number::before,
+a:focus .communication-medium.phone-number::before {
+  animation: phone-ring 1500ms ease;
+} */
+
+
+/*  Communication Medium: Phone Number - Decor icon animation
+    ========================================================================== */
+@keyframes phone-ring {
+  0%,
+  15% {
+    mask-position: center center;
+  }
+  5% {
+    mask-position: top right;
+  }
+  9% {
+    mask-position: top left;
+  }
+  12% {
+    mask-position: top right;
+  }
+}
+
+
+/*  Communication Medium: Social Media Instagram - Decor icon
+    ========================================================================== */
+.communication-medium.social-media.instagram::before {
+  --icon: var(--icon-social-instagram);
+}
+
+
+/*  Communication Medium: Social Media LinkedIn - Decor icon
+    ========================================================================== */
+.communication-medium.social-media.linkedin::before {
+  --icon: var(--icon-social-linkedin);
+}
+
+
+/*  Communication Medium - Has icon image (in DOM)
+    ========================================================================== */
+.communication-medium:has(.icon) {
+  display: inline-grid;
+  grid-auto-rows: auto;
+  grid-auto-columns: minmax(0, 1fr);
+}
+
+
+/*  Communication Medium - Has icon image (in DOM) - Decor icon
+    ========================================================================== */
+.communication-medium:has(.icon)::before {
+  /* Display the DOM icon instead of the decor icon. */
+  display: none;
+}
+
+
+/*  Communication Medium - Has icon image (in DOM) - Icon color overlay
+    ========================================================================== */
+@media screen {
+  .communication-medium:has(.icon)::after {
+    content: "";
+    display: block;
+    width: calc(var(--icon-width) * 1.5);
+    height: calc(var(--icon-width) * 1.5);
+
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+    justify-self: center;
+    align-self: center;
+
+    border-radius: 50%;
+    background-color: currentColor;
+    mix-blend-mode: color;
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .communication-medium:has(.icon)::after {
+    mix-blend-mode: normal;
+  }
+} 
+
+
+/*  Communication Medium - Icon
+    ========================================================================== */
+.communication-medium .icon {
+  filter: grayscale(1);
+
+  grid-row: 1 / 2;
+  grid-column: 1 / -1;
+  justify-self: center;
+  align-self: center;
+}
+
+
+/*  Communication Medium - Label
+    ========================================================================== */
+.communication-medium .label {
+  grid-row: 2 / 3;
+  grid-column: 1 / -1;
+
+  font-size: .65em;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Contributor
+    ========================================================================== */
+.contributor {
+  --contributor-avatar-width: min(5em, 100%);
+  --contributor-avatar-height: min(5em, 100%);
+
+  background-color: hsl(var(--body-background-color));
+  padding: calc(var(--base-size) / 2);
+
+  display: grid;
+  grid-template-rows: min-content;
+  grid-template-columns: minmax(0, 1fr);
+
+  /* Vertical grid display */
+  grid-template-areas:
+  "avatar"
+  "name"
+  "title"
+  "links";
+
+  column-gap: var(--base-size);
+  row-gap: calc(var(--base-size) / 4);
+}
+
+@media screen {
+  .contributor {
+    box-shadow: var(--drop-shadow-box);
+  }
+}
+
+@media (min-width:20em), print {
+  .contributor {
+    padding-right: var(--base-size);
+    grid-template-rows: min-content 1fr min-content;  /* largest row height for title, forcing the links to the bottom */
+    grid-template-columns: var(--contributor-avatar-width) minmax(0, 1fr);
+
+    /* Horizontal grid display */
+    grid-template-areas:
+    "avatar name"
+    "avatar title"
+    "avatar links";
+  }
+}
+
+@media print {
+  .contributor {
+    grid-template-rows: min-content min-content 1fr;  /* largest row height for links that may have long href attributes */
+    break-inside: avoid;
+  }
+}
+
+
+/*  Contributor - children
+    ========================================================================== */
+.contributor > * {
+  text-align: center;
+}
+
+@media (min-width:20em), print {
+  .contributor * {
+    text-align: left;
+  }
+}
+
+
+/*  Contributor - Avatar
+    ========================================================================== */
+.contributor__avatar {
+  grid-area: avatar;
+}
+
+.contributor__avatar img {
+  width: var(--contributor-avatar-width);
+  height: var(--contributor-avatar-height);
+}
+
+@media screen {
+  .contributor__avatar img {
+    border-radius: 50%;
+  }
+}
+
+
+/*  Contributor - Name
+    ========================================================================== */
+.contributor__name {
+  grid-area: name;
+
+  font-weight: 600;
+}
+
+
+/*  Contributor - Title
+    ========================================================================== */
+.contributor__title {
+  grid-area: title;
+
+  font-style: italic;
+}
+
+
+/*  Contributor - List of social media links
+    ========================================================================== */
+.contributor__links {
+  grid-area: links;
+}
+
+.contributor__links ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .5em;
+  justify-content: center;
+
+  list-style-type: none;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+
+@media screen and (min-width:20em), print {
+  .contributor__links ul {
+    justify-content: flex-start;
+  }
+}
+
+@media print {
+  .contributor__links ul {
+    flex-direction: column;
+  }
+}
+
+.contributor__links ul > * {
+  /* allow for overflow-wrap: break-word on flex direct child elements */
+  min-width: 0; 
+}
+
+
+/*  Contributor - List of social media links - Communication Medium
+    ========================================================================== */
+.contributor__links .communication-medium {
+  font-size: 1.2em; /* increase icon size via font size*/
+}
+
+.contributor__links .communication-medium::after {
+  display: none;  /* remove overlay used to change the icon color */
+}
+
+.contributor__links .communication-medium .icon {
+  filter: none; /* remove grayscale filter on icon */
+}
+
+@media print {
+  .contributor__links .communication-medium .icon {
+    justify-self: start;
+  }
+}
+
+.contributor__links .communication-medium .label {
+  display: none;  /* remove label */
+}
+
+
+/*  Contributor - List of social media links - Anchor with Communication
+    Medium
+    ========================================================================== */
+.contributor__links a:link:has(.communication-medium) {
+  color: currentColor;  /* use container color for text */
+  text-decoration: none;  /* remove text underline */
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Article Introduction
+    ========================================================================== */
+@media screen {
+  .article .introduction {
+    position: relative;
+
+    background-color: hsl(var(--body-background-color) / .95);
+    padding: var(--main-section-padding-size);
+    box-shadow: var(--drop-shadow-box);
+  }
+}
+
+/*  Article Introduction - Drop Shadow
+    ========================================================================== */
+@media screen {
+  .article .introduction::before {
+    content: "";
+    position: absolute;
+    bottom: -.75rem;
+    left: 10%;
+    width: 90%;
+    height: 3rem;
+    z-index: -1;
+
+    background-color: hsl(var(--shadow-color) / .25);
+    mix-blend-mode: color-burn;
+    --p: 30%;
+    clip-path: polygon(0 calc(100% - var(--p)),0 0,100% var(--p),100% 100%);
+    filter: blur(25px);
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .article .introduction::before {
+    mix-blend-mode: darken;
+  }
+}
+
+
+
+/*  Article Introduction - Heading
+    ========================================================================== */
+@media screen {
+  .article .introduction .introduction__heading {
+    display: none;
+  }
+}
+
+/*  Article Introduction - Paragraphs
+    ========================================================================== */
+@media screen {
+  .article .introduction > p:first-of-type {
+    margin-top: 0;
+  }
+
+  .article .introduction > p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Article Conclusion
+    ========================================================================== */
+.article .conclusion {
+  --conclusion-padding-size: var(--main-section-padding-size);
+  --conclusion-column-gap-size: calc(var(--conclusion-padding-size) / 2);
+  --conclusion-call-to-action-padding: var(--base-size);
+  --conclusion-call-to-action-background-color: var(--color-primary-lowest-contrast);
+  --conclusion-call-to-action-border-size: calc(var( --conclusion-call-to-action-padding) / 2);
+  --conclusion-call-to-action-decorator-size: min(6em, 12vw);
+  --conclusion-call-to-action-decorator-color: var(--color-primary-medium-contrast);
+  --conclusion-call-to-action-decorator-column-width: calc(var(--conclusion-call-to-action-decorator-size) + var(--conclusion-call-to-action-padding));
+}
+
+@media screen {
+  .article .conclusion {
+    background-color: hsl(var(--color-secondary-low-contrast) / .95);
+
+    padding: var(--conclusion-padding-size);
+    /**
+      * No right padding so call to action element sits flush with the
+      * right side of the container. Direct child paragraphs will
+      * provide the right padding. for the container. 
+      */
+    padding-right: 0;  
+  
+    border-radius: calc(var(--conclusion-padding-size) / 2);
+    box-shadow: var(--drop-shadow-box);
+  }
+}
+
+@media screen and (min-height: 40em), print {
+  /* Multi-column display for print and screens with large height. */
+  .article .conclusion {
+    column-count: 3;
+    column-width: 20em;
+    column-gap: var(--conclusion-column-gap-size);
+  }
+}
+
+
+/*  Article Conclusion - Heading
+    ========================================================================== */
+@media print {
+  .article .conclusion__heading {
+    column-span: all;
+  }
+}
+
+
+/*  Article Conclusion - Paragraph
+    ========================================================================== */
+@media screen {
+  /**
+    * Right padding added to conclusion's direct child paragraphs
+    * since conclusion container has no right padding.
+    * Right padding not included for print so the text can extend
+    * to the right edge of the page.
+    */
+  .article .conclusion > p {
+    padding-right: var(--conclusion-padding-size);
+  }
+}
+
+
+/*  Article Conclusion - First paragraph
+    ========================================================================== */
+@media print {
+  .article .conclusion p:first-of-type {
+    margin-top: 0;
+  }
+}
+
+
+/*  Article Conclusion - Paragraph - Divider
+    ========================================================================== */
+@media screen { 
+  /**
+    * Insert divider between groupings of paragraphs if the next sibling
+    * is a paragraph.
+    */
+  .article .conclusion p:nth-of-type(5n):has(+ p)::after {
+    content: "";
+    display: block;
+
+    margin: var(--conclusion-padding-size);
+    border-top: min(.0625em, 1vw) solid currentColor;
+    
+    opacity: .25;
+  }
+}
+
+@media screen and (min-height: 40em) {
+  /**
+    * Make divider between groupings of paragraphs span all columns when
+    * screen's height is large enough for multi-column display.
+    */
+  .article .conclusion p:nth-of-type(5n):has(+ p)::after {
+    column-span: all;
+
+  /**
+    * Increase the divider's right margin to account for the lack of
+    * right margin on the conclusion container.
+    */
+    margin-right: calc(var(--conclusion-padding-size) * 2);
+  }
+}
+
+
+/*  Article Conclusion - Call to Action
+    ========================================================================== */
+.article .conclusion .call-to-action {
+  margin-top: var(--conclusion-padding-size);
+
+  break-inside: avoid;
+}
+
+@media screen and (min-width: 20em), print {
+  .article .conclusion .call-to-action {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--conclusion-call-to-action-decorator-column-width);
+    grid-template-rows: auto calc(var(--conclusion-call-to-action-decorator-size) / 4);
+  }
+}
+
+
+/*  Article Conclusion - Call to Action - Decorator
+    ========================================================================== */
+@media screen and (min-width: 20em), print {
+  .article .conclusion .call-to-action::before {
+    content: var(--icon-idea);
+    position: relative;
+    z-index: 2;
+    
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+
+    margin: calc(var(--conclusion-call-to-action-padding) / 4);
+    padding: var(--conclusion-call-to-action-padding);
+    border-radius: 50%;
+    
+    width: var(--conclusion-call-to-action-decorator-size);
+    height: var(--conclusion-call-to-action-decorator-size);
+    justify-self: right;
+    
+    box-shadow: inset hsl(var(--conclusion-call-to-action-decorator-color)) var(--conclusion-call-to-action-decorator-size) var(--conclusion-call-to-action-decorator-size) 0 0;
+
+    overflow: hidden;
+  }
+}
+
+
+/*  Article Conclusion - Call to Action - Decorator Overlap Row
+    ========================================================================== */
+@media screen and (min-width: 20em), print {
+  /**
+    * Include an empty row in the grid that the decorator will overlap.
+    * This added row prevents the decorator from becoming fragmented
+    * in a  multi-column display.
+    */
+  .article .conclusion .call-to-action::after {
+    content: "";
+
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+  }
+}
+
+
+/*  Article Conclusion - Call to Action - Content
+    ========================================================================== */
+.article .conclusion .call-to-action__content {
+  position: relative;
+
+  margin: 0;
+  padding: var(--conclusion-call-to-action-padding);
+  border-radius: var( --conclusion-call-to-action-padding) 0 0 var( --conclusion-call-to-action-padding);
+  border-left: var(--conclusion-call-to-action-border-size) solid hsl(var(--conclusion-call-to-action-decorator-color));
+  
+
+  background: hsl(var(--conclusion-call-to-action-background-color));
+  
+  font-style: italic;
+  line-height: 1.6em;
+  color: hsl(var(--body-text-color));
+}
+
+@media screen and (min-width: 20em), print {
+  .article .conclusion .call-to-action__content {
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+
+    padding-right: var(--conclusion-call-to-action-decorator-column-width);
+
+    /**
+      * Maintain proximity to decorator if the conclusion container is wider
+      * than the width of the text.
+      */
+    text-align: right;  
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Article Authors
+    ========================================================================== */
+.article .authors {
+  --author-avatar-width: min(4em, 50vw);
+  --author-avatar-height: min(4em, 50vw);
+
+  margin: 0;
+  padding: 0;
+}
+
+
+/*  Article Authors - Heading
+    ========================================================================== */
+@media screen {
+  .article .authors__heading {
+    font-size: 1em;
+  }
+}
+
+
+/*  Article Authors - Authors List
+    ========================================================================== */
+.article .authors .list-authors {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(calc(var(--author-avatar-width) * 5), 100%), 1fr));
+  justify-content: start;
+  row-gap: calc(var(--base-size) * 2);
+  column-gap: var(--base-size);
+
+  list-style-type: none;
+  padding-inline-start: 0;
+
+  margin: 0;
+  margin-top: var(--base-size);
+}
+
+
+/*  Article Authors - Authors List - Contributor
+    ========================================================================== */
+.article .authors .list-authors .contributor {
+  --contributor-avatar-width: var(--author-avatar-width);
+  --contributor-avatar-height: var(--author-avatar-height);
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Article History
+    ========================================================================== */
+@media screen {
+  .article .history {
+    font-size: .8em;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 4em;
+    row-gap: .5em;
+  }
+}
+
+
+/*  Article History - children
+    ========================================================================== */
+@media screen {
+  .article .history > * {
+    min-width: 0; /* allow for overflow-wrap: break-word for flex items*/
+  }
+}
+
+
+/*  Article History - Heading
+    ========================================================================== */
+@media screen {
+  .article .history__heading {
+    display: none;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Article Preview
+    ========================================================================== */
+.article-preview {
+  --article-preview-topic-offset: 2px;
+  --article-preview-thumbnail-transition-timing-fcn-hover: var(--transition-timing-fcn-ease-out-02);
+  --article-preview-thumbnail-transition-timing-fcn-out: var(--transition-timing-fcn-ease-out-01);
+  --article-preview-thumbnail-transition-duration: 800ms;
+  --article-preview-thumbnail-transition-out-divisor: 1;
+
+  break-inside: avoid;
+}
+
+@media screen {
+  .article-preview {
+    --article-preview-topic-offset: var(--drop-shadow-box-height);
+  }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .article-preview {
+    --article-preview-thumbnail-transition-out-divisor: 2;
+  }
+}
+
+
+
+/*  Article Preview - Thumbnail
+    ========================================================================== */
+.article-preview__thumbnail {
+  position: relative;
+
+  aspect-ratio: 5 / 3;
+}
+
+@media screen {
+  .article-preview__thumbnail {
+    border-radius: var(--base-size); 
+    border-bottom-right-radius: 0; 
+    
+    overflow: hidden; /* hide thumbnail image corners */
+
+    box-shadow: var(--drop-shadow-box);
+  }
+}
+
+
+/*  Article Preview - Thumbnail - Overlay
+    ========================================================================== */
+@media screen {
+  .article-preview__thumbnail::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    /* Using rem to maintain consistent size that is not based on the container font size. */
+    box-shadow:  
+      inset hsl(var(--shadow-color) / .75) 0px min(1.875rem, 6vw) min(3.75rem, 15vw) max(-.75rem, -3vw),  
+      inset hsl(var(--shadow-color)) 0px min(1.125rem, 4.5vw) min(2.25rem, 8.5vw) max(-1.125rem, -4.5vw);
+    
+    pointer-events: none;
+
+     /* Hover out */
+    opacity: 1;
+    transition: opacity calc(var(--article-preview-thumbnail-transition-duration) / var(--article-preview-thumbnail-transition-out-divisor)) var(--article-preview-thumbnail-transition-timing-fcn-out);
+  }
+}
+
+
+/*  Article Preview (hovered or has active/focused anchor) - 
+    Thumbnail - Overlay
+    ========================================================================== */
+@media screen {
+  .article-preview:hover .article-preview__thumbnail::before,
+  .article-preview:has(a:active) .article-preview__thumbnail::before,
+  .article-preview:has(a:focus) .article-preview__thumbnail::before {
+    opacity: 0;
+    transition: opacity var(--article-preview-thumbnail-transition-duration) var(--article-preview-thumbnail-transition-timing-fcn-hover);
+  }
+}
+
+
+/*  Article Preview - Thumbnail - Image
+    ========================================================================== */
+.article-preview__thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen {
+  .article-preview__thumbnail img {
+    /* Hover out */
+    transition: transform calc(var(--article-preview-thumbnail-transition-duration) / var(--article-preview-thumbnail-transition-out-divisor)) var(--article-preview-thumbnail-transition-timing-fcn-out);
+  }
+}
+
+
+/*  Article Preview (hovered or has active/focused anchor) - Thumbnail - Image
+    ========================================================================== */
+@media screen {
+  .article-preview:hover .article-preview__thumbnail img,
+  .article-preview:has(a:active) .article-preview__thumbnail img,
+  .article-preview:has(a:focus) .article-preview__thumbnail img {
+    transform: scale(125%) translate(5%, -10%);
+    transition: transform var(--article-preview-thumbnail-transition-duration) var(--article-preview-thumbnail-transition-timing-fcn-hover);
+  }
+}
+
+
+/*  Article Preview - Details
+    ========================================================================== */
+.article-preview__details {
+  position: relative;
+}
+
+
+/*  Article Preview - Details - Topic
+    ========================================================================== */
+.article-preview__details__topic {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% - var(--article-preview-topic-offset));
+  z-index: 1;
+
+  font-size: 8vmin;
+  font-weight: 200;
+  text-transform: uppercase;
+  text-align: right;
+
+  background-color: hsl(var(--body-background-color));
+
+  max-width: 70%;
+  max-height: 2.25em;
+  overflow: hidden;
+
+  padding: 0 .25em;
+}
+
+@media screen {
+  .article-preview__details__topic {
+    --article-preview-topic-offset: var(--drop-shadow-box-height);
+    
+    color: hsl(var(--color-tertiary-medium-contrast));
+  }
+}
+
+
+/*  Article Preview - Details - Link
+    ========================================================================== */
+.article-preview__details__link {
+  position: relative;
+  z-index: 2;
+
+  font-size: 1.2em;
+  text-align: right;
+
+  padding-top: var(--article-preview-topic-offset);
+  margin-left: 10%;
+}
+
+
+/*  Article Preview - Details - Link - Anchor
+    ========================================================================== */
+.article-preview__details__link a {
+  /**
+    * Change display of inline anchors to a display that can be
+    * sized to allow sizing for minimum touch target size.
+    */
+  display: block;
+}
+
+.article-preview__details__link a:link,
+.article-preview__details__link a:visited,
+.article-preview__details__link a:hover,
+.article-preview__details__link a:active,
+.article-preview__details__link a:focus {
+  color: currentColor;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Additional Articles
+    ========================================================================== */
+.article #articles-additional {
+  --article-thumbnail-width: min(25em, 75vw);
+
+  margin-top: calc(var(--base-size) * 4);
+}
+
+@media print {
+  .article #articles-additional {
+    --article-thumbnail-width: 8cm;
+
+    display: none;
+  }
+}
+
+
+/*  Additional Articles - List
+    ========================================================================== */
+.article .articles-additional__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--article-thumbnail-width), 100%), 1fr));
+  gap: calc(var(--base-size) * 4);
+
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+
+/*  Additional Articles - List - Article Preview - Details Topic
+    ========================================================================== */
+.article .articles-additional__list .article-preview__details__topic {
+  font-size: calc(var(--article-thumbnail-width) / 10);
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Article Data Visualization
+    ========================================================================== */
+@media screen {
+  .article .data-visualization {
+    background: hsl(var(--body-background-color) / .85);
+
+    padding: calc(var(--main-section-padding-size) / 2);
+    border-radius: calc(var(--main-section-padding-size) / 2);
+    
+    box-shadow: var(--drop-shadow-box);
+  }
+}
+
+
+/*  Article Data Visualization - Heading
+    ========================================================================== */
+.article .data-visualization__heading {
+  text-align: center;
+}
+
+
+/*  Article Data Visualization - Summary - Paragraph
+    ========================================================================== */
+.article .data-visualization_summary p {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/*  ==========================================================================
+    Component - Data Visualization Data Canvas
+    ========================================================================== */
+.data-visualization_data-canvas {
+  position: relative;
+}
+
+
+/*  Data Visualization Data Canvas - Interaction Instructions
+    ========================================================================== */
+@media screen {
+  .data-visualization_data-canvas .interaction-instructions {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 19.98em), screen and (max-height: 39.98em), print {  
+  .data-visualization_data-canvas .interaction-instructions {
+    display: none;
+  }
+}
+
+
+/*  Data Visualization Data Canvas - Interaction Instructions - 
+    Paragraphs
+    ========================================================================== */
+.data-visualization_data-canvas p:first-of-type {
+  margin-top: 0;
+}
+
+.data-visualization_data-canvas p:last-of-type {
+  margin-bottom: 0;
+}
+
+
+/*  Data Visualization Data Canvas - Visualization Object Operations
+    ========================================================================== */
+@media screen {
+  .data-visualization_data-canvas .visualization-obj-operations {
+    margin: 0;
+    padding: calc(var(--main-section-padding-size) / 8) 0 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 19.98em), screen and (max-height: 39.98em), print {  
+  .data-visualization_data-canvas .visualization-obj-operations {
+    display: none;
+  }
+}
+
+
+/*  Data Visualization Data Canvas - Visualization Object Operations -
+    Buttons
+    ========================================================================== */
+.data-visualization_data-canvas .visualization-obj-operations button {
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  color: inherit;
+  font-family: inherit;
+  font-size: .8em;
+  font-weight: 600;
+  text-align: center; 
+  text-transform: none;
+  text-decoration: underline;
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Sortable Table
+    ========================================================================== */
+table.sortable {
+  --sorter-trigger-color: hsl(var(--body-background-color));
+  --sorter-trigger-background-color: hsl(var(--body-text-color));
+  --sorter-trigger-direction-indicator-size: 1ch;
+  --sorter-trigger-direction-indicator-vertical-padding: calc(var(--sorter-trigger-direction-indicator-size) / 2);
+  --sorter-trigger-direction-indicator-horizontal-padding: var(--sorter-trigger-direction-indicator-size);
+
+  opacity: 0.0001;  /* Hack: Firefox inconsistent when animating from 0 opacity. */
+  transition: opacity 500ms ease-in-out;
+}
+
+@media print {
+  table.sortable {
+    --sorter-trigger-color: hsl(var(--body-text-color));
+    --sorter-trigger-background-color: transparent;
+    --sorter-trigger-direction-indicator-size: 1em;
+  }
+}
+
+
+/*  Sortable Table loaded
+    ========================================================================== */
+table.sortable.loaded {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+
+/*  Sortable Table - Table Body is modified
+    ========================================================================== */
+table.sortable tbody.is-modified {
+  animation: sortable-tbody-fade-in 600ms ease-in forwards, sortable-tbody-blur-in 100ms ease-in forwards;
+}
+
+
+/*  Sortable Table - Table Body - Fade in animation
+    ========================================================================== */
+@keyframes sortable-tbody-fade-in {
+  0% {
+    opacity: .25;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/*  Sortable Table - Table Body - Blur in animation
+    ========================================================================== */
+@keyframes sortable-tbody-blur-in {
+  0% {
+    filter: blur(1px);
+  }
+  100% {
+    filter: blur(0);
+  }
+}
+
+
+/*  Sortable Table - Table Body - Highlighted header and data cells
+    ========================================================================== */
+@media screen and (min-width: 20em) and (min-height: 40em), print {
+  table.sortable tbody th.highlight,
+  table.sortable tbody td.highlight {
+    background-color: hsl(var(--color-highlight)) !important;
+  }
+}
+
+
+/*  Sortable Table - Sorter Component - Interaction trigger button
+    ========================================================================== */
+table.sortable button.sorter_trigger {
+  background: transparent;
+  border: none;
+  width: 100%;
+
+  outline: none;
+  cursor: pointer;
+
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: inherit; 
+  text-transform: inherit;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(var(--sorter-trigger-direction-indicator-size) + var(--sorter-trigger-direction-indicator-horizontal-padding));
+  column-gap: calc(var(--sorter-trigger-direction-indicator-horizontal-padding) / 2);
+  align-items: center;
+  padding: 0 .5em;
+  min-height: max(var(--touch-target-min-size), calc(var(--sorter-trigger-direction-indicator-size) + (var(--sorter-trigger-direction-indicator-vertical-padding) * 4)));
+}
+
+@media print {
+  table.sortable button.sorter_trigger {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+
+/*  Sortable Table - Sorter Component - Interaction trigger button - 
+    Sort direction indicator
+    ========================================================================== */
+table.sortable .sorter_trigger_direction-indicator::after {
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 0;
+  color: var(--sorter-trigger-color);
+  background-color: var(--sorter-trigger-background-color);
+  border-radius: 50%;
+  padding: var(--sorter-trigger-direction-indicator-vertical-padding) var(--sorter-trigger-direction-indicator-horizontal-padding);
+  font-size: var(--sorter-trigger-direction-indicator-size);
+}
+
+
+/*  Sortable Table - Sorter Component - Interaction trigger button - 
+    Sort direction indicator - Descending direction and unsorted
+    ========================================================================== */
+table.sortable .sorter[aria-sort="descending"] .sorter_trigger_direction-indicator::after, 
+table.sortable .sorter:not([aria-sort]):hover .sorter_trigger_direction-indicator::after,
+table.sortable .sorter:not([aria-sort]) .sorter_trigger:hover .sorter_trigger_direction-indicator::after,
+table.sortable .sorter:not([aria-sort]) .sorter_trigger:active .sorter_trigger_direction-indicator::after,
+table.sortable .sorter:not([aria-sort]) .sorter_trigger:focus .sorter_trigger_direction-indicator::after,
+table.sortable .sorter:not([aria-sort]) .sorter_trigger:focus-within .sorter_trigger_direction-indicator::after {
+  content: "▼";
+}
+
+
+/*  Sortable Table - Sorter Component - Interaction trigger button - 
+    Sort direction indicator - Ascending direction
+    ========================================================================== */
+table.sortable .sorter[aria-sort="ascending"] .sorter_trigger_direction-indicator::after {
+  content: "▲";
+}
+
+
+/*  Sortable Table (unsorted) - Sibling container - Clear sort container -
+    button
+    ========================================================================== */
+table.sortable ~ * .clear-sort button {
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 300ms ease-out, visibility 300ms ease-out;
+}
+
+
+/*  Sortable Table (sorted) - Sibling container - Clear sort container -
+    button
+    ========================================================================== */
+table.sortable.sorted ~ * .clear-sort button {
+  opacity: 1;
+  visibility: visible;
+
+  transition: opacity 500ms ease-in, visibility 500ms ease-in;
+}
+
+
+/*  Sortable Table - Sibling container - Loader
+    ========================================================================== */
+table.sortable ~ .sortable-loader {
+  --loader-size: min(4rem, 20vw);
+  --loader-line-size: min(.5rem, 2.5vw);
+
+  position: absolute;
+  top: 0;
+  left: calc(50% - (var(--loader-size) / 2));
+
+  width: var(--loader-size);
+  padding: var(--loader-line-size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: hsl(var(--color-primary-highest-contrast));
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+
+
+/*  Sortable Table - Loader Animation
+    ========================================================================== */
+@keyframes l3 {to{transform: rotate(1turn)}}
+
+
+
+
+/*  ==========================================================================
+    Component - Comparison Matrix
+    ========================================================================== */
+
+/**
+  * NB: Implement desktop/large screen first table design since the default 
+  * HTML table structure was not designed for small screens.  Media queries are
+  * used for re-structuring table elements for small screens.
+  */
+
+.matrix.comparison {
+  --matrix-header-background-color: var(--color-primary-low-contrast);
+  --matrix-header-color: var(--body-text-color);
+  
+  --matrix-data-color-none: var(--body-background-color);
+  --matrix-data-color-dark: var(--color-primary-medium-contrast);
+  --matrix-data-color-light: var(--color-primary-lowest-contrast);
+  --matrix-data-border-size: min(.0625em, .5vw);
+  --matrix-data-border-color: hsl(var(--color-tertiary-low-contrast));
+  --matrix-data-border: var(--matrix-data-border-size) solid var(--matrix-data-border-color);
+
+  --matrix-row-spacing: var(--base-size);
+  --matrix-row-padding: calc(var(--base-size) / 2);
+  --matrix-row-border-size: min(.0625em, .5vw);
+  --matrix-row-border-color: var(--color-primary-high-contrast);
+  --matrix-row-border: var(--matrix-row-border-size) solid hsl(var(--matrix-row-border-color) / .5);
+  --matrix-row-border-radius: var(--matrix-row-padding);
+
+  --data-item-icon-size: min(10em, 8svh);
+  --data-item-icon-padding: min(1em, 1vh);
+  --data-item-icon-spacing-multiple: 3;
+
+  /* Display table with fixed width cells to allow for overflow wrap to break words. */
+  table-layout: fixed;
+
+  /* Make table spread to fill its container's width. */
+  width: 100%;
+  
+  /* Add spacing between each row. */
+  border-spacing: 0 var(--matrix-row-spacing);
+
+  /* Center all cell data. */
+  text-align: center;
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison {
+    --data-item-icon-size: min(5em, 15vw);
+    --matrix-row-border-radius: calc(var(--matrix-row-padding) * 2);
+
+    /* Remove the space that was added for item icons */
+    padding: 0;
+  }
+
+  /**
+    * Convert the display of the table and its
+    * elements from tabular display to block.
+    */
+  .matrix.comparison,
+  .matrix.comparison * {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media print {
+  .matrix.comparison {
+    --data-item-icon-size: 1.5cm;
+    --data-item-icon-padding: .125cm;
+  }
+}
+
+
+/*  Comparison Matrix containing comparison item icon
+    ========================================================================== */
+.matrix.comparison:has(.comparison-item .item-icon) {
+   /* Create a space to display each row's data item icon. */
+  padding-left: calc(var(--data-item-icon-size) / 2);
+
+  /* Spacing between each row based on icon height. */
+  border-spacing: 0 calc(var(--data-item-icon-padding) + (var(--data-item-icon-size) / var(--data-item-icon-spacing-multiple)));
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison:has(.comparison-item .item-icon) {
+    /* Rows are transformed into blocks, so remove the row spacing added for item icons. */
+    padding: 0;
+  }
+}
+
+
+/*  Comparison Matrix - Caption
+    ========================================================================== */
+.matrix.comparison caption {
+  display: none !important;
+}
+
+
+/*  Comparison Matrix - Table Head
+    ========================================================================== */
+/* --- very small screen --- */
+@media screen and (max-width: 19.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison thead {
+    /**
+      * For very narrow width or very short height screens, do not display the 
+      * head cells.
+      */
+    display: none;
+  }
+}
+
+
+/*  Comparison Matrix - Table Head - Row - Header - Header Cell
+    ========================================================================== */
+.matrix.comparison thead tr th {
+  font-size: .8em;
+  font-weight: 600;
+}
+
+
+/*  Comparison Matrix - Table Head -  Row - Header - Header Cell - Data
+    Description 
+    ========================================================================== */
+.matrix.comparison thead th .data-desc {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: auto;
+}
+
+
+/*  Comparison Matrix - Table Body 
+    ========================================================================== */
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  /**
+    * For narrow width or short height screens, display rows in a grid.
+    */
+  .matrix.comparison tbody {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(min(20em, 100%), 1fr));
+    gap: calc(var(--matrix-row-padding) * 8);
+  }
+}
+
+/* --- small screen, large enough for data manipulation --- */
+@media screen and (min-width: 20em) and (max-width: 63.98em) and (min-height: 40em) {
+  /**
+    * For small and medium width screens with medium minimum height, display 
+    * rows side-by-side(1) in a horizontal scroll container (2).  Push items to 
+    * be flush with the bottom of the container (3).
+    */
+  .matrix.comparison tbody {
+    display: flex; /* 1 */
+    flex-direction: row; /* 1 */
+    flex-wrap: nowrap; /* 1 */
+    align-items: end; /* 3 */
+    gap: 0; /* 1 */
+    overflow: auto; /* 2 */
+  }
+}
+
+
+/*  Comparison Matrix - Table Body - Row
+    ========================================================================== */
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison tbody tr {
+    border-radius: var(--matrix-row-border-radius);
+  }
+}
+
+/* --- small screen, large enough for data manipulation --- */
+@media screen and (min-width: 20em) and (max-width: 63.98em) and (min-height: 40em) {
+  .matrix.comparison tbody tr {
+    width: auto;
+  }
+}
+
+
+/*  Comparison Matrix - Table Body - Row - Cell
+    ========================================================================== */
+.matrix.comparison tbody tr > * {
+  height: calc(var(--data-item-icon-size) / (var(--data-item-icon-spacing-multiple) / 2));
+
+  padding: 0 var(--matrix-row-padding);
+
+  border-top: var(--matrix-row-border);
+  border-bottom: var(--matrix-row-border);
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison tbody tr > * {
+    height: auto;
+
+    border: none;
+    padding: var(--matrix-row-padding);
+
+    font-size: 1.1em;
+  }
+}
+
+/* --- small screen, large enough for data manipulation --- */
+@media screen and (min-width: 20em) and (max-width: 63.98em) and (min-height: 40em) {
+  .matrix.comparison tbody tr > * {
+    height: 4em;
+    width: 33vw;
+  }
+}
+
+
+/*  Comparison Matrix - Table Body - Row - Cell, not the first cell
+    ========================================================================== */
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+ .matrix.comparison tbody tr > *:not(:first-child) {
+    border-left: var(--matrix-data-border);
+    border-right: var(--matrix-data-border);
+  }
+}
+
+
+/*  Comparison Matrix - Table Body - Row - Cell, not the first cell or the
+    last cell
+    ========================================================================== */
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison tbody tr > *:not(:first-child):not(:last-child) {
+    border-bottom: var(--matrix-data-border);
+  }
+}
+
+
+/*  Comparison Matrix - Table Body - Row, not the first row - Cell, not the 
+    first cell
+    ========================================================================== */
+/* --- small screen, large enough for data manipulation --- */
+@media screen and (min-width: 20em) and (max-width: 63.98em) and (min-height: 40em) {
+  .matrix.comparison tbody tr:not(:first-of-type) > *:not(:first-child) {
+    border-left: none;
+  }
+}
+
+
+/*  Comparison Matrix - Table Body - Row - First Cell
+    ========================================================================== */
+.matrix.comparison tbody tr > *:first-child {
+  border-left: var(--matrix-row-border);
+  border-top-left-radius: var(--matrix-row-border-radius);
+  border-bottom-left-radius: var(--matrix-row-border-radius);
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison tbody tr > *:first-child {
+    border-left: 0;
+    border-radius: 0;
+    border-top-left-radius: var(--matrix-row-border-radius);
+    border-top-right-radius: var(--matrix-row-border-radius);
+  }
+}
+
+
+/*  Comparison Matrix - Table Body - Row - Last Cell
+    ========================================================================== */
+.matrix.comparison tbody tr > *:last-child {
+  border-right: var(--matrix-row-border);
+  border-top-right-radius: var(--matrix-row-border-radius);
+  border-bottom-right-radius: var(--matrix-row-border-radius);
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison tbody tr > *:last-child {
+    border-radius: 0;
+    border-right: var(--matrix-data-border);
+    border-bottom: calc(var(--matrix-row-border-radius) / 2) solid hsl(var(--matrix-header-background-color));
+    border-bottom-left-radius: var(--matrix-row-border-radius);
+    border-bottom-right-radius: var(--matrix-row-border-radius);
+  }
+}
+
+
+/*  Comparison Matrix - Table Body - Odd Row - Cell
+    ========================================================================== */
+.matrix.comparison tbody tr:nth-child(odd) > * {
+  background-color: hsl(var(--matrix-data-color-light));
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison tbody tr:nth-child(odd) > * {
+    background-color: hsl(var(--matrix-data-color-none));
+  }
+}
+
+
+/*  Comparison Matrix - Table Body - Even Row - Cell
+    ========================================================================== */
+.matrix.comparison tbody tr:nth-child(even) > * {
+  background-color: hsl(var(--matrix-data-color-dark));
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison tbody tr:nth-child(even) > * {
+    background-color: hsl(var(--matrix-data-color-none));
+  }
+}
+
+
+/*  Comparison Matrix - Table Body - Hovered Row - Cell
+    ========================================================================== */
+@media screen {
+  /* On hover out */
+  .matrix.comparison tbody tr > * {
+    transition: background-color 400ms ease-in, font-weight 200ms ease-in;
+  }
+
+  /* On hover */
+  .matrix.comparison tbody tr:hover > * {
+    background-color: hsl(var(--color-highlight));
+    font-weight: 600;
+
+    transition: background-color 200ms ease-in, font-weight 200ms ease-in;
+  }
+}
+
+
+/*  Comparison Matrix - Table Body - Row - Header Cell as first cell
+    ========================================================================== */
+/**
+  * NB: Using first-child pseudo class even though the header cell (th) is
+  * the first cell in the row.  Since pseudo classes were used in other 
+  * declarations that are applied to the header cell, more specificity is
+  * necessary for these rules.
+  */
+.matrix.comparison tbody tr th:first-child {
+  font-size: .8em;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison tbody tr th:first-child {
+    background-color: hsl(var(--matrix-header-background-color)) ;
+    color: hsl(var(--matrix-header-color)) ;
+    font-size: 1em;
+    font-weight: normal;
+    text-transform: capitalize;
+    text-align: center;
+  }
+}
+
+
+/*  Comparison Matrix - Comparison Item - Type
+    ========================================================================== */
+.matrix.comparison .comparison-item .type {
+  position: relative;
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison .comparison-item .type {
+    padding: 0;
+  }
+}
+
+
+/*  Comparison Matrix - Comparison Item - Type - Name
+    ========================================================================== */
+.matrix.comparison .comparison-item .type .item-name {
+  padding-left: calc(var(--data-item-icon-size) / 2);
+  display: block;
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison .comparison-item .type .item-name {
+    padding: .25em;
+    margin-top: calc(var(--data-item-icon-size) / 2);
+    padding-top: calc(var(--data-item-icon-size) / 2);
+  }
+}
+
+
+/*  Comparison Matrix - Comparison Item - Type - Icon
+    ========================================================================== */
+.matrix.comparison .comparison-item .type .item-icon {
+  width: var(--data-item-icon-size);
+  height: var(--data-item-icon-size);
+  padding: var(--data-item-icon-padding);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: calc(-1 * ((var(--data-item-icon-padding) + var(--data-item-icon-size)) / ((var(--data-item-icon-spacing-multiple) * 2))));
+  left: calc(-1 * (var(--data-item-icon-size) / 2));
+}
+
+@media screen {
+  .matrix.comparison .comparison-item .type .item-icon {
+    background-color: hsl(var(--body-background-color));
+    box-shadow: 
+      hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .15)) min(.128em, 1vw) min(.128em, 1vw) min(.1625em, 1.3vw), 
+      inset hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .15)) min(.128em, 1vw) min(.128em, 1vw) min(.1625em, 1.3vw);
+  }
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison .comparison-item .type .item-icon {
+    top: calc(-1 * (var(--data-item-icon-size) / 2));
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+
+/*  Comparison Matrix - Comparison Item - Type - Icon - Image
+    ========================================================================== */
+.matrix.comparison .comparison-item .type .item-icon img {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/*  Comparison Matrix - Comparison Item - Data - Value
+    ========================================================================== */
+.matrix.comparison .comparison-item td .data-value {
+  /* Prevent large amounts from distorting the table size. */
+  display: block;
+  max-height: 1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/*  Comparison Matrix - Comparison Item - Data - Description
+  ========================================================================== */
+.matrix.comparison .comparison-item td .data-desc {
+  display: none;
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison .comparison-item td .data-desc,
+  .matrix.comparison .comparison-item td .data-desc * {
+    display: block;
+    font-size: smaller;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Sortable Comparison Matrix
+    ========================================================================== */
+
+/*  Sortable Comparison Matrix not sort ready - Table Head
+    ========================================================================== */
+/* --- small screen, large enough for data manipulation --- */
+@media screen and (min-width: 20em) and (max-width: 63.98em) and (min-height: 40em) {
+  .matrix.comparison.sortable:not(.sort-ready) thead {
+    display: none;
+  }
+}
+
+/*  Sortable Comparison Matrix - Table Head - Row
+    ========================================================================== */
+/* --- small screen, large enough for data manipulation --- */
+@media screen and (min-width: 20em) and (max-width: 63.98em) and (min-height: 40em) {
+  .matrix.comparison.sortable thead tr {
+    /**
+      * For small and medium width screens with medium minimum height, display 
+      * header cells (containing sort buttons) in a grid.
+      */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--matrix-row-padding);
+    margin-bottom: calc(2 * var(--matrix-row-padding));
+  }
+}
+
+
+/*  Sortable Comparison Matrix - Table Head - Row - Header Cell - First button
+    ========================================================================== */
+.matrix.comparison.sortable thead tr th:first-of-type button {
+  /* Remove the sort functionality from the header column. */
+  display: none;
+}
+
+
+/*  Sortable Comparison Matrix - Sorter Component
+    ========================================================================== */
+@media screen {
+  .matrix.comparison.sortable .sorter {
+    position: relative;
+
+    padding: calc(var(--matrix-row-padding) / 2) 0;
+    
+    background-color: hsl(var(--body-background-color));
+    box-shadow: 
+      hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .12)) 0px .0625em .1875em, 
+      hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .24)) 0px .0625em .125em, 
+      hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .25)) .375em .375em .5em 0;
+  }
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison.sortable .sorter {
+    display: flex;
+    justify-content: center;
+    box-shadow: 
+      hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .12)) 0px .0625em .1875em, 
+      hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .24)) 0px .0625em .125em;
+
+    border-radius: var(--matrix-row-border-radius) !important;
+  }
+}
+
+
+/*  Sortable Comparison Matrix - First Sorter Component 
+    ========================================================================== */
+@media screen {
+  /**
+    * Sort functionality removed from first column, so first sorter component 
+    * is in the second column.
+    */
+  .matrix.comparison.sortable .sorter:nth-child(2) {
+    border-top-left-radius: var(--matrix-row-border-radius);
+    border-bottom-left-radius: var(--matrix-row-border-radius);
+  }
+}
+
+
+/*  Sortable Comparison Matrix - Last Sorter Component 
+    ========================================================================== */
+@media screen {
+  .matrix.comparison.sortable .sorter:last-child {
+    border-top-right-radius: var(--matrix-row-border-radius);
+    border-bottom-right-radius: var(--matrix-row-border-radius);
+  }
+}
+
+
+/*  Sortable Comparison Matrix - Focused Sorter Component 
+    ========================================================================== */
+@media screen {
+  .matrix.comparison.sortable .sorter:hover,
+  .matrix.comparison.sortable .sorter:focus-within {
+    box-shadow: 
+      inset hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .1)) .125em 0px .3125em 0px, 
+      inset hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .1)) .1875em .375em .3125em 0px;
+  }
+
+  .matrix.comparison.sortable .sorter:last-of-type:hover,
+  .matrix.comparison.sortable .sorter:last-of-type:focus-within {
+    box-shadow: 
+      inset hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .1)) -.125em 0px .3125em 0px, 
+      inset hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .1)) -.1875em .375em .3125em 0px;
+  }
+}
+
+/* --- small screen --- */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  .matrix.comparison.sortable .sorter:last-of-type:hover,
+  .matrix.comparison.sortable .sorter:last-of-type:focus-within {
+    box-shadow: 
+    inset hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .1)) .125em 0px .3125em 0px, 
+    inset hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .1)) .1875em .375em .3125em 0px;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Data Visualization Data Canvas with Sortable Comparison Matrix
+    ========================================================================== */
+.data-visualization_data-canvas {
+  --comparison-matrix-transition-duration: 500ms;
+  --comparison-matrix-transition-easing: ease-in-out;
+}
+
+
+/*  Data Visualization Data Canvas with Sortable Comparison Matrix - 
+    interaction elements
+    ========================================================================== */
+.data-visualization_data-canvas:has(.matrix.comparison.sortable) .interaction-instructions,
+.data-visualization_data-canvas:has(.matrix.comparison.sortable) .visualization-obj-operations {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 
+    calc(var(--comparison-matrix-transition-duration) * 2) 
+    var(--comparison-matrix-transition-easing) 
+    var(--comparison-matrix-transition-duration);
+}
+
+
+/*  Data Visualization Data Canvas with Sortable Comparison Matrix ready for 
+    sorting - interaction elements
+    ========================================================================== */
+.data-visualization_data-canvas:has(.matrix.comparison.sortable.sort-ready) .interaction-instructions,
+.data-visualization_data-canvas:has(.matrix.comparison.sortable.sort-ready) .visualization-obj-operations {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/*  Data Visualization Data Canvas - Sortable Comparison Matrix
+    ========================================================================== */
+.data-visualization_data-canvas .matrix.comparison.sortable {
+  transition: 
+    opacity 
+    var(--comparison-matrix-transition-duration) 
+    var(--comparison-matrix-transition-easing);
+}
+
+
+
+
+/*  ==========================================================================
+    Layout - Article Header Main
+    ========================================================================== */
+.article #header-main {
+  padding: var(--page-margin-size) var(--page-margin-size) 0 var(--page-margin-size);
+  
+  /* Place on top of main h1 element that has reduced line-height. */
+  position: relative;
+  z-index: 1;  
+}
+
+@media print {
+  .article #header-main {
+    padding: 0;
+  }
+}
+
+
+/*  Article Header Main - Branding - Logo
+    ========================================================================== */
+.article #header-main .branding .logo {
+  width: min(12rem, 40vw);
+  height: min(2rem, 7vw);
+}
+
+@media screen {
+  .article #header-main .branding .logo {
+    color: hsl(var(--color-article-header-main-text));
+
+    -webkit-filter: drop-shadow(var(--drop-shadow-filter-text));
+    -moz-filter: drop-shadow(var(--drop-shadow-filter-text));
+    -ms-filter: drop-shadow(var(--drop-shadow-filter-text));
+    filter: drop-shadow(var(--drop-shadow-filter-text));
+  }
+}
+
+@media print {
+  .article #header-main .branding .logo {
+    width: 3cm;
+    height: .5cm;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Layout - Footer Main
+    ========================================================================== */
+#footer-main {
+  --footer-padding-size: calc(var(--base-size) * 4);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "branding"
+    "anchor-groups"
+    "copyright";
+  gap: var(--footer-padding-size);
+}
+
+@media screen {
+  #footer-main {
+    background-color: hsl(var(--color-secondary-lowest-contrast) / .75);
+    
+    margin-top: var(--footer-padding-size);
+    padding: var(--footer-padding-size);
+    padding-bottom: calc(var(--footer-padding-size) / 2);
+
+    border-top-left-radius: var(--footer-padding-size);
+    border-top-right-radius: var(--footer-padding-size);
+  }
+}
+
+@media screen and (min-width: 64em) {
+  #footer-main {
+    grid-template-columns: 25% 1fr;
+    grid-template-areas:
+      "branding anchor-groups"
+      "copyright copyright";
+  }
+}
+
+
+/*  Footer Main - Descendants
+    ========================================================================== */
+#footer-main * {
+  text-align: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 64em) {
+  #footer-main * {
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+
+
+/*  Footer Main - Anchors
+    ========================================================================== */
+#footer-main a:link,
+#footer-main a:visited,
+#footer-main a:hover,
+#footer-main a:active,
+#footer-main a:focus {
+  color: currentColor;
+  font-weight: normal;
+  text-decoration: none;
+  padding: 0;
+}
+
+
+/*  Footer Main - Branding
+    ========================================================================== */
+#footer-main .branding {
+  grid-area: branding;
+}
+
+@media print {
+  #footer-main .branding {
+    display: none;
+  }
+}
+
+
+/*  Footer Main - Branding - Logo
+    ========================================================================== */
+#footer-main .branding .logo {
+  width: min(12rem, 50vw);
+}
+
+@media screen {
+  #footer-main .branding .logo {
+    -webkit-filter: drop-shadow(var(--drop-shadow-filter-text));
+    -moz-filter: drop-shadow(var(--drop-shadow-filter-text));
+    -ms-filter: drop-shadow(var(--drop-shadow-filter-text));
+    filter: drop-shadow(var(--drop-shadow-filter-text));
+  }
+}
+
+
+/*  Footer Main - Anchor Groups
+    ========================================================================== */
+#footer-main .anchor-groups {
+  grid-area: anchor-groups;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(15em, 100%), 1fr));
+  column-gap: calc(var(--footer-padding-size) / 2);
+  row-gap: var(--footer-padding-size);
+}
+
+@media print {
+  #footer-main .anchor-groups {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1em;
+  }
+
+  #footer-main .anchor-group:not(.social):not(.contact) {
+    display: none;
+  }
+}
+
+
+/*  Footer Main - Anchor Groups - Anchor Group - Title
+    ========================================================================== */
+#footer-main .anchor-group__title {
+  font-size: .8em;
+  font-weight: 600;
+  letter-spacing: 0;
+  margin: 0 0 calc(var(--base-size) / 2) 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+
+/*  Footer Main - Anchor Groups - Anchor Group - List
+    ========================================================================== */
+#footer-main .anchor-group__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/*  Footer Main - Anchor Groups - Social Media Anchor Group - List
+   ========================================================================== */
+@media screen {
+  #footer-main .anchor-group.social .anchor-group__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: calc(var(--icon-width) / 4);
+    column-gap: calc(var(--icon-width) / 2);
+  }
+}
+
+
+/*  Footer Main - Anchor Groups - Anchor Group - List - List Item
+    ========================================================================== */
+#footer-main .anchor-group__list li {
+  margin: 0 0 calc(var(--base-size) / 4) 0;
+  padding: 0;
+}
+
+
+/*  Footer Main - Anchor Groups - Anchor Group - List - List Item - Anchor
+    ========================================================================== */
+@media screen {
+  #footer-main .anchor-group__list li a {
+    /* Allow for minimum touch target size. */
+    display: inline-grid;
+    grid-auto-columns: minmax(0, 1fr);  
+  }
+}
+
+
+/*  Footer Main - Anchor Groups - Social Media Anchor Group - List - 
+    List Item - Communication Medium - Label
+    ========================================================================== */
+#footer-main .anchor-group.social .anchor-group__list .communication-medium .label {
+  display: none;
+}
+
+
+/*  Footer Main - Copyright
+    ========================================================================== */
+#footer-main .copyright {
+  grid-area: copyright;
+
+  text-align: center;
+}
+
+
+/*  Footer Main - Copyright - Anchors
+    ========================================================================== */
+@media print {
+  /* OVERRIDE - Do not display href values after anchor text */
+  #footer-main .copyright a::after {
+    content: "";
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Layout - Article Main Content
+    ========================================================================== */
+.article main {
+   --main-section-padding-size: calc(var(--base-size) * 4);
+}
+
+@media screen {
+  .article main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: min-content;
+    row-gap: calc(var(--base-size) * 3);
+    column-gap: calc(var(--base-size) * 6);
+    
+    margin: var(--page-margin-size);
+    margin-top: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 80em) and (max-width: 119.98em) {
+  /* Grid display for medium/large screens */
+  .article main {
+    grid-template-columns: minmax(55%, auto) minmax(35%, auto);
+  }
+
+  /* All but first 3 grid items */
+  .article main > *:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)){
+    grid-column: 1 / -1;
+  }
+
+  /* Third grid item */
+  .article main > *:nth-child(3) {
+    margin: auto 0;
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+  }
+}
+
+@media screen and (min-width: 120em) and (min-height: 58em) {
+  /* Grid display for x-large screens */
+  .article main {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: min-content min-content 1fr;
+  }
+
+  /* All but first 4 grid items */
+  .article main > *:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)) {
+    grid-column: 1 / -1;
+  }
+
+  /* First grid item */
+  .article main > *:nth-child(1) {
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+  }
+
+  /* Second grid item */
+  .article main > *:nth-child(2) {
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+  }
+
+  /* Third grid item */
+  .article main > *:nth-child(3) {
+    margin: 0 0  auto 0;
+    grid-row: 3 / 4;
+    grid-column: 1 / 3;
+  }
+
+  /* Fourth grid item */
+  .article main > *:nth-child(4) {
+    grid-row: 1 / 4;
+    grid-column: 3 / -1;
+    align-self: start;
+  }
+}
+
+@media print {
+  .article main {
+    margin: 0;
+  }
+}
+
+
+/*  Article Main - Page Title - Sibling Navigation Breadcrumb
+    ========================================================================== */
+@media screen {
+  .article main h1 + .nav-breadcrumb {
+    color: hsl(var(--color-article-header-main-text));
+    background-color: hsl(var(--color-article-header-main-background) / .5);
+
+    margin: 0 0 auto 0;
+    padding: calc(var(--base-size) / 2) var(--base-size);
+  }
+}
+
+
+/*  Article Main - Page Title - Sibling Navigation Breadcrumb - List Item - 
+    Anchor
+    ========================================================================== */
+@media screen {
+  .article main h1 + .nav-breadcrumb .nav-breadcrumb__list__item a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      filter: drop-shadow(var(--drop-shadow-filter-text));
+    }
+  }
+}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="N.A. Wedderburn Web Developer Sample - Magazine Layout with Interactive Data"/>
+		<title>Magazine Layout with Interactive Data - N.A. Wedderburn: Web Developer</title>
+		<link rel="icon" type="image/x-icon" href="/assets/images/logos/nawedderburn_logo_favicon.ico">
+<link rel="stylesheet" href="/css/main.css">
+		<script type="module" src="/assets/scripts/index.js"></script>
+		<noscript><link rel="stylesheet" href="/css/noscript.css"></noscript>
+	</head>
+	
+	<body id="page-sample">
+		<div id="app-container">
+			<header id="header-main">
+				<div class="branding">
+					<div class="logo"><a aria-label="N.A. Wedderburn Web Developer Website" href="/index.html"><img alt="N.A. Wedderburn Web Developer Logo" src="/assets/images/logos/nawedderburn_logo_primary.svg"/></a></div>
+				</div>
+				<nav class="nav-main">
+					<ul>
+						<li><a href="/index.html">Home</a></li>
+						<li><a href="/samples">Samples</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			
+			<main class="navigable" data-loading-message="Loading Magazine Layout with Interactive Data...">
+				<h1>Magazine Layout with Interactive Data</h1>
+				<section id="short-description" class="toc-ignore">
+					<div class="short-description__preview">
+						<img src="/assets/images/raster/large/article-cosmetic-plants-preview.png" 
+							srcset="/assets/images/raster/small/article-cosmetic-plants-preview.webp 360w, /assets/images/raster/medium/article-cosmetic-plants-preview.webp 580w, /assets/images/raster/large/article-cosmetic-plants-preview.webp 920w, /assets/images/raster/xlarge/article-cosmetic-plants-preview.webp 1920w"
+							sizes="(min-width: 48rem) 40vw, 80vw"
+							alt="Screenshot: Benefits of Cosmetic Plants Article" title="Screenshot: Benefits of Cosmetic Plants Article">
+					</div>
+					<div class="short-description__details">
+						Adaptation of a print magazine article implemented as a web page with a responsive grid layout and sortable tabular data visualization.  The article compares plants used in cosmetics production for fictional company &ldquo;Virna &amp; Nuris&rdquo;.  Assets include a functioning version of the article, CSS stylesheet, JavaScript module, and detailed implementation document.
+					</div>
+				</section>
+				
+				<section id="full-description">
+					<h2><span class="heading-text">Description</span><a href="#full-description" title="Permalink: Description" aria-label="Permalink: Description" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<div class="full-description__type">Web Design/Development</div>
+						<h3>Component Focused Implementation</h3>
+						<p>My approach was to design an article template for a real-world ecommerce application.  My focus was to divide the page into reusable components that could also be overridden and extended.</p>
+
+						<h3>Interactive &amp; Responsive Data Table</h3>
+						<p>A data canvas was designed to be a module within the larger article framework.  The data canvas includes a data visualization, interaction instructions, and interactive elements.</p>
+						<p>For this article example, sort buttons are inserted into a standard table to create a table with sortable columns.  A loader is displayed while the table is being converted into a sortable table.  If conversion is not possible or an error occurs, the unmodified table is displayed and the elements indicating the table is interactive are hidden.</p>
+						<p>For large screens and print, the table is shown in a standard tabular format.  For small screens, the table is disassembled and the columns are converted into blocks.  Depending on viewport dimensions, the blocks are displayed in a horizontal scrolling container or as a grid.</p>
+
+						<h3>Element Sizes Informed by User Agent Font Size</h3>
+						<p>The article has a multi-column or single column layout based on the user's font size and the user agent dimensions.</p>
+						<p>Element sizes and media queries are based on the user's font size.  All containers are implemented to break words if necessary to prevent horizontal scroll.</p>
+						<p>Box properties are calculated using font size and viewport dimensions.  This ensures that dimensions do not become exaggerated due to large fonts on small screens.</p>
+
+						<h3>Generated Color Palette</h3>
+						<p>The HSL color palette consists of 2 branded colors and a gray neutral.  Each color has 5 contrast levels in relation to the background color:  highest, high, medium, low, and lowest.  The highest contrast color is used as a base to generate the remaining colors by gradually increasing the color lightness property.</p>
+
+						<h3>Color Reversal for Dark Mode</h3>
+						<p>All surfaces have light background colors and contrasting dark text. When user's preferred color scheme is dark, the colors are reversed such that the surfaces have dark background colors and the text is lighter in contrast.</p>
+
+						<h3>Responsive Graphical Features</h3>
+						<p>Raster images selected using pixel density and device pixel ratio.  Print display is optimized by removing extraneous elements and spacing, and shadows.</p>
+
+						<h3>Masking for Dynamic Graphics Color</h3>
+						<p>Image masking is used to make black logos and icons the same color as their container's text.</p>
+
+						<h3>Accessibility Features</h3>
+						<p>Touch targets are implemented with a minimum size.  Speed of animations is reduced based on user’s motion preference.   Sortable data visualizations use aria-sort attribute to announce ascending versus descending sort.</p>
+						<p>In the content, abbreviations that are often misread by screen readers are structured to include the full word as visually hidden and the abbreviation as aria hidden so the full word is read and the abbreviation is ignored.</p>
+					</div>
+				</section>
+				<section id="figures">
+					<h2><span class="heading-text">Figures</span><a href="#figures" title="Permalink: Figures" aria-label="Permalink: Figures" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<ul class="figures-list samples">
+							<li>
+								<figure>
+									<video controls muted poster="/assets/images/raster/large/article-cosmetic-plants-loader.png">
+										<source src="/assets/videos/CosmeticPlantsLoader.mp4" type="video/mp4" />
+										Video not supported. Download the <a href="/assets/videos/CosmeticPlantsLoader.mp4">MP4</a> video.
+									</video>
+									<img src="/assets/images/raster/large/article-cosmetic-plants-loader.png" 
+										srcset="/assets/images/raster/small/article-cosmetic-plants-loader.webp 360w, /assets/images/raster/medium/article-cosmetic-plants-loader.webp 580w, /assets/images/raster/large/article-cosmetic-plants-loader.webp 920w, /assets/images/raster/xlarge/article-cosmetic-plants-loader.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw" 
+										loading="lazy" alt="Table Loading Animation - Magazine Layout with Interactive Data" title="Table Loading Animation - Magazine Layout with Interactive Data">
+									<figcaption>
+										<div class="figure_figcaption_title">Sortable Table Loader</div>
+										<div class="figure_figcaption_copy">
+											<p>If JavaScript is enabled, a loader animation is created and displayed while the table is transformed into a Sortable Table.</p>
+										</div>
+									</figcaption>
+								</figure>  
+							</li>      
+							<li>
+								<figure>
+									<img src="/assets/images/raster/large/article-cosmetic-plants-layout.png" 
+										srcset="/assets/images/raster/small/article-cosmetic-plants-layout.webp 360w, /assets/images/raster/medium/article-cosmetic-plants-layout.webp 580w, /assets/images/raster/large/article-cosmetic-plants-layout.webp 920w, /assets/images/raster/xlarge/article-cosmetic-plants-layout.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw" 
+										loading="lazy" alt="Responsive Layout - Magazine Layout with Interactive Data" title="Responsive Layout - Magazine Layout with Interactive Data">
+									<figcaption>
+										<div class="figure_figcaption_title">Responsive Layout</div>
+										<div class="figure_figcaption_copy">
+											<p>Multi-column or single column layout based on the user's font size and the user agent dimensions.</p>
+										</div>
+									</figcaption>
+								</figure>  
+							</li>   
+							<li>    
+								<figure>
+									<img src="/assets/images/raster/large/article-cosmetic-plants-data-table.png" 
+										srcset="/assets/images/raster/small/article-cosmetic-plants-data-table.webp 360w, /assets/images/raster/medium/article-cosmetic-plants-data-table.webp 580w, /assets/images/raster/large/article-cosmetic-plants-data-table.webp 920w, /assets/images/raster/xlarge/article-cosmetic-plants-data-table.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw" 
+										loading="lazy" alt="Interactive Data Table - Magazine Layout with Interactive Data" title="Interactive Data Table - Magazine Layout with Interactive Data">
+									<figcaption>
+										<div class="figure_figcaption_title">Interactive Data Visualization</div>
+										<div class="figure_figcaption_copy">
+											<p>Sort buttons are inserted into a standard table to create a table with sortable columns.</p>
+											<p>For large screens, the table is shown in a standard tabular format.  For small screens, the table is disassembled and the columns are converted into blocks.  Depending on viewport dimensions, the blocks are displayed in a horizontal scrolling container or as a grid.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<img src="/assets/images/raster/large/article-cosmetic-plants-dark-mode.png" 
+										srcset="/assets/images/raster/small/article-cosmetic-plants-dark-mode.webp 360w, /assets/images/raster/medium/article-cosmetic-plants-dark-mode.webp 580w, /assets/images/raster/large/article-cosmetic-plants-dark-mode.webp 920w, /assets/images/raster/xlarge/article-cosmetic-plants-dark-mode.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw" 
+										loading="lazy" alt="Dark Mode - Magazine Layout with Interactive Data" title="Dark Mode - Magazine Layout with Interactive Data">
+									<figcaption>
+										<div class="figure_figcaption_title">Dark Mode</div>
+										<div class="figure_figcaption_copy">
+											<p>When user's preferred color scheme is dark, the color palette is reversed such that the surfaces have dark background colors and the text is lighter in contrast.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<img src="/assets/images/raster/large/article-cosmetic-plants-print.png" 
+										srcset="/assets/images/raster/small/article-cosmetic-plants-print.webp 360w, /assets/images/raster/medium/article-cosmetic-plants-print.webp 580w, /assets/images/raster/large/article-cosmetic-plants-print.webp 920w, /assets/images/raster/xlarge/article-cosmetic-plants-print.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw" 
+										loading="lazy" alt="Print Layout - Magazine Layout with Interactive Data" title="Print Layout - Magazine Layout with Interactive Data">
+									<figcaption>
+										<div class="figure_figcaption_title">Print Layout</div>
+										<div class="figure_figcaption_copy">
+											<p>Print display is optimized by removing extraneous elements and spacing, and shadows.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+						</ul>
+					</div>
+				</section>
+        <section id="tools">
+					<h2><span class="heading-text">Tools</span><a href="#tools" title="Permalink: Tools" aria-label="Permalink: Tools" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<ul>
+							<li>HTML</li>
+							<li>CSS</li>
+							<li>JavaScript</li>
+							<li>VS Code</li>
+							<li>MS Word</li>
+						</ul>
+					</div>
+				</section>
+				<section id="artifacts">
+					<h2><span class="heading-text">Artifacts</span><a href="#artifacts" title="Permalink: Artifacts" aria-label="Permalink: Artifacts" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<table summary="Artifacts">
+							<caption>Auxiliary files</caption>
+							<thead class="matrix-header">
+								<tr>
+									<th scope="col" title="Type">Type</th>
+									<th scope="col" title="File">File</th>
+									<th scope="col" title="Description">Description</th>
+								</tr>
+							</thead>
+							<tbody class="matrix-data">
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">HTML</td>
+									<td class="sample-artifact__name"><a href="impl.html" target="_blank">&ldquo;Benefits of Cosmetic Plants&rdquo; Article</a></td>
+									<td class="sample-artifact__description">Live sample.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">CSS</td>
+									<td class="sample-artifact__name"><a href="styles.css" target="_blank">&ldquo;Benefits of Cosmetic Plants&rdquo; Article CSS</a></td>
+									<td class="sample-artifact__description">Live sample stylesheet.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">JS</td>
+									<td class="sample-artifact__name"><a href="sortable-table.js" target="_blank">SortableTable Module</a></td>
+									<td class="sample-artifact__description">Table sorting JavaScript module.  Based on <a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table" target="_blank">W3C Sortable Table Example</a>.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">PDF</td>
+									<td class="sample-artifact__name"><a href="Magazine Layout Interactive Data - Technical.pdf" target="_blank">Magazine Layout Interactive Data - Technical.pdf</a></td>
+									<td class="sample-artifact__description">Detailed implementation notes including component design and unsuccessful designs. Exported from Microsoft Word.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+				
+				<hr/>
+				<aside id="samples-additional">
+					<h2>More Samples</h2>
+					<table summary="This data table contains samples of my work with preview images, short descriptions, and hyperlinks to project URLs." class="matrix samples additional">
+						<caption>Work Samples</caption>
+						<thead class="matrix-header">
+							<tr>
+								<th scope="col" title="Preview Image">Preview</th>
+								<th scope="col" title="Type">Type</th>
+								<th scope="col" title="Title">Title</th>
+								<th scope="col" title="Description">Description</th>
+								<th scope="col" title="URL">URL</th>
+							</tr>
+						</thead>
+						<tbody class="matrix-data">
+							<tr class="sample-item">
+								<td class="sample-item__preview">
+									<img src="/assets/images/raster/large/landing-indulgent-hydration-preview.png"
+										srcset="/assets/images/raster/small/landing-indulgent-hydration-preview.webp 360w, /assets/images/raster/medium/landing-indulgent-hydration-preview.webp 580w, /assets/images/raster/large/landing-indulgent-hydration-preview.webp 920w, /assets/images/raster/xlarge/landing-indulgent-hydration-preview.webp 1920w"
+										sizes="(min-width: 48rem) 8rem, 50vw"
+										loading="lazy" alt="Screenshot: Landing Page Slideshow" title="Screenshot: Landing Page Slideshow">
+								</td>
+								<td class="sample-item__type">Web Design/Development</td>
+								<td class="sample-item__title">Landing Page Slideshow</td>
+								<td class="sample-item__description">Slideshow presentation implemented with responsive container queries.</td>
+								<td class="sample-item__url"><a href="/samples/landing-indulgent-hydration" aria-label="View Sample: Landing Page Slideshow">View Sample</a></td>
+							</tr>
+							<tr class="sample-item">
+								<td class="sample-item__preview">
+									<img src="/assets/images/raster/large/website-realtor-template-preview.png"
+										srcset="/assets/images/raster/small/website-realtor-template-preview.webp 360w, /assets/images/raster/medium/website-realtor-template-preview.webp 580w, /assets/images/raster/large/website-realtor-template-preview.webp 920w, /assets/images/raster/xlarge/website-realtor-template-preview.webp 1920w"
+										sizes="(min-width: 48rem) 8rem, 50vw" 
+										loading="lazy" alt="Screenshot: Brochure Realtor Website" title="Screenshot: Brochure Realtor Website">
+								</td>
+								<td class="sample-item__type">Web Design/Development</td>
+								<td class="sample-item__title">Brochure Realtor Website</td>
+								<td class="sample-item__description">Static brochure website template with pure CSS interactive elements.</td>
+								<td class="sample-item__url"><a href="/samples/website-realtor-template" aria-label="View Sample: Brochure Realtor Website">View Sample</a></td>
+							</tr>
+							<tr class="sample-item">
+								<td class="sample-item__preview">
+									<img src="/assets/images/raster/large/document-technical-reference-preview.png"
+										srcset="/assets/images/raster/small/document-technical-reference-preview.webp 360w, /assets/images/raster/medium/document-technical-reference-preview.webp 580w, /assets/images/raster/large/document-technical-reference-preview.webp 920w, /assets/images/raster/xlarge/document-technical-reference-preview.webp 1920w"
+										sizes="(min-width: 48rem) 8rem, 50vw" 
+										loading="lazy" alt="Screenshot: Technical Implementation Reference Document" title="Screenshot: Technical Implementation Reference Document">
+								</td>
+								<td class="sample-item__type">Document Design</td>
+								<td class="sample-item__title">Technical Implementation Reference Document</td>
+								<td class="sample-item__description">Technical implementation document utilizing document design principles for intuitive navigation.</td>
+								<td class="sample-item__url"><a href="/samples/document-technical-reference">View Sample</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</aside>
+			</main>
+			<div id="app-supplemental"></div>
+			<footer id="footer-main">
+				<section>
+					<nav class="nav-main">
+						<ul>
+							<li><a href="/index.html">Home</a></li>
+							<li><a href="/samples">Samples</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+						</ul>
+					</nav>
+					<div class="branding">
+						<div class="logo"><a aria-label="N.A. Wedderburn Web Developer Website" href="/index.html"><img alt="N.A. Wedderburn Web Developer Logo" src="/assets/images/logos/nawedderburn_logo_primary.svg"/></a></div>
+					</div>
+				</section>
+				<section class="connect">
+					<h2>Connect</h2>
+					<div>
+						<h3>Email</h3>
+						<div><a href="mailto: nawedderburnwebdev@gmail.com">nawedderburnwebdev@gmail.com</a></div>
+					</div>
+					<div>
+						<h3>Resum&eacute;</h3>
+						<div><a href="/NAWedderburn.pdf" target="_blank">Resum&eacute; (PDF)</a></div>
+					</div>
+					<div>
+						<h3>Social Media</h3>
+						<div><a href="https://www.linkedin.com/in/nawedderburnwebdev" target="_blank">LinkedIn</a></div>
+					</div>
+				</section>
+				<section class="copyright">
+					<div>©2026 N.A. Wedderburn</div>
+				</section>
+			</footer>
+		</div>
+	</body>
+</html>
