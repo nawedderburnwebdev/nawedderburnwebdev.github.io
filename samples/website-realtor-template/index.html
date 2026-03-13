@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="N.A. Wedderburn Web Developer Sample - Brochure Realtor Website"/>
+		<title>Brochure Realtor Website - N.A. Wedderburn: Web Developer</title>
+		<link rel="icon" type="image/x-icon" href="/assets/images/logos/nawedderburn_logo_favicon.ico">
+<link rel="stylesheet" href="/css/main.css">
+		<script type="module" src="/assets/scripts/index.js"></script>
+		<noscript><link rel="stylesheet" href="/css/noscript.css"></noscript>
+	</head>
+	
+	<body id="page-sample">
+		<div id="app-container">
+			<header id="header-main">
+				<div class="branding">
+					<div class="logo"><a aria-label="N.A. Wedderburn Web Developer Website" href="/index.html"><img alt="N.A. Wedderburn Web Developer Logo" src="/assets/images/logos/nawedderburn_logo_primary.svg"/></a></div>
+				</div>
+				<nav class="nav-main">
+					<ul>
+						<li><a href="/index.html">Home</a></li>
+						<li><a href="/samples">Samples</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			
+			<main class="navigable" data-loading-message="Loading Brochure Realtor Website...">
+				<h1>Brochure Realtor Website</h1>
+				<section id="short-description" class="toc-ignore">
+					<div class="short-description__preview">
+						<img src="/assets/images/raster/large/website-realtor-template-preview.png" 
+							srcset="/assets/images/raster/small/website-realtor-template-preview.webp 360w, /assets/images/raster/medium/website-realtor-template-preview.webp 580w, /assets/images/raster/large/website-realtor-template-preview.webp 920w, /assets/images/raster/xlarge/website-realtor-template-preview.webp 1920w"
+							sizes="(min-width: 48rem) 40vw, 80vw"
+							alt="Preview - Brochure Realtor Website" title="Preview - Brochure Realtor Website">
+					</div>
+					<div class="short-description__details">
+						A brochure website template that provides a professional online presence, credibility, and brand awareness for a local real estate company.  The static content includes company background information, recent sales, and contact details.  Responsive sizing and color based on user agent configurations.  Interactive elements are implemented such that scripting is not required.
+					</div>
+				</section>
+				
+				<section id="full-description">
+					<h2><span class="heading-text">Description</span><a href="#samples-web" title="Permalink: Description" aria-label="Permalink: Description" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<div class="full-description__type">Web Design/Development</div>
+
+						<h3>Minimal Aesthetics for Clean UX/UI</h3>
+						<p>A flat design and muted color scheme create a professional user interface.  Large scale elements and copious whitespace establish a visual hierarchy and the appearance of abundant content.  Visual interest is applied with varying fonts, text size and case, borders, and shading.</p>
+
+						<h3>Dynamic Color with HSL Palette & Masks</h3>
+						<p>A CSS generated HSL color palette consists of 2 branded colors and a gray neutral.  Each color has 5 contrast levels in relation to the background color:  highest, high, medium, low, and lowest.  The highest contrast color is used as a base to generate the remaining colors by gradually increasing the color lightness property.</p>
+						<p>Image masks are used to colorize black & white logos and icons based on the color palette.</p>
+
+						<h3>User Color Preferences</h3>
+						<p>The user interface is designed with light surfaces and dark contrasting text.  In Dark Mode, the full color palette is reversed, creating dark surfaces and light contrasting text.</p>
+						<p>In Forced Colors Mode, containers that use backgrounds to provide a visual bounding box are configured with borders.  System colors are used to define the colors applied to elements that would be non-functional with their color removed.</p>
+
+						<h3>Accessibility & Usability</h3>
+						<p>Focus on accessibility and usability for keyboard users and screen readers.</p>
+						<p>Care is taken not to include text characters in decorative pseudo elements, opting instead for adding characters to hidden DOM elements or fashioning shapes with CSS boxes.  This ensures that screen readers using the Accessibility Tree as an alternate version of the DOM do not announce irrelevant decor.</p>
+						<p>Touch targets are implemented with a minimum size.</p>
+
+						<h3>Logo Selection Based on Viewport Dimensions</h3>
+						<p>A horizontally structured primary logo is implemented for "normal" width viewports and a compact vertically structured secondary logo is implemented for very narrow viewports.  The logo versions are implemented with CSS and directly in the DOM so the most appropriate logo is selected if stylesheets do not load.</p>
+
+						<h3>Component Focused Implementation</h3>
+						<p>The application is divided into reusable components that can be overridden and extended for different versions of a component.</p>
+
+						<h3>Pure CSS Dynamic Functionality</h3>
+						<p>Dynamic functionality in the main navigation is implemented with pure CSS.  Page identifiers in the DOM allow for current page menu item indicators.  Descendant combinators and strategically disabling pointer events allows for emphasizing focused menu items and de-emphasizing sibling menu items.  Sibling combinators and the checkbox checked pseudo class allows for an expandable “hamburger” menu for narrow screens.</p>
+
+						<h3>Grid Layouts for Structure & Layering</h3>
+						<p>Grid layouts with named grid areas are implemented for precise layouts and better visualization of layout structures when troubleshooting.  Grid areas can also be redefined for responsive layouts without changing the grid items.</p>
+						<p>Grids allow for stacking elements by positioning multiple elements within a single grid area.  Element dimensions are limited to a grid cell, avoiding the need to calculate the dimensions of absolutely positioned elements.</p>
+
+						<h3>Responsive Sizing with Font Size & Aspect Ratio</h3>
+						<p>Element sizes and media queries are based on the user's font size.  All containers are implemented to break words if necessary to prevent horizontal scroll.</p>
+						<p>Containers with images have defined width and aspect ratio.  The user agent calculates the height of the container based on the aspect ratio.</p>
+
+						<h3>Printer Friendly Formatting</h3>
+						<p>For print, simple flow layouts are implemented to prevent user agent specific print limitations. Property listings are displayed in tabular format for a concise, comparable view.</p>
+					</div>
+				</section>
+				<section id="figures">
+					<h2><span class="heading-text">Figures</span><a href="#figures" title="Permalink: Figures" aria-label="Permalink: Figures" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<ul class="figures-list samples">
+							<li>    
+								<figure>
+									<img src="/assets/images/raster/large/website-realtor-template-responsive.png" 
+										srcset="/assets/images/raster/small/website-realtor-template-responsive.webp 360w, /assets/images/raster/medium/website-realtor-template-responsive.webp 580w, /assets/images/raster/large/website-realtor-template-responsive.webp 920w, /assets/images/raster/xlarge/website-realtor-template-responsive.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw"
+										loading="lazy" alt="Responsive Layout - Brochure Realtor Website" title="Responsive Layout - Brochure Realtor Website">
+									<figcaption>
+										<div class="figure_figcaption_title">Responsive Component Layouts</div>
+										<div class="figure_figcaption_copy">
+											<p>Horizontal or vertical layouts based on the user's font size and the user agent dimensions.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+							<li>    
+								<figure>
+									<img src="/assets/images/raster/large/website-realtor-template-main-menu.png" 
+										srcset="/assets/images/raster/small/website-realtor-template-main-menu.webp 360w, /assets/images/raster/medium/website-realtor-template-main-menu.webp 580w, /assets/images/raster/large/website-realtor-template-main-menu.webp 920w, /assets/images/raster/xlarge/website-realtor-template-main-menu.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw"
+										loading="lazy" alt="Expandable Menu - Brochure Realtor Website" title="Expandable Menu - Brochure Realtor Website">
+									<figcaption>
+										<div class="figure_figcaption_title">Expandable Menu</div>
+										<div class="figure_figcaption_copy">
+											<p>For narrow screens, the navigation menu is collapsed for better use of screen real estate. The user can initiate expansion of the menu.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+							<li>    
+								<figure>
+									<img src="/assets/images/raster/large/website-realtor-template-color.png" 
+										srcset="/assets/images/raster/small/website-realtor-template-color.webp 360w, /assets/images/raster/medium/website-realtor-template-color.webp 580w, /assets/images/raster/large/website-realtor-template-color.webp 920w, /assets/images/raster/xlarge/website-realtor-template-color.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw"
+										loading="lazy" alt="Color Preference - Brochure Realtor Website" title="Color Preference - Brochure Realtor Website">
+									<figcaption>
+										<div class="figure_figcaption_title">Color Preference</div>
+										<div class="figure_figcaption_copy">
+											<p>The application has light surface colors and contrasting dark text.  In Dark Mode, the colors are reversed.  In Forced Colors Mode, elements that require a visual bounding box are displayed with borders.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+							<li>    
+								<figure>
+									<img src="/assets/images/raster/large/website-realtor-template-properties-table.png" 
+										srcset="/assets/images/raster/small/website-realtor-template-properties-table.webp 360w, /assets/images/raster/medium/website-realtor-template-properties-table.webp 580w, /assets/images/raster/large/website-realtor-template-properties-table.webp 920w, /assets/images/raster/xlarge/website-realtor-template-properties-table.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw"
+										loading="lazy" alt="Properties Listing Layout - Brochure Realtor Website" title="Properties Listing Layout - Brochure Realtor Website">
+									<figcaption>
+										<div class="figure_figcaption_title">Properties List Layout</div>
+										<div class="figure_figcaption_copy">
+											<p>For screen, each property in the list is displayed with a stylized card-style layout.  For print, the list is displayed in a compact tabular format.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+							<li>    
+								<figure>
+									<img src="/assets/images/raster/large/website-realtor-template-property-brochure.png" 
+										srcset="/assets/images/raster/small/website-realtor-template-property-brochure.webp 360w, /assets/images/raster/medium/website-realtor-template-property-brochure.webp 580w, /assets/images/raster/large/website-realtor-template-property-brochure.webp 920w, /assets/images/raster/xlarge/website-realtor-template-property-brochure.webp 1920w"
+										sizes="(min-width: 85rem) 40vw, (min-width: 48rem) 50vw, 70vw"
+										loading="lazy" alt="Property Details Layout - Brochure Realtor Website" title="Property Details Layout - Brochure Realtor Website">
+									<figcaption>
+										<div class="figure_figcaption_title">Property Details Layout</div>
+										<div class="figure_figcaption_copy">
+											<p>For print, the property details are displayed in a compact brochure-style layout.</p>
+										</div>
+									</figcaption>
+								</figure>
+							</li>
+						</ul>
+					</div>
+				</section>
+        <section id="tools">
+					<h2><span class="heading-text">Tools</span><a href="#tools" title="Permalink: Tools" aria-label="Permalink: Tools" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<ul>
+							<li>HTML</li>
+							<li>CSS</li>
+							<li>VS Code</li>
+							<li>MS Word</li>
+						</ul>
+					</div>
+				</section>
+				<section id="artifacts">
+					<h2><span class="heading-text">Artifacts</span><a href="#artifacts" title="Permalink: Artifacts" aria-label="Permalink: Artifacts" class="permalink">#</a></h2>
+					<div class="section-contents-panel">
+						<table summary="Artifacts">
+							<caption>Auxiliary files</caption>
+							<thead class="matrix-header">
+								<tr>
+									<th scope="col" title="Type">Type</th>
+									<th scope="col" title="File">File</th>
+									<th scope="col" title="Description">Description</th>
+								</tr>
+							</thead>
+							<tbody class="matrix-data">
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">HTML</td>
+									<td class="sample-artifact__name"><a href="impl" target="_blank">Website template</a></td>
+									<td class="sample-artifact__description">Live sample of full website template.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">CSS</td>
+									<td class="sample-artifact__name"><a href="impl/styles.css" target="_blank">Website template CSS</a></td>
+									<td class="sample-artifact__description">Live sample stylesheet.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">HTML</td>
+									<td class="sample-artifact__name"><a href="http://www.hwbeale.com" target="_blank">Howard Beale Agency website</a></td>
+									<td class="sample-artifact__description">Live website using a earlier version of this template.</td>
+								</tr>
+								<tr class="sample-artifact">
+									<td class="sample-artifact__type">PDF</td>
+									<td class="sample-artifact__name"><a href="Brochure Realtor Website - Technical.pdf" target="_blank">Brochure Realtor Website - Technical.pdf</a></td>
+									<td class="sample-artifact__description">Detailed implementation notes including component designs and unsuccessful attempts.  Exported from Microsoft Word.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+				<hr/>
+				<aside id="samples-additional">
+					<h2>More Samples</h2>
+					<table summary="This data table contains samples of my work with preview images, short descriptions, and hyperlinks to project URLs." class="matrix samples additional">
+						<caption>Work Samples</caption>
+						<thead class="matrix-header">
+							<tr>
+								<th scope="col" title="Preview Image">Preview</th>
+								<th scope="col" title="Type">Type</th>
+								<th scope="col" title="Title">Title</th>
+								<th scope="col" title="Description">Description</th>
+								<th scope="col" title="URL">URL</th>
+							</tr>
+						</thead>
+						<tbody class="matrix-data">
+							<tr class="sample-item">
+								<td class="sample-item__preview">
+									<img src="/assets/images/raster/large/article-cosmetic-plants-preview.png" 
+										srcset="/assets/images/raster/small/article-cosmetic-plants-preview.webp 360w, /assets/images/raster/medium/article-cosmetic-plants-preview.webp 580w, /assets/images/raster/large/article-cosmetic-plants-preview.webp 920w, /assets/images/raster/xlarge/article-cosmetic-plants-preview.webp 1920w"
+										sizes="(min-width: 48rem) 8rem, 50vw" 
+										loading="lazy" alt="Preview - Magazine Layout with Interactive Data" title="Preview - Magazine Layout with Interactive Data">
+								</td>
+								<td class="sample-item__type">Web Design/Development</td>
+								<td class="sample-item__title">Magazine Layout with Interactive Data</td>
+								<td class="sample-item__description">Adaptation of a print article implemented as a web page with a responsive grid layout and a sortable tabular data visualization.</td>
+								<td class="sample-item__url"><a href="/samples/article-cosmetic-plants">View Sample</a></td>
+							</tr>
+							<tr class="sample-item">
+								<td class="sample-item__preview">
+									<img src="/assets/images/raster/large/landing-indulgent-hydration-preview.png"
+										srcset="/assets/images/raster/small/landing-indulgent-hydration-preview.webp 360w, /assets/images/raster/medium/landing-indulgent-hydration-preview.webp 580w, /assets/images/raster/large/landing-indulgent-hydration-preview.webp 920w, /assets/images/raster/xlarge/landing-indulgent-hydration-preview.webp 1920w"
+										sizes="(min-width: 48rem) 8rem, 50vw"
+										loading="lazy" alt="Screenshot: Landing Page Slideshow" title="Screenshot: Landing Page Slideshow">
+								</td>
+								<td class="sample-item__type">Web Design/Development</td>
+								<td class="sample-item__title">Landing Page Slideshow</td>
+								<td class="sample-item__description">Slideshow presentation implemented with responsive container queries.</td>
+								<td class="sample-item__url"><a href="/samples/landing-indulgent-hydration" aria-label="View Sample: Landing Page Slideshow">View Sample</a></td>
+							</tr>
+							<tr class="sample-item">
+								<td class="sample-item__preview">
+									<img src="/assets/images/raster/large/document-technical-reference-preview.png"
+										srcset="/assets/images/raster/small/document-technical-reference-preview.webp 360w, /assets/images/raster/medium/document-technical-reference-preview.webp 580w, /assets/images/raster/large/document-technical-reference-preview.webp 920w, /assets/images/raster/xlarge/document-technical-reference-preview.webp 1920w"
+										sizes="(min-width: 48rem) 8rem, 50vw" 
+										loading="lazy" alt="Screenshot: Technical Implementation Reference Document" title="Screenshot: Technical Implementation Reference Document">
+								</td>
+								<td class="sample-item__type">Document Design</td>
+								<td class="sample-item__title">Technical Implementation Reference Document</td>
+								<td class="sample-item__description">Technical implementation document utilizing document design principles for intuitive navigation.</td>
+								<td class="sample-item__url"><a href="/samples/document-technical-reference">View Sample</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</aside>
+			</main>
+			<div id="app-supplemental"></div>
+			<footer id="footer-main">
+				<section>
+					<nav class="nav-main">
+						<ul>
+							<li><a href="/index.html">Home</a></li>
+							<li><a href="/samples">Samples</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+						</ul>
+					</nav>
+					<div class="branding">
+						<div class="logo"><a aria-label="N.A. Wedderburn Web Developer Website" href="/index.html"><img alt="N.A. Wedderburn Web Developer Logo" src="/assets/images/logos/nawedderburn_logo_primary.svg"/></a></div>
+					</div>
+				</section>
+				<section class="connect">
+					<h2>Connect</h2>
+					<div>
+						<h3>Email</h3>
+						<div><a href="mailto: nawedderburnwebdev@gmail.com">nawedderburnwebdev@gmail.com</a></div>
+					</div>
+					<div>
+						<h3>Resum&eacute;</h3>
+						<div><a href="/NAWedderburn.pdf" target="_blank">Resum&eacute; (PDF)</a></div>
+					</div>
+					<div>
+						<h3>Social Media</h3>
+						<div><a href="https://www.linkedin.com/in/nawedderburnwebdev" target="_blank">LinkedIn</a></div>
+					</div>
+				</section>
+				<section class="copyright">
+					<div>©2026 N.A. Wedderburn</div>
+				</section>
+			</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,2901 @@
+/* DOCUMENT INFORMATION
+	- Document: Keene Fannor Realty Website Styles
+	- Version:  1.2
+	- Client:   N/A
+	- Author:   N.A. Wedderburn   <nawedderburnwebdev@gmail.com>
+*/
+
+/*  ==========================================================================
+    Web Fonts
+    ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+
+
+
+/*  ==========================================================================
+    Global Custom Properties
+    ========================================================================== */
+:root {
+  /*  Rendered color scheme 
+      ========================================================================== */
+  color-scheme: light;
+
+
+
+
+  /*  Custom Properties - Fonts 
+      ========================================================================== */
+  --text-font-stack: "Verdana", sans-serif;
+  --headers-font-stack: "Marcellus", serif;
+
+
+
+
+  /*  Custom Properties - Colors (Hue/Saturation/Lightness format)
+      ========================================================================== */
+  
+  /* Lowest percentage for a color's "Lightness" property */
+  --color-lightness-lowest-percentage: 90%;
+
+  /* Color - Primary Variations */
+  --color-primary-hue: 0;
+  --color-primary-saturation: 0%;
+  --color-primary-lightness: 27%;
+  --color-primary-factor: calc((var(--color-lightness-lowest-percentage) - var(--color-primary-lightness)) / 4);
+  --color-primary-highest-contrast: var(--color-primary-hue) var(--color-primary-saturation) var(--color-primary-lightness);
+  --color-primary-high-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + var(--color-primary-factor));
+  --color-primary-medium-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 2));
+  --color-primary-low-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 3));
+  --color-primary-lowest-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 4));
+
+  /* Color - Secondary Variations */
+  --color-secondary-hue: 25;
+  --color-secondary-saturation: 13%;
+  --color-secondary-lightness: 30%;
+  --color-secondary-factor: calc((var(--color-lightness-lowest-percentage) - var(--color-secondary-lightness)) / 4);
+  --color-secondary-highest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) var(--color-secondary-lightness);
+  --color-secondary-high-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + var(--color-secondary-factor));
+  --color-secondary-medium-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 2));
+  --color-secondary-low-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 3));
+  --color-secondary-lowest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 4));
+
+  /* Color - Tertiary Variations */
+  --color-tertiary-hue: 0;
+  --color-tertiary-saturation: 0%;
+  --color-tertiary-lightness: 20%;
+  --color-tertiary-factor: calc(100% - var(--color-tertiary-lightness)) / 4;
+  --color-tertiary-highest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) var(--color-tertiary-lightness);
+  --color-tertiary-high-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + var(--color-tertiary-factor));
+  --color-tertiary-medium-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 2));
+  --color-tertiary-low-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 3));
+  --color-tertiary-lowest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 4));
+
+  /* Color - Anchor Main - Text */
+  --color-anchor-main-text: hsl(var(--color-secondary-hue) 90% 30%);
+
+  /* Color - Highlight */
+  --color-highlight-hue: 60;
+  --color-highlight-saturation: 100%;
+  --color-highlight-lightness: 83%;
+  --color-highlight: var(--color-highlight-hue) var(--color-highlight-saturation) var(--color-highlight-lightness);
+
+
+
+
+  /*  Custom Properties - Shadows
+      ========================================================================== */
+  
+  /* Color for shadows */
+  --shadow-color: 0 0% 10%;
+
+  /* Color intensity for shadows */
+  --shadow-intensity: 0;
+
+  /**
+    * Drop shadow - box (basic shadow for containers)
+    *
+    * 1. Separate the box shadow properties so each property can be used in the 
+    * calculation of the box shadow height.  The shadow height is used to
+    * determine the positioning of elements.
+    *
+    * 2. Pixel unit required for zero value properties to be used in the 
+    * calculations.
+    *
+    * 3. Using rem to maintain consistent size that is not based on the container
+    * font's size.
+    */
+
+  /* 1 - shadow 1 properties */
+  --drop-shadow-box-offset-x-1: 0px; /* 2 */
+  --drop-shadow-box-offset-y-1: min(.0625rem, .25vw); /* 3 */
+  --drop-shadow-box-blur-1: min(.125rem, .5vw); /* 3 */
+  --drop-shadow-box-spread-1: 0px; /* 2 */
+
+  /* 1 - shadow 2 properties */
+  --drop-shadow-box-offset-x-2: 0px; /* 2 */
+  --drop-shadow-box-offset-y-2: min(.125rem, .5vw); /* 3 */
+  --drop-shadow-box-blur-2: min(.375rem, 1.5vw); /* 3 */
+  --drop-shadow-box-spread-2: min(.125rem, .5vw); /* 3 */
+
+  /* 1 - shadow height calculation */
+  --drop-shadow-box-height: calc(
+    var(--drop-shadow-box-offset-y-1) +
+    var(--drop-shadow-box-blur-1) +
+    var(--drop-shadow-box-spread-1) +
+    var(--drop-shadow-box-offset-y-2) +
+    var(--drop-shadow-box-blur-2) +
+    var(--drop-shadow-box-spread-2)
+  );
+
+  --drop-shadow-box: 
+    hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .3)) var(--drop-shadow-box-offset-x-1) var(--drop-shadow-box-offset-y-1) var(--drop-shadow-box-blur-1) var(--drop-shadow-box-spread-1), 
+    hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .15)) var(--drop-shadow-box-offset-x-2) var(--drop-shadow-box-offset-y-2) var(--drop-shadow-box-blur-2) var(--drop-shadow-box-spread-2);
+  
+  
+  /* Drop shadow filter for text */
+  --drop-shadow-filter-text: hsl(var(--shadow-color)) min(.125em, 1vw) min(.125em, 1vw) min(.125em, 1vw); 
+
+
+
+
+  /*  Custom Properties - Graphics
+      ========================================================================== */
+
+  /* Graphics - Images */
+  --logo-image: url('/assets/images/logos/keenefannor_logo.svg');
+  --logo-image-secondary: url('/assets/images/logos/keenefannor_logo_secondary.svg');
+
+  /* Graphics - Icons */
+  --icon-avatar: url('/assets/images/icons/avatar.svg');
+  --icon-landscape: url('/assets/images/icons/landscape-placeholder-svgrepo-com.svg');
+  --icon-right-arrow: url('/assets/images/icons/icon-arrow-right-short-svgrepo-com.svg');
+  --icon-hamburger-menu: url('/assets/images/icons/icon-burger-menu-svgrepo-com.svg');
+  --icon-external-link: url('/assets/images/icons/icon-external-link-svgrepo-com.svg');
+
+  /* Graphics - Color inversion filter */
+  --graphic-color-invert-filter: invert(0);
+
+
+
+
+  /*  Custom Properties - Sizing
+      ========================================================================== */
+  
+  /* Sizing - Base */
+  --base-size: min(1rem, 2vw);
+
+  /* Sizing - Icons */
+  --icon-width: 1em;
+  --icon-height: 1em;
+  --icon-gap: .125em;
+
+  /* Sizing - Touch Target */
+  --touch-target-min-size: 24px;
+
+  /* Sizing - Scrollbars */
+  --scrollbar-min-height: 35px;
+
+  
+
+
+  /*  Custom Properties - Transitions
+      ========================================================================== */
+  --transition-timing-fcn-01: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+
+/*  ==========================================================================
+    Global Custom Properties - Dark Color Scheme
+    ========================================================================== */
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    /*  Rendered color scheme 
+        ========================================================================== */
+    color-scheme: dark;
+
+
+
+
+    /*  Custom Properties - Colors (Hue/Saturation/Lightness format)
+        ========================================================================== */
+    
+    /* Color - Primary Variations */
+    --color-primary-lowest-contrast: var(--color-primary-hue) var(--color-primary-saturation) var(--color-primary-lightness);
+    --color-primary-low-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + var(--color-primary-factor));
+    --color-primary-high-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 3));
+    --color-primary-highest-contrast: var(--color-primary-hue) var(--color-primary-saturation) calc(var(--color-primary-lightness) + (var(--color-primary-factor) * 4));
+
+    /* Color - Secondary Variations */
+    --color-secondary-lowest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) var(--color-secondary-lightness);
+    --color-secondary-low-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + var(--color-secondary-factor));
+    --color-secondary-high-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 3));
+    --color-secondary-highest-contrast: var(--color-secondary-hue) var(--color-secondary-saturation) calc(var(--color-secondary-lightness) + (var(--color-secondary-factor) * 4));
+
+    /* Color - Tertiary Variations */
+    --color-tertiary-lowest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) var(--color-tertiary-lightness);
+    --color-tertiary-low-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + var(--color-tertiary-factor));
+    --color-tertiary-high-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 3));
+    --color-tertiary-highest-contrast: var(--color-tertiary-hue) var(--color-tertiary-saturation) calc(var(--color-tertiary-lightness) + (var(--color-tertiary-factor) * 4));
+
+    /* Color - Anchor Main - Text */
+    --color-anchor-main-text: hsl(var(--color-secondary-hue) 100% 75%);
+
+    /* Color - Highlight */
+    --color-highlight-lightness: 2%;
+
+
+
+
+    /*  Custom Properties - Shadows
+        ========================================================================== */
+
+    /* Color intensity for shadows */
+    --shadow-intensity: .1;
+
+
+
+
+    /*  Custom Properties - Graphics
+      ========================================================================== */
+
+    /* Graphics - Color inversion filter */
+    --graphic-color-invert-filter: invert(1);
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Global Custom Properties - Forced Colors
+    ========================================================================== */
+@media screen and (forced-colors: active) {
+  :root {
+    /*  Custom Properties - Colors (System Colors format)
+        ========================================================================== */
+
+    /* Color - Anchor Main - Text */
+    --color-anchor-main-text: LinkText;
+  }
+}
+
+
+
+/*  ==========================================================================
+    Root
+    ========================================================================== */
+html {
+  box-sizing: border-box;
+}
+
+
+/*  Root - descendants
+    ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    overflow-wrap: break-word;
+}
+
+
+
+
+/*  ==========================================================================
+    Body
+    ========================================================================== */
+body {
+  --body-background-color: 0 0% 100%; /* white */
+  --body-text-color: 0 0% 0%; /* black */
+  --body-font-size: 1rem;
+
+  background-color: hsl(var(--body-background-color));
+
+  font-family: var(--text-font-stack);
+  font-size: var(--body-font-size);
+  color: hsl(var(--body-text-color));
+}
+
+@media screen {
+  body {
+    --body-background-color:  var(--color-tertiary-lowest-contrast);
+    --body-text-color: var(--color-tertiary-highest-contrast);
+
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media print {
+  body {
+    --body-font-size: 12pt;
+
+    margin: 1cm;
+    padding: 0;
+
+    background: none;
+
+    font-family: sans-serif;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Application Container
+    ========================================================================== */
+@media screen {
+  #app-container {
+    /**
+      * Allow for "sticky" footer to bottom of pages with little content.
+      */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    
+    min-height: 100dvh;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Main
+    ========================================================================== */
+@media screen {
+  main {
+    --size-main-padding: calc(4 * var(--base-size));
+
+    width: min(calc(90em + (2 * var(--size-main-padding))), 100%);
+    min-height: 60svh;
+
+    margin: 0 auto;
+    padding: var(--size-main-padding);
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Headings
+    ========================================================================== */
+h1,
+h2 {
+  --heading-decor-size: .1em;
+
+  margin: 0;
+  padding: 0 0 calc(4 * var(--heading-decor-size)) 0;
+  border-bottom: calc(var(--heading-decor-size) / 4) solid hsl(var(--color-secondary-low-contrast));
+  
+  font-family:  var(--headers-font-stack);
+  font-size: clamp(1em, 0.571em + 3.81vw, 4em);
+  font-weight: normal;
+  letter-spacing: 0;
+  color: hsl(var(--color-primary-highest-contrast));
+  text-transform: none;
+
+  position: relative;
+}
+
+/* decor */
+h1::after,
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: var(--heading-decor-size);
+  left: 0;
+
+  display: block;
+  width: min(3em, 35%);
+  /* Use border instead of background color to allow for printing the decor. */
+  border-bottom: var(--heading-decor-size) solid hsl(var(--color-secondary-highest-contrast));
+}
+
+
+h2 {
+  margin-top: 1.25em;
+}
+
+
+h3 {
+  margin: 2em 0 .5em 0;
+  padding: 0;
+  font-family: var(--text-font-stack);
+  font-size: clamp(.9em, 0.893em + 0.952vw, 1.75em);
+  font-weight: normal;
+  letter-spacing: 0;
+  color: hsl(var(--color-secondary-highest-contrast));
+  text-transform: uppercase;
+}
+
+h2 + section h3 {
+  margin-top: .5em;
+}
+
+
+h4 {
+  margin: 1em 0 .5em 0;
+  padding: 0;
+  font-family: var(--text-font-stack);
+  font-size: clamp(.8em, 0.643em + 0.952vw, 1.5em);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: capitalize;
+}
+
+h3 + section h4 {
+  margin-top: .5em;
+}
+
+
+
+
+/*  ==========================================================================
+    Paragraphs
+    ========================================================================== */
+p {
+  margin: 1em 0 0 0;
+  padding: 0;
+}
+
+@media screen {
+  p {
+    line-height: 2;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Anchors
+    ========================================================================== */
+a {
+  text-decoration: underline;
+  text-underline-offset: .25em;
+  font-weight: 600;
+
+  &:link {
+    color: var(--color-anchor-main-text);
+  }
+
+  &:visited {
+    color: currentColor;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--color-anchor-main-text);
+    text-decoration: none;
+  }
+}
+
+@media screen {
+  a {
+    /* prevent long link text from overflowing its container */
+    max-width: 100%;
+
+    /* apply minimum size for touch screens if anchor is not inline */
+    min-width: var(--touch-target-min-size);
+    min-height: var(--touch-target-min-size);
+  }
+}
+
+@media screen and (forced-colors: active) {
+  a {
+    &:visited {
+      color: CanvasText;
+    }
+  }
+}
+
+
+/*  Anchor, target new window - External link indicator
+    ========================================================================== */
+@media screen {
+  a[target="_blank"]::after {
+    content: "\00a0"; /* include nbsp to allow icon to go to the next line to avoid horizontal overflow */
+
+    margin-left: var(--icon-gap);
+    padding-left: calc(var(--icon-width) / 2);
+
+    background-image: var(--icon-external-link);
+    background-size: var(--icon-width);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    forced-color-adjust: none;  /* maintain color in forced-colors mode */
+
+    /* invert color in dark mode */
+    filter: var(--graphic-color-invert-filter); 
+  }
+}
+
+@supports (mask-position: center) {
+  @media screen {
+    /* Indicator as mask image. */
+
+    a[target="_blank"]::after {
+      background-color: currentColor;
+      mask-image: var(--icon-external-link), linear-gradient(transparent, transparent);
+      mask-size: var(--icon-width);
+      mask-position: center;
+      mask-repeat: no-repeat;
+
+      background-image: none;
+      background-size: unset;
+      background-position: unset;
+      background-repeat: unset;
+
+      filter: none;
+    }
+  }
+
+  @media screen and (forced-colors: active) {
+    a[target="_blank"]::after {
+      background-color: LinkText;
+    }
+  }
+}
+
+@media print {
+  a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      color: hsl(var(--body-text-color));
+      text-decoration: underline;
+      text-underline-offset: initial;
+    }
+  }
+
+  /* Display href attribute next to anchor text. */
+  a::after {
+    content: " [" attr(href) "]";
+  }
+}
+
+
+/*  Anchor with image
+    ========================================================================== */
+/* Align anchor height with descendant image height instead of line height. */
+a:has(img) {
+  display: inline-grid;
+  grid-auto-rows: min-content;
+  grid-auto-columns: minmax(0, 1fr); /* Allow column width to be narrower than its content to allow for 'overflow-wrap: break-word.' */
+}
+
+
+
+
+/*  ==========================================================================
+    Images
+    ========================================================================== */
+img {
+  max-width: 100%;
+}
+
+
+
+
+/*  ==========================================================================
+    Unordered List
+    ========================================================================== */
+ul {
+  list-style-type: square;
+  padding-inline-start: 1em;
+}
+
+li {
+  line-height: 2;
+}
+
+
+
+
+/*  ==========================================================================
+    Table
+    ========================================================================== */
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin: var(--base-size) 0;
+}
+
+/* Small screen "blockified" display */
+@media screen and (max-width: 47.98em) {
+  table {
+    display: block;
+    border: none;
+  }
+
+  table caption,
+  table tbody, 
+  table th, 
+  table tr, 
+  table td {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/*  Table - Header
+    ========================================================================== */
+/* Small screen "blockified" display */
+@media screen and (max-width: 47.98em) {
+  table thead {
+    display: none;
+  }
+}
+
+
+/*  Table - Header - Data
+    ========================================================================== */
+table thead th {
+  padding: .25em;
+  background-color: hsl(var(--color-secondary-low-contrast));
+  border-bottom: .0625em solid hsl(var(--color-secondary-low-contrast));
+  
+  font-size: smaller;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+
+/*  Table - Body - Row
+    ========================================================================== */
+table tbody tr {
+  border-bottom: .0625em solid hsl(var(--color-secondary-high-contrast));
+}
+
+table tbody tr:nth-of-type(2n) {
+  background-color: hsl(var(--color-secondary-lowest-contrast));
+}
+
+/* Small screen "blockified" display */
+@media screen and (max-width: 47.98em) {
+  table tbody tr {
+    border-width: .0625em;
+    border-style: solid;
+    border-color: hsl(var(--color-secondary-medium-contrast));
+  }
+
+  table tbody tr:not(:last-of-type) {
+    margin-bottom: 1em;
+  }
+}
+
+
+/*  Table - Body - Data
+    ========================================================================== */
+table tbody td {
+  padding: .25em;
+  vertical-align: top;
+}
+
+
+/*  Table - Body - Data - Image
+    ========================================================================== */
+table tbody td img { 
+  width: min(20em, 100%);
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+}
+
+@media print {
+  table tbody td img {
+    width: min(5cm, 100%);
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Branding
+    ========================================================================== */
+.branding {
+  position: relative;
+  
+  line-height: 0;
+}
+
+
+/*  Branding - Descendants
+    ========================================================================== */
+.branding * {
+  width: 100%;
+  height: 100%;
+}
+
+
+/*  Branding - Anchors
+    ========================================================================== */
+@media print {
+  .branding a::after {
+    display: none; /* do not print URLs */
+  }
+}
+
+
+/*  Branding - Anchor - Logo - Image replacement
+    ========================================================================== */
+@supports (mask-position: center) {
+  @media screen {
+    .branding .logo::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      
+      background-color: hsl(var(--color-secondary-highest-contrast));
+      /* extra narrow viewport, secondary logo */
+      mask-image: var(--logo-image-secondary), linear-gradient(transparent, transparent);
+      mask-size: 100%;
+      mask-position: center;
+      mask-repeat: no-repeat;
+
+      forced-color-adjust: none;  /* maintain color in forced-colors mode */
+    }
+  }
+
+  @media screen and (min-width: 12em) {
+    .branding .logo::before {
+      /* normal viewport, primary logo */
+      mask-image: var(--logo-image), linear-gradient(transparent, transparent);
+    }
+  }
+}
+
+
+/*  Branding - Anchor - Logo - Image
+    ========================================================================== */
+@media screen {
+  .branding .logo img {
+    /* invert image color in dark mode */
+    filter: var(--graphic-color-invert-filter);  
+  }
+}
+
+@supports (mask-position: center) {
+  @media screen {
+    /* Logo image replacement mask displayed instead of image */
+    .branding .logo img {
+      opacity: 0;
+    }
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Anchor Primary
+    ========================================================================== */
+@media screen {
+  a.anchor-primary {
+    --color-anchor-primary-bg-link: hsl(var(--color-secondary-low-contrast));
+    --color-anchor-primary-text-link: hsl(var(--color-secondary-highest-contrast));
+    --color-anchor-primary-bg-focus: hsl(var(--color-tertiary-lowest-contrast));
+    --color-anchor-primary-text-focus: hsl(var(--color-primary-highest-contrast));
+
+    position: relative;  /* for external link icon positioning */
+
+    display: inline-grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    
+    color: var(--color-anchor-primary-text-link);
+    font-family: var(--headers-font-stack);
+    font-size: clamp(min(1em, 1rem), min(0.821em, 0.821rem) + 0.476vw, min(1.25em, 1.25rem));  
+    line-height: clamp(min(1em, 1rem), min(0.643em, 0.643rem) + 0.952vw, min(1.5em, 1.5rem));
+    letter-spacing: .0625em;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+
+    margin: 0;
+    padding: min(.5em, 4vw) calc(1.5 * var(--icon-width));  /* extra left/right padding for external link icon */
+
+    overflow: hidden;  /* hide external link icon overflow from focus state outline */
+
+    background-color: var(--color-anchor-primary-bg-link);
+    
+    transition: background-color 500ms ease-in-out, color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+      transition: background-color 500ms ease-in-out, color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+    }
+  
+    &:link,
+    &:visited {
+      background-color: var(--color-anchor-primary-bg-link);
+      color: var(--color-anchor-primary-text-link);
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: var(--color-anchor-primary-bg-focus);
+      color: var(--color-anchor-primary-text-focus);
+      box-shadow: 
+        inset 0 min(1.125em, 3vw) min(2.25em, 6vw) max(-1.125em, -3vw) hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .3)), 
+        0 min(0.25em, .75vw) min(0.3125em, 1vw) hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .5));
+    }
+  }
+}
+
+@media screen and (forced-colors: active) {
+  a.anchor-primary {
+    border: min(.0625em, 1vw) solid;
+  }
+}
+
+
+/*  Anchor Primary - External link icon
+    ========================================================================== */
+@media screen {
+  a.anchor-primary::after {
+    content: ''; /* remove space character used for inline text wrapping */
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: var(--icon-width);
+    height: var(--icon-height);
+
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Anchor Secondary
+    ========================================================================== */
+@media screen {
+  a.anchor-secondary {
+    --anchor-secondary-decor-size: 1.5em;
+    --anchor-secondary-decor-translate: calc(var(--anchor-secondary-decor-size) / 6);
+    --anchor-secondary-decor-animation-duration: 250ms;
+    --anchor-secondary-decor-animation-easing: ease-out;
+
+    display: inline-grid;
+    grid-template-columns: minmax(0, 1fr) calc(var(--anchor-secondary-decor-size) + var(--anchor-secondary-decor-translate));
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+  
+    color: var(--color-anchor-main-text);
+    font-family: var(--text-font-stack);
+    font-size: .9em;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: left;
+  
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+
+/*  Anchor Secondary - Decor
+    ========================================================================== */
+@media screen {
+  a.anchor-secondary::after {
+    content: '';
+    width: var(--anchor-secondary-decor-size);
+    height: var(--anchor-secondary-decor-size);
+
+    background-image: var(--icon-right-arrow);
+    background-size: var(--anchor-secondary-decor-size);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    forced-color-adjust: none;  /* maintain color in forced-colors mode */
+
+    /* invert color in dark mode */
+    filter: var(--graphic-color-invert-filter);
+  }
+}
+
+@supports (mask-position: center) {
+  @media screen {
+    a.anchor-secondary::after {
+      background-color: currentColor;
+      mask-image: var(--icon-right-arrow), linear-gradient(transparent, transparent);
+      mask-size: var(--anchor-secondary-decor-size);
+      mask-position: center;
+      mask-repeat: no-repeat;
+
+      background-image: none;
+      background-size: unset;
+      background-position: unset;
+      background-repeat: unset;
+
+      filter: none;
+    }
+  }
+}
+
+
+/*  Anchor Secondary,
+    Anchor Secondary (hover/active/focus states) - Decor
+    ========================================================================== */
+/* decor transition */
+@media screen  {
+  a.anchor-secondary::after,
+  a.anchor-secondary:hover::after,
+  a.anchor-secondary:active::after,
+  a.anchor-secondary:focus::after {
+    transition: background-position var(--anchor-secondary-decor-animation-duration) var(--anchor-secondary-decor-animation-easing);
+  }
+}
+
+@supports (mask-position: center) {
+  @media screen {
+    a.anchor-secondary::after,
+    a.anchor-secondary:hover::after,
+    a.anchor-secondary:active::after,
+    a.anchor-secondary:focus::after {
+      transition: mask-position var(--anchor-secondary-decor-animation-duration) var(--anchor-secondary-decor-animation-easing);
+    }
+  }
+}
+
+/* decor transition, ending position */
+@media screen {
+  a.anchor-secondary:hover::after,
+  a.anchor-secondary:active::after,
+  a.anchor-secondary:focus::after {
+    background-position: var(--anchor-secondary-decor-translate);
+  }
+}
+
+@supports (mask-position: center) {
+  @media screen {
+    a.anchor-secondary:hover::after,
+    a.anchor-secondary:active::after,
+    a.anchor-secondary:focus::after {
+      mask-position: var(--anchor-secondary-decor-translate);
+    }
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Main Navigation
+    ========================================================================== */
+.nav-main {
+  --size-nav-main-font: 1em;
+  --size-nav-main-padding: var(--base-size);
+  --duration-nav-main-animation: 800ms;
+  --easing-nav-main-animation: var(--transition-timing-fcn-01);
+
+  font-family: var(--headers-font-stack);
+  font-size: var(--size-nav-main-font);
+
+  margin: 0; 
+  padding: var(--size-nav-main-padding);
+}
+
+@media print {
+  .nav-main {
+    display: none;
+  }
+}
+
+
+/*  Main Navigation - Anchor List
+    ========================================================================== */
+/**
+  * Interactive Menu: Emphasizes the focused menu item and deemphasizes 
+  * the un-focused menu items.
+  *
+  * 1. Disable pointer events on the menu container so it cannot initiate
+  * functionality.
+  *
+  * 2. Re-enable pointer events on menu items so they can initiate 
+  * functionality.
+  *
+  * 3. Emphasize focused menu item.
+  * 
+  * 4. Deemphasize un-focused menu items.
+  */
+.nav-main ul {
+  
+  letter-spacing: 0;
+  text-transform: uppercase; 
+
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: calc(2 * var(--size-nav-main-font));
+  row-gap: calc(var(--size-nav-main-font) / 2);
+  
+  /* Interactive Menu - 1 */
+  pointer-events: none;  
+}
+
+
+/*  Main Navigation - Anchor List - Items
+    ========================================================================== */
+.nav-main ul li {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  min-width: 0;  /* Allow for word wrap/break word by setting minimum width */
+}
+
+
+/*  Main Navigation - Anchor List - Anchors
+    ========================================================================== */
+.nav-main ul a {
+  /* allow for minimum touch target height and vertical alignment  */
+  display: inline-grid;  
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+
+  color: hsl(var(--body-text-color));
+  text-decoration: none;
+  line-height: 1.5;
+  
+  /* Interactive Menu - 3, 4 */
+  transition-property: opacity;
+  transition-timing-function: var(--easing-nav-main-animation);
+  transition-duration: var(--duration-nav-main-animation);
+  
+  /* Interactive Menu - 2 */
+  pointer-events: auto;  
+}
+
+
+/*  Main Navigation - Focused anchor List with focused or un-focused anchor
+    ========================================================================== */
+.nav-main ul:hover a,
+.nav-main ul:focus-within a {
+  /* Interactive Menu - 4 */
+  opacity: .5;  
+  transition-duration: calc(var(--duration-nav-main-animation) / 2);
+
+  &:hover,
+  &:active,
+  &:focus {
+    /* Interactive Menu - 3 */
+    opacity: 1;  
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Breadcrumb Navigation
+    ========================================================================== */
+@media screen {
+  .nav-breadcrumb {
+    font-size: .9em;
+  } 
+}
+
+@media print {
+  .nav-breadcrumb {
+    display: none;
+  }
+}
+
+
+/*  Breadcrumb Navigation - List
+    ========================================================================== */
+@media screen {
+  .nav-breadcrumb ol {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: .75em;
+    column-gap: .25em;
+
+    margin: 0 0 1em 0;
+    padding-inline-start: 0;
+
+    list-style-type: none;
+  }
+}
+
+
+/*  Breadcrumb Navigation - List - Item
+    ========================================================================== */
+@media screen {
+  .nav-breadcrumb li {
+    min-width: 1px; /* Allow for word wrap/break word by setting minimum width */
+    
+    margin: 0;
+    padding: 0;
+    
+    line-height: normal;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Figures Gallery
+    ========================================================================== */
+.figures-gallery {
+  --size-figures-gallery-item-width: 25em;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--size-figures-gallery-item-width), 100%), 1fr));
+  grid-auto-rows: auto;  /* row height based on figure/image height */
+  gap: calc(var(--base-size) / 2);
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+@media screen and (min-width: 80em) {
+  .figures-gallery {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@media print {
+  .figures-gallery {
+    --size-figures-gallery-item-width: 8cm;
+  }
+}
+
+
+/*  Figures Gallery - Item
+    ========================================================================== */
+@media screen and (min-width: 80em) {
+  .figures-gallery > * {
+    /* 3, 4x3 items per row */
+    grid-column: span 4;
+    grid-row: span 3;
+
+    /* 2, 6x4 items in first row */
+    &:nth-child(1),
+    &:nth-child(2) {
+      grid-column: span 6;
+      grid-row: span 4;
+    }
+  }
+}
+
+@media screen and (min-width: 100em) {
+ .figures-gallery > * {
+    /* 4, 3x3 items per row */
+    grid-column: span 3;
+    grid-row: span 3;
+
+    /* 3, 4x4 items in first row */
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      grid-column: span 4;
+      grid-row: span 4;
+    }
+  }
+}
+
+
+/*  Figures Gallery - Figure
+    ========================================================================== */
+.figures-gallery figure {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+  
+  margin: 0;
+  padding: 0;
+}
+
+
+/*  Figures Gallery - Figure - Image
+    ========================================================================== */
+.figures-gallery figure img {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/*  Figures Gallery - Figure - Caption
+    ========================================================================== */
+.figures-gallery figure figcaption {
+  position: absolute;
+  background-color: hsl(var(--body-background-color) / .5);
+  bottom: 0;
+  right: 0;
+
+  font-size: min(1em, 5vw);
+  line-height: normal;
+  font-variant: small-caps;
+
+  max-width: 75%;
+  white-space: nowrap;
+  overflow: clip;
+  text-overflow: ellipsis;
+
+  padding: min(.25em, 1vw) min(.5em, 2vw);
+  border-top-left-radius: min(.5em, 2vw);
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Business Contact
+    ========================================================================== */
+
+/*  Business Contact - Address - Name
+    ========================================================================== */
+.business-contact__address__name {
+  font-weight: 600;
+}
+
+
+/*  Business Contact - Telecom
+    ========================================================================== */
+.business-contact__telecom {
+  margin-top: 1em;
+}
+
+
+/*  Business Contact - Telecom - Anchors
+    ========================================================================== */
+@media print {
+  .business-contact__telecom a {
+    font-weight: normal;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+    }
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Property
+    ========================================================================== */
+.property {
+  --size-property-padding: var(--base-size);
+  --size-property-preview-width: 100%;
+  --size-property-status-spacing: min(.625em, 1vw);
+  --size-property-status-max-height: max(var(--scrollbar-min-height), min(3em, 10%));
+}
+
+@media screen {
+  .property {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 
+      "property-preview"
+      "property-location"
+      "property-type"
+      "property-price"
+      "property-status"
+      "property-url";
+    align-content: start;
+
+    /* Generate stacking context to layer elements */
+    position: relative;
+    z-index: 1;
+
+    margin: 0;
+    padding: 0;
+    
+    text-align: center;
+  }
+}
+
+@media print {
+  .property {
+  --size-property-padding: .5cm;
+  --size-property-preview-width: 10cm;
+  }
+}
+
+
+/*  Property - Direct Children
+    ========================================================================== */
+@media screen {
+  .property > * {
+    padding: 0 var(--size-property-padding); 
+
+    width: auto;  /* set width based content */
+    max-width: 100%;
+
+    justify-self: center;  /* set grid cell width based content */
+    align-self: start;  /* set grid cell height based on content */
+  }
+}
+
+
+/*  Property - Preview
+    ========================================================================== */
+.property .property__preview {
+  grid-area: property-preview;
+
+  position: relative;
+
+  width: var(--size-property-preview-width);
+  aspect-ratio: 5 / 3;
+}
+
+@media screen {
+  .property .property__preview {
+    z-index: -2; /* stack behind .property__url overlay */
+
+    padding: 0;
+  }
+}
+
+
+/*  Property - Preview - Image
+    ========================================================================== */
+.property .property__preview img {
+  display: block; /* do not display extra space for inline text descenders */
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+  background-image: var(--icon-landscape);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: hsl(var(--body-background-color));
+}
+
+
+/*  Property - Type
+    ========================================================================== */
+.property .property__type {
+  grid-area: property-type;
+
+  text-transform: capitalize;
+}
+
+@media screen {
+  .property .property__type {
+    color: hsl(var(--color-primary-highest-contrast));
+  }
+}
+
+
+/*  Property - Location
+    ========================================================================== */
+.property .property__location {
+  grid-area: property-location;
+
+  font-size: 1.25em;
+  letter-spacing: 0;
+  text-transform: uppercase;
+
+  margin-top: var(--size-property-padding);
+}
+
+@media screen {
+  .property .property__location {
+    color: hsl(var(--color-secondary-highest-contrast));
+  }
+}
+
+
+/*  Property - Location -  Direct children
+    ========================================================================== */
+.property .property__location > * {
+  display: block;
+}
+
+
+/*  Property - Price
+    ========================================================================== */
+.property .property__price {
+  grid-area: property-price;
+}
+
+
+/*  Property - Status
+    ========================================================================== */
+.property .property__status {
+  grid-area: property-status;
+}
+
+/* large/medium screen*/
+@media screen and (min-width: 20em) {
+  .property .property__status {
+    grid-area: property-preview;
+
+    justify-self: start;  /* left align */
+
+    max-height: var(--size-property-status-max-height);
+    overflow: auto;
+
+    margin: var(--size-property-status-spacing);
+    padding: calc(var(--size-property-status-spacing) / 2);
+    border-radius: calc(var(--size-property-status-spacing) / 4);
+    
+    font-size: .75em;
+    text-transform: uppercase;
+    text-align: left;
+
+    background-color: hsl(var(--body-background-color) / .75);
+  }
+}
+
+
+/*  Property - URL
+    ========================================================================== */
+.property .property__url {
+  grid-area: property-url;
+}
+
+@media screen {
+  .property .property__url {
+    margin-top: var(--size-property-padding);
+  }
+}
+
+
+/*  Property - URL - Anchor - overlay
+    ========================================================================== */
+@media screen {
+  .property .property__url a::before {
+    content: '';
+    display: block;
+    position: absolute;  /* relative to .property */
+    top: 0;
+    left: 0;
+    z-index: -1;  /* stack behind selectable text (non-positioned) elements */
+
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Properties Matrix
+    ========================================================================== */
+.matrix.properties {
+  --size-matrix-property-gap: calc(2 * var(--base-size));
+}
+
+
+/*  Properties Matrix - Headers
+    ========================================================================== */
+@media screen {
+  .matrix.properties caption,
+  .matrix.properties thead {
+      display: none;
+  }
+}
+
+
+/*  Properties Matrix - Data
+    ========================================================================== */
+@media screen {
+  .matrix.properties .matrix-data {
+    display: block;
+  }
+}
+
+
+/*  Properties Matrix - Data - Property
+    ========================================================================== */
+@media screen {
+  .matrix.properties .matrix-data .property {
+    /* remove base table row styles */
+    margin: 0;
+    border: none;
+    background: none;
+  }
+}
+
+@media screen and (forced-colors: active) {
+  .matrix.properties .matrix-data .property {
+    border: min(.0625em, 1vw) solid;
+  }
+}
+
+
+/*  Properties Matrix - Data - Property - Preview - Image
+    ========================================================================== */
+@media print {
+  .matrix.properties .matrix-data .property .property__preview img {
+    width: unset;
+    height: unset;
+  }
+}
+
+
+/*  Properties Matrix - Data - Property - Location
+    ========================================================================== */
+@media print {
+  .matrix.properties .matrix-data .property .property__location {
+    color: unset;
+    font: unset;
+    letter-spacing: unset;
+    text-transform: unset;
+  }
+}
+
+
+/*  Properties Matrix - Data - Addendum
+    ========================================================================== */
+.matrix.properties .matrix-data .properties-addendum {
+  border: none;
+  background: none;
+}
+
+@media screen {
+  .matrix.properties .matrix-data .properties-addendum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/*  Properties Matrix - Data - Addendum - Message
+    ========================================================================== */
+@media screen {
+  .matrix.properties .matrix-data .properties-addendum__message {
+    font-family: var(--headers-font-stack);
+    font-size: clamp(1.5em, 0.786em + 1.905vw, 2.5em);
+    line-height: clamp(1.5em, 0.786em + 1.905vw, 2.5em);
+    text-align: center;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Current Properties Matrix
+    ========================================================================== */
+.matrix.properties.current {
+  --size-matrix-property-width: min(25rem, 50vw);
+}
+
+
+/*  Current Properties Matrix - Data
+    ========================================================================== */
+@media screen {
+  .matrix.properties.current .matrix-data {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-matrix-property-gap);
+  }
+}
+
+
+/*  Current Properties Matrix - Data - Property
+    ========================================================================== */
+@media screen {
+  .matrix.properties.current .matrix-data .property {
+    padding: 0 0 var(--size-property-padding) 0;
+
+    background-color: hsl(var(--color-secondary-lowest-contrast) / .5);
+  }
+}
+
+/* large screen */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  .matrix.properties.current .matrix-data .property {
+    grid-template-columns: var(--size-matrix-property-width) minmax(0, 1fr);
+    grid-template-rows: auto auto auto 1fr;
+    grid-template-areas: 
+      "property-preview property-location"
+      "property-preview property-type"
+      "property-preview property-price"
+      "property-preview property-url";
+
+    padding: var(--size-property-padding) 0;
+
+    text-align: left;
+  }
+}
+
+
+/*  Current Properties Matrix - Data - Property - Decor
+    ========================================================================== */
+/* large screen */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  .matrix.properties.current .matrix-data .property::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -3;  /* layer behind .property__url overlay */
+
+    width: calc(var(--size-matrix-property-width) / 2);
+    height: 100%;
+
+    background-color: hsl(var(--body-background-color));
+  }
+}
+
+
+/*  Current Properties Matrix - Data - Property - Direct children
+    ========================================================================== */
+/* large screen */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  .matrix.properties.current .matrix-data .property > * {
+    justify-self: start;  /* left align */
+  }
+}
+
+
+/*  Current Properties Matrix - Data - Property - Preview
+    ========================================================================== */
+/* large screen */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  .matrix.properties.current .matrix-data .property .property__preview {
+    aspect-ratio: 4 / 3;
+
+    box-shadow: hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .5)) min(0.1875em, .75vw) min(0.1875em, .75vw) min(0.625em, 2.5vw) ;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Sold Properties Matrix
+    ========================================================================== */
+.matrix.properties.sold {
+  --size-matrix-property-width: min(20em, 100%);
+}
+
+
+/*  Sold Properties Matrix - Data
+    ========================================================================== */
+@media screen {
+  .matrix.properties.sold .matrix-data {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--size-matrix-property-width));
+    gap: var(--size-matrix-property-gap);
+    justify-content: center;
+  }
+}
+
+
+/*  Sold Properties Matrix - Data - Property - Direct children
+    ========================================================================== */
+@media screen {
+  .matrix.properties.sold .matrix-data .property > * {
+    justify-self: start;
+    text-align: left;
+    padding: 0;
+  }
+}
+
+
+/*  Sold Properties Matrix - Data - Property - Preview
+    ========================================================================== */
+@media screen {
+  .matrix.properties.sold .matrix-data .property .property__preview {
+    aspect-ratio: 1;
+  }
+}
+
+
+/*  Sold Properties Matrix - Data - Property - Type
+    ========================================================================== */
+@media screen {
+  .matrix.properties.sold .matrix-data .property .property__type {
+    font-size: .85em;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Component - Associate
+    ========================================================================== */
+.associate {
+  --associate-width: min(20em, 100%);
+  --associate-avatar-width: 50%;
+
+  width: var(--associate-width);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: auto;
+  align-content: start;
+  row-gap: calc(var(--base-size) / 2);
+  column-gap: var(--base-size);
+
+  grid-template-areas:
+    "associate-avatar"
+    "associate-name"
+    "associate-bio";
+
+  margin: 0;
+  padding: var(--base-size);
+}
+
+@media screen {
+  .associate {
+    box-shadow: var(--drop-shadow-box);
+  }
+}
+
+@media print {
+  .associate {
+    --associate-width: 3cm;
+    --associate-avatar-width: 100%;
+
+    padding: 0;
+    break-inside: avoid;
+  }
+}
+
+
+/*  Associate - Child elements
+    ========================================================================== */
+.associate > * {
+  text-align: center;
+}
+
+
+/*  Associate Broker
+    ========================================================================== */
+.associate.broker {
+  --associate-width: auto;  /* width determined by parent container */
+  --associate-avatar-width: min(30em, 100%);
+
+  padding: 0;
+
+  box-shadow: none;
+}
+
+/* large screen, print */
+@media screen and (min-width: 64em) and (min-height: 40em), print {
+  .associate.broker {
+    --associate-avatar-width: 20em;
+
+    grid-template-columns: var(--associate-avatar-width) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "associate-avatar associate-name"
+      "associate-avatar associate-bio";
+  }
+}
+
+@media print {
+  .associate.broker {
+    --associate-avatar-width: 5cm;
+  }
+}
+
+
+/*  Associate Broker - Child elements
+    ========================================================================== */
+.associate.broker > * {
+  text-align: left;
+}
+
+
+/*  Associate - Avatar
+    ========================================================================== */
+.associate .associate__avatar {
+  grid-area: associate-avatar;
+
+  aspect-ratio: 1;
+  width: var(--associate-avatar-width);
+
+  margin: 0 auto;
+  padding: 0;
+
+  background-image: var(--icon-avatar);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen {
+  .associate .associate__avatar {
+    background-color: hsl(var(--color-secondary-lowest-contrast));
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    box-shadow: var(--drop-shadow-box);
+  }
+}
+
+
+/*  Associate Broker - Avatar
+    ========================================================================== */
+@media screen {
+  .associate.broker .associate__avatar {
+    border-radius: var(--base-size);
+  }
+}
+
+
+/*  Associate - Avatar - Image
+    ========================================================================== */
+.associate .associate__avatar img {
+  width: 100%;
+  height: 100%;
+}
+
+
+/*  Associate - Name
+    ========================================================================== */
+.associate .associate__name {
+  grid-area: associate-name;
+
+  font-weight: 600;
+  line-height: normal;
+
+  margin: 0;
+}
+
+
+/*  Associate - Bio
+    ========================================================================== */
+.associate .associate__bio {
+  grid-area: associate-bio;
+}
+
+
+/*  Associate - Bio - Direct children
+    ========================================================================== */
+.associate .associate__bio > *:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}    
+
+.associate .associate__bio > *:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}    
+
+
+
+
+/*  ==========================================================================
+    Layout - Header Main
+    ========================================================================== */
+#header-main {
+  width: 100%;
+  margin: 0; 
+  padding: 0;
+}
+
+@media screen {
+  #header-main {
+    display: flex;
+    flex-direction: column-reverse;
+
+    box-shadow: hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .1)) 0 min(0.25rem, 1vw) min(1.875rem, 7.5vw);
+  }
+}
+
+@media print {
+  #header-main {
+    margin-bottom: .5cm;
+  }
+}
+
+
+/*  Header Main - Component: Branding
+    ========================================================================== */
+@media screen {
+  #header-main .branding {
+    /* extra narrow viewport, secondary logo */
+    width: min(20em, 50vw);
+    height: min(10em, 27vw);
+
+    margin: calc(2 * var(--base-size)) auto;
+  }
+}
+
+@media screen and (min-width: 12em) {
+  #header-main .branding {
+    /* normal viewport, primary logo */
+    width: min(35em, 85vw);
+    height: min(2em, 5vw);
+  }
+}
+
+@media print {
+  #header-main .branding {
+    width: 10cm;
+
+    margin: 0 auto;
+  }
+}
+
+
+/*  Header Main - Component: Main Navigation
+    ========================================================================== */
+/**
+  * Collapsible Menu: For narrow screens, user initiated expand/collapse
+  * navigation menu.
+  *
+  * 1. Menu layout includes expand/collapse initiator and list of menu items.
+  *
+  * 2. Menu has maximum height and scrolling overflow.
+  *
+  * 3. List of menu items displayed in column layout.
+  * 
+  * 4. Expand/collapse initiator with:
+  *     a. menu description
+  *     b. menu instructions (screen reader only)
+  *     c. custom checkbox
+  *     d. custom check mark
+  *     e. "hamburger" icon
+  *
+  * 5. Visually hidden native checkbox to overlay the custom expand/collapse
+  * initiator.
+  *
+  * 6. Native checkbox states:
+  *     a. unchecked - hide list of men items, hide custom check mark
+  *     b. checked - show list of menu items, show custom check mark
+  *     c. focus - outline custom checkbox
+  *     d. hover/active/focus - highlight custom checkbox
+  */
+#header-main .nav-main {
+  --size-nav-main-font: .8em;
+  --color-nav-main-anchor-color: hsl(var(--color-secondary-highest-contrast));
+  --color-nav-main-anchor-highlight: hsl(var(--color-secondary-lowest-contrast) / .85);
+
+  --icon-show-menu-width: max(var(--size-nav-main-font), var(--touch-target-min-size));
+  --icon-show-menu-height: var(--icon-show-menu-width);
+  --header-main-checkbox-width: calc(var(--icon-show-menu-width) / 2);
+  --header-main-checkbox-height: var(--header-main-checkbox-width);
+  --header-main-checkbox-border-size: calc(var(--header-main-checkbox-width) * .15);
+  --header-main-nav-menu-checkbox-label-padding: min(.25em, 2vw);
+
+  font-family: var(--text-font-stack);
+}
+
+@media screen {
+  #header-main .nav-main {
+    position: relative;
+    background-color: hsl(var(--color-secondary-low-contrast));
+    border: min(.0625em, 1vw) solid transparent; /* default border in forced-colors mode */
+  }
+}
+
+/* Collapsible Menu */
+@media screen and (max-width: 47.98em) {
+  #header-main .nav-main {
+    /* Collapsible Menu - 1 */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas:
+      ". menu-selector ."
+      "menu-items menu-items menu-items";
+    
+    /* Collapsible Menu - 2 */
+    max-height: 100dvh;
+    overflow: auto;
+  }
+}
+
+
+/*  Header Main - Component: Main Navigation - List
+    ========================================================================== */
+@media screen {
+  #header-main .nav-main .nav-main__links {
+    grid-area: menu-items;
+
+    justify-content: center;
+
+    a {
+      color: var(--color-nav-main-anchor-color);
+      text-transform: capitalize;
+
+      padding: .25em .5em;
+
+      border-radius: min(.25em, 1vw);
+
+      transition-property: opacity, background-color;
+    }
+
+    &:hover,
+    &:focus-within {
+      a {
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: var(--color-nav-main-anchor-highlight);
+        }
+      }
+    }
+  }
+}
+
+/* Collapsible Menu */
+@media screen and (max-width: 47.98em) {
+  /* Collapsible Menu - 6a */
+  #header-main #nav-main_menu-checkbox ~ .nav-main__links {
+    display: none;
+  }
+
+  /* Collapsible Menu - 6b */
+  #header-main #nav-main_menu-checkbox:checked ~ .nav-main__links {
+    display: flex;
+    flex-direction: column;
+    /* maintain word break functionality by removing cross axis wrapping and alignment */
+    flex-wrap: nowrap;
+    align-items: normal;
+
+    margin-top: .5em;
+
+    text-align: center;
+  }
+}
+
+
+/*  Header Main - Component: Main Navigation - List - Items - Anchors
+    ========================================================================== */
+@media screen {
+  /* Indicate current page or current page category */
+  #page-home #header-main .nav-main__links > li a[href="index.html"],
+  #page-home #header-main .nav-main__links > li a[href="/index.html"],
+  #page-office-info #header-main .nav-main__links > li a[href*="officeinformation.html"],
+  #page-neighborhoods #header-main .nav-main__links > li a[href*="neighborhoods.html"],
+  #page-current-listings #header-main .nav-main__links > li a[href*="/properties/index.html"],
+  #page-property #header-main .nav-main__links > li a[href*="/properties/index.html"],
+  #page-recently-sold #header-main .nav-main__links > li a[href*="/properties/sold.html"] {
+    background-color: var(--color-nav-main-anchor-highlight);
+    border: min(.0625em, 1vw) solid transparent;  /* default border in forced-colors mode */
+  }
+}
+
+
+/*  Header Main - Component: Main Navigation - Menu Native Checkbox
+    ========================================================================== */
+#header-main #nav-main_menu-checkbox {
+  grid-area: menu-selector;
+
+  display: none;
+}
+
+/* Collapsible Menu */
+@media screen and (max-width: 47.98em) {
+  /* Collapsible Menu - 5 */
+  #header-main #nav-main_menu-checkbox {
+    display: block;
+
+    z-index: 1;
+    opacity: 0;
+
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+  }
+}
+
+
+/*  Header Main - Component: Main Navigation - Menu Checkbox Label
+    ========================================================================== */
+#header-main .nav-main_menu-checkbox-label {
+  grid-area: menu-selector;
+
+  display: none;
+}
+
+/* Collapsible Menu */
+@media screen and (max-width: 47.98em) {
+  /* Collapsible Menu - 4 */
+  #header-main .nav-main_menu-checkbox-label {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: .25em;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    padding: var(--header-main-nav-menu-checkbox-label-padding) calc(2 * var(--header-main-nav-menu-checkbox-label-padding));
+
+    position: relative;
+
+    color: hsl(var(--color-secondary-highest-contrast));
+
+    box-shadow: var(--drop-shadow-box);
+    border: 1px solid transparent;
+    border-radius: min(1em, 1vw);
+
+    cursor: pointer;
+  }
+}
+
+
+/*  Header Main - Component: Main Navigation - Menu Checkbox Label - 
+    "Hamburger" menu indicator
+    ========================================================================== */
+/* Collapsible Menu */
+@media screen and (min-width: 20em) and (max-width: 47.98em) {
+  /* Collapsible Menu - 4e */
+  #header-main .nav-main_menu-checkbox-label:after {
+    content: '';
+    margin-left: .5em;
+    width: var(--icon-show-menu-width);
+    height: var(--icon-show-menu-height);
+    
+    background-image: var(--icon-hamburger-menu);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* invert color in dark mode */
+    filter: var(--graphic-color-invert-filter);
+
+    forced-color-adjust: none;  /* maintain color in forced-colors mode */
+  }
+}
+
+/* Collapsible Menu - 4e */
+@supports (mask-position: center) {
+  @media screen {
+    /* Indicator as mask image. */
+    #header-main .nav-main_menu-checkbox-label:after {
+      background-color: currentColor;
+      mask-image: var(--icon-hamburger-menu), linear-gradient(transparent, transparent);
+      mask-size: 100%;
+      mask-position: center;
+      mask-repeat: no-repeat;
+
+      background-image: none;
+      background-size: unset;
+      background-position: unset;
+      background-repeat: unset;
+
+      filter: none;
+    }
+  }
+
+  @media screen and (forced-colors: active) {
+  #header-main .nav-main_menu-checkbox-label:after {
+      background-color: CanvasText;
+    }
+  }
+}
+
+
+/*  Header Main - Component: Main Navigation - Menu Checkbox Label - 
+    Instructions
+    ========================================================================== */
+/* Collapsible Menu */
+@media screen and (max-width: 47.98em) {
+  /* Collapsible Menu - 4b */
+  #header-main .nav-main_menu-checkbox-label__instructions {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    clip-path: rect(0 0 0% 0%) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}
+
+
+/*  Header Main - Component: Main Navigation - Menu Checkbox Label - 
+    Description
+    ========================================================================== */
+/* Collapsible Menu */
+@media screen and (max-width: 47.98em) {
+  /* Collapsible Menu - 4a */
+  #header-main .nav-main_menu-checkbox-label__description {
+    display: grid;
+    grid-template-columns: var(--header-main-checkbox-width) minmax(0, 1fr);
+    grid-template-areas: "selector-input selector-label";
+    gap: calc(var(--header-main-checkbox-border-size) + .25em);
+    align-items: center;
+  }
+}
+
+
+/*  Header Main - Component: Main Navigation - Menu Checkbox Label - 
+    Custom Checkbox
+    ========================================================================== */
+/* Collapsible Menu */
+@media screen and (max-width: 47.98em) {
+  /* Collapsible Menu - 4c */
+  #header-main .nav-main_menu-checkbox-label__description::before {
+    grid-area: selector-input;
+    content: '';
+    display: block;
+    width: var(--header-main-checkbox-width);
+    height: var(--header-main-checkbox-height);
+
+    background-color: hsl(var(--body-background-color));
+    border: var(--header-main-checkbox-border-size) solid hsl(var(--color-secondary-high-contrast));
+    border-radius: var(--header-main-checkbox-border-size);
+  }
+
+  /* Collapsible Menu - 4c, 6d */
+  #header-main #nav-main_menu-checkbox:is(:hover, :active, :focus) ~ .nav-main_menu-checkbox-label .nav-main_menu-checkbox-label__description::before {
+    border-color: hsl(var(--color-secondary-highest-contrast));
+  }
+
+  /* Collapsible Menu - 4c, 6c */
+  #header-main #nav-main_menu-checkbox:focus ~ .nav-main_menu-checkbox-label .nav-main_menu-checkbox-label__description::before {
+    outline: var(--header-main-checkbox-border-size) solid;
+    outline-offset: calc(var(--header-main-checkbox-border-size) * .75);
+  }
+}
+
+
+/*  Header Main - Component: Main Navigation - Menu Checkbox Label - 
+    Custom Check Mark
+    ========================================================================== */
+/* Collapsible Menu */
+@media screen and (max-width: 47.98em) {
+  /* Collapsible Menu - 4d, 6a */
+  #header-main .nav-main_menu-checkbox-label__description::after {
+    grid-area: selector-input;
+
+    content: '';
+
+    display: block;
+
+    width: calc(var(--header-main-checkbox-width) * .5);
+    height: var(--header-main-checkbox-height);
+
+    border: solid;
+    border-width: 0 calc(var(--header-main-checkbox-width) * .25) calc(var(--header-main-checkbox-width) * .25) 0;
+
+    transform: translateX(calc(var(--header-main-checkbox-width) * .75)) rotate(0deg) scale(0);
+    transform-origin: top;
+    transition: transform 200ms ease-out;
+  }
+
+  /* Collapsible Menu - 4d, 6b */
+  #header-main #nav-main_menu-checkbox:checked ~ .nav-main_menu-checkbox-label .nav-main_menu-checkbox-label__description::after {
+    transform: translateX(calc(var(--header-main-checkbox-width) * .75)) rotate(45deg) scale(1);
+    transition: transform 200ms ease-in;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Layout - Footer Main
+    ========================================================================== */
+@media screen {
+  #footer-main {
+    --footer-main-padding: calc(4 * var(--base-size));
+
+    font-family: var(--headers-font-stack);
+    font-size: 1.2em;
+    color: hsl(var(--color-secondary-highest-contrast));
+    text-align: center;
+  
+    background-color: hsl(var(--color-secondary-lowest-contrast));
+  }
+}
+
+/* wide/tall screen */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  #footer-main {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, min-content);
+    grid-template-areas: 
+      "contact-cta contact-cta contact-cta contact-cta contact-cta"
+      "contact-info contact-info contact-info footer-nav-main footer-nav-main"
+      "copyright copyright copyright copyright copyright";
+    align-items: center;
+    gap: 0;
+  }
+}
+
+@media print {
+  #footer-main {
+    break-inside: avoid;
+  }
+}
+
+
+/*  Footer Main - Direct children
+    ========================================================================== */
+@media screen {
+  #footer-main > * {
+    padding: var(--footer-main-padding);
+  }
+}
+
+
+/*  Footer Main - Heading
+    ========================================================================== */
+@media screen {
+  #footer-main h2 {
+    display: none;
+  }
+}
+
+
+/*  Footer Main - Anchors
+    ========================================================================== */
+#footer-main a {
+  color: currentColor;
+}
+
+/* generic anchors */
+#footer-main a:not(.anchor-primary, .anchor-secondary) {
+  text-underline-offset: auto;
+  font-weight: normal;
+}
+
+@media print {
+  #footer-main a {
+    text-decoration: none;
+    font-weight: normal;
+  }
+
+  #footer-main a::after {
+    content: '';  /* do not display href attribute */
+  }
+}
+
+
+/*  Footer Main - Contact section
+    ========================================================================== */
+#footer-main .contact {
+  grid-area: contact-info;
+}
+
+/* wide/tall screen */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  #footer-main .contact {
+    text-align: left;
+  }
+}
+
+
+/*  Footer Main - Contact section - Heading
+    ========================================================================== */
+@media screen {
+  #footer-main .contact h3 {
+    display: none;
+  }
+}
+
+
+/*  Footer Main - Contact section - Business Contact - Address - Name
+    ========================================================================== */
+@media screen {
+  #footer-main .contact .business-contact__address__name {
+    display: block;
+
+    font-size: larger;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+}
+
+
+/*  Footer Main - Contact Call-to-Action
+    ========================================================================== */
+#footer-main .contact-cta {
+  grid-area: contact-cta;
+}
+
+@media screen {
+  #footer-main .contact-cta {
+    --color-contact-cta-background: hsl(var(--color-secondary-low-contrast));
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: min(.0625em, 1vw) solid transparent; /* default border in forced-colors mode */
+
+    background-color: var(--color-contact-cta-background);
+  }
+}
+
+
+/*  Footer Main - Contact Call-to-Action - Message
+    ========================================================================== */
+@media screen {
+  #footer-main .contact-cta__message {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1em;
+
+    font-size: clamp(1.5rem, 0.786rem + 1.905vw, 2.5rem);
+    line-height: clamp(1.5rem, 0.786rem + 1.905vw, 2.5rem);
+    font-weight: normal;
+    letter-spacing: 0;
+
+    margin: 0;
+
+    width: min(20em, 100%);
+  }
+}
+
+
+/*  Footer Main - Contact Call-to-Action - Method
+    ========================================================================== */
+@media screen {
+  #footer-main .contact-cta__method {
+    justify-self: center;
+  }
+}
+
+
+/*  Footer Main - Contact Call-to-Action - Method Anchor Primary
+    ========================================================================== */
+@media screen {
+  #footer-main .contact-cta__method.anchor-primary {
+    /* match anchor background with parent container background */
+    --color-anchor-primary-bg-link: var(--color-contact-cta-background); 
+
+    border: min(.0625em, 1vw) solid;
+    box-shadow: none;
+  }
+}
+
+
+/*  Footer Main - Component: Main Navigation
+    ========================================================================== */
+#footer-main .nav-main {
+  grid-area: footer-nav-main;
+}
+
+/* narrow or short screen */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  #footer-main .nav-main {
+    /* "collapse" padding between previous section */
+    padding-top: 0;
+  }
+}
+
+
+/*  Footer Main - Component: Main Navigation - List
+    ========================================================================== */
+@media screen {
+  #footer-main .nav-main__links {
+    flex-direction: column;
+    /* maintain word break functionality by removing cross axis wrapping and alignment */
+    flex-wrap: nowrap;
+    align-items: normal;
+    row-gap: var(--size-nav-main-font);
+    
+    padding: calc(var(--footer-main-padding) / 2);
+    padding-right: 0;
+    border: min(.0625em, 1vw) solid;
+    border-right: none;
+  }
+}
+
+/* narrow or short screen */
+@media screen and (max-width: 63.98em), screen and (max-height: 39.98em) {
+  #footer-main .nav-main__links {
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
+/* wide/tall screen */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  #footer-main .nav-main__links {
+    text-align: left;
+
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+}
+
+
+/*  Footer Main - Copyright
+    ========================================================================== */
+#footer-main .copyright {
+  grid-area: copyright;
+
+  font-size: .85em;
+}
+
+@media screen {
+  #footer-main .copyright {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media print {
+  #footer-main .copyright {
+    margin-top: .5cm;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Homepage
+    ========================================================================== */
+
+/*  Homepage - Main - Heading
+    ========================================================================== */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  #page-home main h1 {
+    float: left;
+
+    width: 30%;
+
+    margin-right: calc(4 * var(--base-size));
+    margin-bottom: calc(4 * var(--base-size));
+  }
+}
+
+
+/*  Homepage - Main - Intro - Heading
+    ========================================================================== */
+#page-home main .intro h2 {
+  display: none;
+}
+
+
+/*  Homepage - Main - Current Properties
+    ========================================================================== */
+@media screen {
+  #page-home main .properties-current {
+    /* clear fix */
+    clear: left; 
+  }
+}
+
+
+/*  Homepage - Main - Current Properties - Heading
+    ========================================================================== */
+@media screen and (min-width: 64em) {
+  #page-home main .properties-current h2 {
+    text-align: right;
+  }
+
+  /* decor */
+  #page-home main .properties-current h2::after {
+    left: auto;
+    right: 0;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Office Info Page
+    ========================================================================== */
+
+/*  Office Info Page - Main - Contact section - Heading
+    ========================================================================== */
+#page-office-info main section.contact h2 {
+  display: none;
+}
+
+/*  Office Info Page - Main - Contact section - Business Contact
+    ========================================================================== */
+#page-office-info main section.contact .business-contact {
+  margin-top: var(--base-size);
+}
+
+@media screen {
+  #page-office-info main section.contact .business-contact {
+    line-height: 1.5;
+  }
+}
+
+
+/*  Office Info Page - Main - Contact section - Business Contact - 
+    Driving Directions Anchor
+    ========================================================================== */
+#page-office-info main section.contact .business-contact .driving-directions-anchor {
+  margin-top: 1em;
+}
+
+@media print {
+  #page-office-info main section.contact .business-contact .driving-directions-anchor {
+    display: none;
+  }
+}
+
+
+/*  Office Info Page - Main - Associates section - Brokers - Broker
+    ========================================================================== */
+#page-office-info main .associates .associates-brokers .broker:not(:last-child) {
+  margin-bottom: calc(var(--base-size) * 2);
+}
+
+
+/*  Office Info Page - Main - Associates section - Sales Associates - List
+    ========================================================================== */
+#page-office-info main .associates .associates-sales .associates-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(20em, 100%), 1fr));
+  gap: var(--base-size);
+
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+@media print {
+  #page-office-info main .associates .associates-sales .associates-list {
+    grid-template-columns: repeat(auto-fill, 3cm);
+  }
+}
+
+
+/*  Office Info Page - Main - Associates section - Sales Associates - List -
+    List item - Associate
+    ========================================================================== */
+#page-office-info main .associates .associates-sales .associates-list .associate {
+  --associate-width: auto;  /* width determined by the grid item */
+
+  /* fill the height of the list item */
+  height: 100%; 
+}
+
+
+
+
+/*  ==========================================================================
+    Neighborhoods Page
+    ========================================================================== */
+
+/*  Neighborhoods Page - Main
+    ========================================================================== */
+/* wide/tall viewport */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  #page-neighborhoods main {
+    display: grid;
+    grid-template-columns: 30em 1fr;
+    grid-template-rows: min-content 1fr;
+    grid-template-areas: 
+      "neighborhoods-title neighborhoods-list"
+      "neighborhoods-description neighborhoods-list";
+    align-items: start;
+    column-gap: calc(4 * var(--base-size));
+  }
+}
+
+
+/*  Neighborhoods Page - Main - Heading 1
+    ========================================================================== */
+/* wide/tall viewport */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  #page-neighborhoods main h1 {
+    grid-area: neighborhoods-title;
+  }
+}
+
+
+/*  Neighborhoods Page - Main - Neighborhoods Serviced
+    ========================================================================== */
+/* wide/tall viewport */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  #page-neighborhoods main .neighborhoods-serviced {
+    /* Replace the element's box with its child elements. */
+    display: contents;
+  }
+}
+
+
+/*  Neighborhoods Page - Main - Neighborhoods Serviced - Title
+    ========================================================================== */
+#page-neighborhoods main .neighborhoods-serviced__title {
+  display: none;
+}
+
+
+/*  Neighborhoods Page - Main - Neighborhoods Serviced - Description
+    ========================================================================== */
+/* wide/tall viewport */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  #page-neighborhoods main .neighborhoods-serviced__description {
+    grid-area: neighborhoods-description;
+  }
+}
+
+
+/*  Neighborhoods Page - Main - Neighborhoods Serviced - Neighborhoods List
+    ========================================================================== */
+@media screen {
+  #page-neighborhoods main .neighborhoods-serviced__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(15em, 100%), 1fr));
+    gap: calc(2 * var(--base-size));
+
+    margin: 0;
+    padding: 0;
+
+    list-style-type: none;
+  }
+}
+
+/* wide/tall viewport */
+@media screen and (min-width: 64em) and (min-height: 40em) {
+  #page-neighborhoods main .neighborhoods-serviced__list {
+    grid-area: neighborhoods-list;
+  }
+}
+
+
+/*  Neighborhoods Page - Neighborhoods Serviced - Neighborhoods List -
+    List Item - Anchor Primary
+    ========================================================================== */
+@media screen {
+  #page-neighborhoods main .neighborhoods-serviced__list a.anchor-primary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    
+    color: hsl(var(--color-primary-highest-contrast));
+    font-variant: small-caps;
+    text-transform: none;
+
+    background-color: hsl(var(--color-primary-low-contrast));
+
+    box-shadow: hsl(var(--shadow-color) / calc(var(--shadow-intensity) + .5)) 0px min(1.5625rem, 3vw) min(1.25rem, 2vw) max(-1.25rem, -2vw);
+
+    &:link,
+    &:visited {
+      color: hsl(var(--color-primary-highest-contrast));
+
+      background-color: hsl(var(--color-primary-low-contrast));
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: hsl(var(--color-primary-high-contrast));
+
+      background-color: hsl(var(--color-primary-lowest-contrast));
+    }
+  }
+}
+
+
+/*  Neighborhoods Page - Neighborhoods Serviced - Neighborhoods List -
+    List Item - Anchor Primary - Neighborhood URL
+    ========================================================================== */
+@media screen {
+  #page-neighborhoods main .neighborhoods-serviced__neighborhood-url  {
+    font-family: var(--text-font-stack);
+    font-size: .7em;
+    letter-spacing: normal;
+    font-variant: normal;
+    text-transform: lowercase;
+    font-style: italic;
+  }
+}
+
+@media print {
+  #page-neighborhoods main .neighborhoods-serviced__neighborhood-url  {
+    display: none;
+  }
+}
+
+
+
+
+/*  ==========================================================================
+    Property Page
+    ========================================================================== */
+
+/*  Property Page - Main - Heading 2
+    ========================================================================== */
+#page-property main h2 {
+  display: none;
+}
+
+
+/*  Property Page - Main - Overview
+    ========================================================================== */
+@media screen {
+  #page-property main .property-overview {
+    background-color: hsl(var(--color-secondary-lowest-contrast));
+    padding: var(--base-size);
+  }
+}
+
+
+/*  Property Page - Main - Overview - Type
+    ========================================================================== */
+#page-property main .property-overview__type {
+  font-family: var(--text-font-stack);
+  font-size: larger;
+  color: hsl(var(--color-secondary-highest-contrast));
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+
+/*  Property Page - Main - Overview - Status
+    ========================================================================== */
+#page-property main .property-overview__status {
+  font-family: var(--text-font-stack);
+  font-size: .9em;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  margin: var(--base-size) 0 0 0;
+}
+
+
+/*  Property Page - Main - Description
+    ========================================================================== */
+#page-property main .property-description {
+  margin: var(--base-size) 0;
+}
+
+@media screen {
+  #page-property main .property-description {
+    padding-left: var(--base-size);
+    padding-right: var(--base-size);
+  }
+}
